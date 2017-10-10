@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <item type="id" name="bgaqrcode_camera_preview" />
+  <item name="banner_indicatorId" type="id" />
+</resources>
