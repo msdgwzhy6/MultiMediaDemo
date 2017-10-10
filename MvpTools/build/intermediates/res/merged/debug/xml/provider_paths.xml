@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="files_root"
+        path="Android/data/com/pgyersdk"/>
+    <external-path
+        name="external_storage_root"
+        path="."/>
+    <cache-path
+        name="internal"
+        path="boxing"/>
+
+    <external-path
+        name="external"
+        path="DCIM/bili/boxing"/>
+
+</paths>

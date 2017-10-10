@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jess.arms"
+    android:versionCode="1"
+    android:versionName="1.0.1" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="26" />
+
+    <application>
+        <activity
+            android:name="com.jess.arms.exceptiontool.activity.DefaultErrorActivity"
+            android:process=":error_activity"
+            android:theme="@style/No_All" />
+
+        <provider
+            android:name="com.jess.arms.exceptiontool.provider.CaocInitProvider"
+            android:authorities="${applicationId}.customactivityoncrashinitprovider"
+            android:exported="false"
+            android:initOrder="101" />
+    </application>
+
+</manifest>

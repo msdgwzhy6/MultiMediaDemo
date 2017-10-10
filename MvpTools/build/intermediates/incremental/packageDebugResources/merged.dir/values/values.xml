@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="color" name="tl_divider_color"/>
+    <attr format="dimension" name="tl_divider_padding"/>
+    <attr format="dimension" name="tl_divider_width"/>
+    <attr format="integer" name="tl_indicator_anim_duration"/>
+    <attr format="boolean" name="tl_indicator_anim_enable"/>
+    <attr format="boolean" name="tl_indicator_bounce_enable"/>
+    <attr format="color" name="tl_indicator_color"/>
+    <attr format="dimension" name="tl_indicator_corner_radius"/>
+    <attr format="enum" name="tl_indicator_gravity">
+        <enum name="TOP" value="48"/>
+        <enum name="BOTTOM" value="80"/>
+    </attr>
+    <attr format="dimension" name="tl_indicator_height"/>
+    <attr format="dimension" name="tl_indicator_margin_bottom"/>
+    <attr format="dimension" name="tl_indicator_margin_left"/>
+    <attr format="dimension" name="tl_indicator_margin_right"/>
+    <attr format="dimension" name="tl_indicator_margin_top"/>
+    <attr format="enum" name="tl_indicator_style">
+        <enum name="NORMAL" value="0"/>
+        <enum name="TRIANGLE" value="1"/>
+        <enum name="BLOCK" value="2"/>
+    </attr>
+    <attr format="dimension" name="tl_indicator_width"/>
+    <attr format="boolean" name="tl_indicator_width_equal_title"/>
+    <attr format="dimension" name="tl_tab_padding"/>
+    <attr format="boolean" name="tl_tab_space_equal"/>
+    <attr format="dimension" name="tl_tab_width"/>
+    <attr format="boolean" name="tl_textAllCaps"/>
+    <attr format="enum" name="tl_textBold">
+        <enum name="NONE" value="0"/>
+        <enum name="SELECT" value="1"/>
+        <enum name="BOTH" value="2"/>
+    </attr>
+    <attr format="color" name="tl_textSelectColor"/>
+    <attr format="color" name="tl_textUnselectColor"/>
+    <attr format="dimension" name="tl_textsize"/>
+    <attr format="color" name="tl_underline_color"/>
+    <attr format="enum" name="tl_underline_gravity">
+        <enum name="TOP" value="48"/>
+        <enum name="BOTTOM" value="80"/>
+    </attr>
+    <attr format="dimension" name="tl_underline_height"/>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="bgColor_actionsheet_cancel_nor">#ffffff</color>
+    <color name="bgColor_alert_button_press">#EAEAEA</color>
+    <color name="bgColor_alertview_alert">#f8f8f8</color>
+    <color name="bgColor_alertview_alert_start">#f0f0f0</color>
+    <color name="bgColor_divier">#d7d7db</color>
+    <color name="bgColor_overlay">#60000000</color>
+    <color name="bg_main">#edf5fa</color>
+    <color name="black">#000000</color>
+    <color name="boxing_black">#000000</color>
+    <color name="boxing_black1">#1b1b1b</color>
+    <color name="boxing_black_alpha15">#26000000</color>
+    <color name="boxing_black_alpha20">#33000000</color>
+    <color name="boxing_black_alpha25">#3c000000</color>
+    <color name="boxing_colorAccent">#FF4081</color>
+    <color name="boxing_colorPrimary">#000000</color>
+    <color name="boxing_colorPrimaryAlpha">#44000000</color>
+    <color name="boxing_colorPrimaryDark">#ff212121</color>
+    <color name="boxing_gray">#999999</color>
+    <color name="boxing_gray1">#333333</color>
+    <color name="boxing_white">#ffffff</color>
+    <color name="boxing_white1">#fafafa</color>
+    <color name="boxing_white2">#eaeaea</color>
+    <color name="btn_alert">#222222</color>
+    <color name="color_text_black">#4c4c4c</color>
+    <color name="f2f6f7">#f2f6f7</color>
+    <color name="ic_default_bg_color">#33000000</color>
+    <color name="ios_btntext_blue">#007aff</color>
+    <color name="line">#e1e1e1</color>
+    <color name="select_color">#2e2e32</color>
+    <color name="textColor_actionsheet_msg">#8f8f8f</color>
+    <color name="textColor_actionsheet_title">#8f8f8f</color>
+    <color name="textColor_alert_button_cancel">#007aff</color>
+    <color name="textColor_alert_button_destructive">#ff3b30</color>
+    <color name="textColor_alert_button_others">#007aff</color>
+    <color name="textColor_alert_msg">#000000</color>
+    <color name="textColor_alert_title">#000000</color>
+    <color name="text_black">#333333</color>
+    <color name="text_black_light">#666666</color>
+    <color name="text_input_44">#444444</color>
+    <color name="text_item_33">#333333</color>
+    <color name="text_msg_33">#333333</color>
+    <color name="text_title_11">#111111</color>
+    <color name="white">#ffffff</color>
+    <declare-styleable name="AutoTabLayout"><attr format="boolean" name="auto_textSize_base_width"/></declare-styleable>
+    <declare-styleable name="BGABanner"><attr format="reference|color" name="banner_pointContainerBackground"/><attr format="reference" name="banner_pointDrawable"/><attr format="dimension" name="banner_pointContainerLeftRightPadding"/><attr format="dimension" name="banner_pointTopBottomMargin"/><attr format="dimension" name="banner_pointLeftRightMargin"/><attr name="banner_indicatorGravity">
+            <flag name="top" value="0x30"/>
+            <flag name="bottom" value="0x50"/>
+            <flag name="left" value="0x03"/>
+            <flag name="right" value="0x05"/>
+            <flag name="center_horizontal" value="0x01"/>
+        </attr><attr format="boolean" name="banner_pointAutoPlayAble"/><attr format="integer" name="banner_pointAutoPlayInterval"/><attr format="integer" name="banner_pageChangeDuration"/><attr format="enum" name="banner_transitionEffect">
+            <enum name="defaultEffect" value="0"/>
+            <enum name="alpha" value="1"/>
+            <enum name="rotate" value="2"/>
+            <enum name="cube" value="3"/>
+            <enum name="flip" value="4"/>
+            <enum name="accordion" value="5"/>
+            <enum name="zoomFade" value="6"/>
+            <enum name="fade" value="7"/>
+            <enum name="zoomCenter" value="8"/>
+            <enum name="zoomStack" value="9"/>
+            <enum name="stack" value="10"/>
+            <enum name="depth" value="11"/>
+            <enum name="zoom" value="12"/>
+        </attr><attr format="reference|color" name="banner_tipTextColor"/><attr format="dimension" name="banner_tipTextSize"/><attr format="reference" name="banner_placeholderDrawable"/><attr format="boolean" name="banner_isNumberIndicator"/><attr format="reference|color" name="banner_numberIndicatorTextColor"/><attr format="dimension" name="banner_numberIndicatorTextSize"/><attr format="reference" name="banner_numberIndicatorBackground"/><attr format="boolean" name="banner_isNeedShowIndicatorOnOnlyOnePage"/><attr format="dimension" name="banner_contentBottomMargin"/><attr name="android:scaleType"/></declare-styleable>
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/></declare-styleable>
+    <declare-styleable name="CommonTabLayout"><attr name="tl_indicator_color"/><attr name="tl_indicator_height"/><attr name="tl_indicator_width"/><attr name="tl_indicator_margin_left"/><attr name="tl_indicator_margin_top"/><attr name="tl_indicator_margin_right"/><attr name="tl_indicator_margin_bottom"/><attr name="tl_indicator_corner_radius"/><attr name="tl_indicator_gravity"/><attr name="tl_indicator_style"/><attr name="tl_indicator_anim_enable"/><attr name="tl_indicator_anim_duration"/><attr name="tl_indicator_bounce_enable"/><attr name="tl_underline_color"/><attr name="tl_underline_height"/><attr name="tl_underline_gravity"/><attr name="tl_divider_color"/><attr name="tl_divider_width"/><attr name="tl_divider_padding"/><attr name="tl_tab_padding"/><attr name="tl_tab_space_equal"/><attr name="tl_tab_width"/><attr name="tl_textsize"/><attr name="tl_textSelectColor"/><attr name="tl_textUnselectColor"/><attr name="tl_textBold"/><attr name="tl_textAllCaps"/><attr format="dimension" name="tl_iconWidth"/><attr format="dimension" name="tl_iconHeight"/><attr format="boolean" name="tl_iconVisible"/><attr format="enum" name="tl_iconGravity">
+            <enum name="LEFT" value="3"/>
+            <enum name="TOP" value="48"/>
+            <enum name="RIGHT" value="5"/>
+            <enum name="BOTTOM" value="80"/>
+        </attr><attr format="dimension" name="tl_iconMargin"/></declare-styleable>
+    <declare-styleable name="MsgView"><attr format="color" name="mv_backgroundColor"/><attr format="dimension" name="mv_cornerRadius"/><attr format="dimension" name="mv_strokeWidth"/><attr format="color" name="mv_strokeColor"/><attr format="boolean" name="mv_isRadiusHalfHeight"/><attr format="boolean" name="mv_isWidthHeightEqual"/></declare-styleable>
+    <declare-styleable name="QRCodeView"><attr format="dimension|reference" name="qrcv_topOffset"/><attr format="dimension|reference" name="qrcv_cornerSize"/><attr format="dimension|reference" name="qrcv_cornerLength"/><attr format="color|reference" name="qrcv_cornerColor"/><attr format="dimension|reference" name="qrcv_rectWidth"/><attr format="dimension|reference" name="qrcv_barcodeRectHeight"/><attr format="color|reference" name="qrcv_maskColor"/><attr format="dimension|reference" name="qrcv_scanLineSize"/><attr format="color|reference" name="qrcv_scanLineColor"/><attr format="dimension|reference" name="qrcv_scanLineMargin"/><attr format="boolean" name="qrcv_isShowDefaultScanLineDrawable"/><attr format="reference" name="qrcv_customScanLineDrawable"/><attr format="dimension|reference" name="qrcv_borderSize"/><attr format="color|reference" name="qrcv_borderColor"/><attr format="integer" name="qrcv_animTime"/><attr format="boolean" name="qrcv_isCenterVertical"/><attr format="dimension|reference" name="qrcv_toolbarHeight"/><attr format="boolean" name="qrcv_isBarcode"/><attr format="string|reference" name="qrcv_qrCodeTipText"/><attr format="string|reference" name="qrcv_barCodeTipText"/><attr format="dimension|reference" name="qrcv_tipTextSize"/><attr format="color|reference" name="qrcv_tipTextColor"/><attr format="boolean" name="qrcv_isTipTextBelowRect"/><attr format="dimension|reference" name="qrcv_tipTextMargin"/><attr format="boolean" name="qrcv_isShowTipTextAsSingleLine"/><attr format="boolean" name="qrcv_isShowTipBackground"/><attr format="color|reference" name="qrcv_tipBackgroundColor"/><attr format="boolean" name="qrcv_isScanLineReverse"/><attr format="boolean" name="qrcv_isShowDefaultGridScanLineDrawable"/><attr format="reference" name="qrcv_customGridScanLineDrawable"/><attr format="boolean" name="qrcv_isOnlyDecodeScanBoxArea"/></declare-styleable>
+    <declare-styleable name="SegmentTabLayout"><attr name="tl_indicator_color"/><attr name="tl_indicator_height"/><attr name="tl_indicator_margin_left"/><attr name="tl_indicator_margin_top"/><attr name="tl_indicator_margin_right"/><attr name="tl_indicator_margin_bottom"/><attr name="tl_indicator_corner_radius"/><attr name="tl_indicator_anim_enable"/><attr name="tl_indicator_anim_duration"/><attr name="tl_indicator_bounce_enable"/><attr name="tl_divider_color"/><attr name="tl_divider_width"/><attr name="tl_divider_padding"/><attr name="tl_tab_padding"/><attr name="tl_tab_space_equal"/><attr name="tl_tab_width"/><attr name="tl_textsize"/><attr name="tl_textSelectColor"/><attr name="tl_textUnselectColor"/><attr name="tl_textBold"/><attr name="tl_textAllCaps"/><attr format="color" name="tl_bar_color"/><attr format="color" name="tl_bar_stroke_color"/><attr format="dimension" name="tl_bar_stroke_width"/></declare-styleable>
+    <declare-styleable name="SlidingTabLayout"><attr name="tl_indicator_color"/><attr name="tl_indicator_height"/><attr name="tl_indicator_width"/><attr name="tl_indicator_margin_left"/><attr name="tl_indicator_margin_top"/><attr name="tl_indicator_margin_right"/><attr name="tl_indicator_margin_bottom"/><attr name="tl_indicator_corner_radius"/><attr name="tl_indicator_gravity"/><attr name="tl_indicator_style"/><attr name="tl_indicator_width_equal_title"/><attr name="tl_underline_color"/><attr name="tl_underline_height"/><attr name="tl_underline_gravity"/><attr name="tl_divider_color"/><attr name="tl_divider_width"/><attr name="tl_divider_padding"/><attr name="tl_tab_padding"/><attr name="tl_tab_space_equal"/><attr name="tl_tab_width"/><attr name="tl_textsize"/><attr name="tl_textSelectColor"/><attr name="tl_textUnselectColor"/><attr name="tl_textBold"/><attr name="tl_textAllCaps"/></declare-styleable>
+    <dimen name="boxing_activity_horizontal_margin">16dp</dimen>
+    <dimen name="boxing_activity_vertical_margin">16dp</dimen>
+    <dimen name="boxing_corner_radius">2dp</dimen>
+    <dimen name="boxing_item_half_spacing">4dp</dimen>
+    <dimen name="boxing_item_spacing">8dp</dimen>
+    <dimen name="boxing_media_margin">2dp</dimen>
+    <dimen name="boxing_text_size_large">14sp</dimen>
+    <dimen name="boxing_text_size_medium">12sp</dimen>
+    <dimen name="boxing_text_size_small">10sp</dimen>
+    <dimen name="boxing_text_size_xlarge">16sp</dimen>
+    <dimen name="customactivityoncrash_activity_horizontal_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_activity_vertical_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_error_activity_error_details_text_size">12sp</dimen>
+    <dimen name="dialogui_l_round_corner_radius">10dp</dimen>
+    <dimen name="dialogui_margin_smid">14dp</dimen>
+    <dimen name="dialogui_max_with">360dp</dimen>
+    <dimen name="dialogui_msg_txt_size">14sp</dimen>
+    <dimen name="dialogui_round_corner_radius">5dp</dimen>
+    <dimen name="dialogui_toast_margin">64dp</dimen>
+    <dimen name="height_actionsheet_title">40dp</dimen>
+    <dimen name="height_alert_button">48dp</dimen>
+    <dimen name="height_alert_title">60dp</dimen>
+    <dimen name="marginBottom_actionsheet_msg">14dp</dimen>
+    <dimen name="marginBottom_alert_msg">25dp</dimen>
+    <dimen name="margin_actionsheet_left_right">10dp</dimen>
+    <dimen name="margin_alert_left_right">40dp</dimen>
+    <dimen name="radius_alertview">15px</dimen>
+    <dimen name="size_divier">1dp</dimen>
+    <dimen name="textSize_actionsheet_msg">14sp</dimen>
+    <dimen name="textSize_actionsheet_title">14sp</dimen>
+    <dimen name="textSize_alert_button">18sp</dimen>
+    <dimen name="textSize_alert_msg">15sp</dimen>
+    <dimen name="textSize_alert_title">22sp</dimen>
+    <item name="banner_indicatorId" type="id"/>
+    <item name="bgaqrcode_camera_preview" type="id"/>
+    <integer name="animation_default_duration">300</integer>
+    <integer name="default_circle_indicator_orientation">0</integer>
+    <integer name="duration_1">1</integer>
+    <string name="app_name">MvpTools</string>
+    <string name="boxing_album_images_fmt">(%d)</string>
+    <string name="boxing_camera_permission_deny">需要访问你的相机来拍照，请在“系统设置”或授权对话框中允许“使用相机”权限。</string>
+    <string name="boxing_camera_unavailble">相机不可用,请检查相机权限！</string>
+    <string name="boxing_crop_error">肥肠抱歉，裁剪出错啦</string>
+    <string name="boxing_default_album">默认相册</string>
+    <string name="boxing_fab_label_camera">拍照</string>
+    <string name="boxing_finish">完成</string>
+    <string name="boxing_gif_too_big">您选择的gif图片过大，请压缩后再上传</string>
+    <string name="boxing_handling">处理中</string>
+    <string name="boxing_image_preview_ok_fmt">%1$s/%2$s 确定</string>
+    <string name="boxing_image_preview_title_fmt">%1$s/%2$s</string>
+    <string name="boxing_image_select_ok_fmt">(%1$s/%2$s) 确定</string>
+    <string name="boxing_load_image_fail">肥肠抱歉，加载出错啦</string>
+    <string name="boxing_max_image_over_fmt">你最多只能选择%d张图片</string>
+    <string name="boxing_nothing_found">什么也找不到</string>
+    <string name="boxing_ok">确定</string>
+    <string name="boxing_pick_multi_image">图片多选</string>
+    <string name="boxing_pick_single_image">图片单选</string>
+    <string name="boxing_pick_single_image_crop">图片单选加裁剪</string>
+    <string name="boxing_pick_single_video">视频单选</string>
+    <string name="boxing_start_pick">开始选图</string>
+    <string name="boxing_storage_deny">设备存储读取出错或暂不可用，请稍候重试</string>
+    <string name="boxing_storage_permission_deny">需要访问你的存储设备来选择图片，请在“系统设置”或授权对话框中允许“存储空间”权限。</string>
+    <string name="boxing_too_many_picture_fmt">您最多只能选择%d张图片</string>
+    <string name="boxing_video_title">视频相册</string>
+    <string name="customactivityoncrash_error_activity_close_app">关闭软件</string>
+    <string name="customactivityoncrash_error_activity_error_details">错误详情</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">Error information</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">关闭</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">复制成功</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">复制到剪切板</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">奔溃详情</string>
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">程序出现意外\n很抱歉给您带来不便。</string>
+    <string name="customactivityoncrash_error_activity_restart_app">重启软件</string>
+    <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
+    </style>
+    <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+    </style>
+    <style name="AlertActivity_AlertStyle" parent="android:Theme.Dialog">
+        <!--<item name="android:windowAnimationStyle">@style/AnimAlert</item>-->
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="AlertDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="Boxing.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/boxing_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/boxing_colorPrimaryDark</item>
+        <item name="colorAccent">@color/boxing_colorAccent</item>
+    </style>
+    <style name="Boxing.AppTheme.NoActionBar" parent="Boxing.AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+    <style name="Boxing.PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/boxing_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/boxing_fade_out</item>
+    </style>
+    <style name="Boxing.TextAppearance.App.Medium" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/boxing_text_size_medium</item>
+    </style>
+    <style name="Boxing.ToolbarTheme" parent="Boxing.AppTheme.NoActionBar">
+        <item name="titleTextColor">@color/boxing_white</item>
+        <item name="android:textColorSecondary">@color/boxing_white</item>
+        <item name="android:textColor">@color/boxing_white</item>
+        <item name="android:background">@color/boxing_colorPrimaryDark</item>
+    </style>
+    <style name="No_All" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="layout_match_parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="layout_wrap_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>
