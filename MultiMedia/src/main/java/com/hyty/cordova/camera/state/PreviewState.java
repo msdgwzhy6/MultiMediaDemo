@@ -6,7 +6,8 @@ import android.view.SurfaceHolder;
 
 import com.hyty.cordova.camera.CameraInterface;
 import com.hyty.cordova.camera.JCameraView;
-import com.hyty.cordova.camera.util.LogUtil;
+
+import timber.log.Timber;
 
 /**
  * =====================================
@@ -17,8 +18,6 @@ import com.hyty.cordova.camera.util.LogUtil;
  * =====================================
  */
 class PreviewState implements State {
-    public static final String TAG = "PreviewState";
-
     private CameraMachine machine;
 
     PreviewState(CameraMachine machine) {
@@ -38,7 +37,7 @@ class PreviewState implements State {
 
     @Override
     public void foucs(float x, float y, CameraInterface.FocusCallback callback) {
-        LogUtil.i("preview state foucs");
+        Timber.d( "preview state foucs");
         if (machine.getView().handlerFoucs(x, y)) {
             CameraInterface.getInstance().handleFocus(machine.getContext(), x, y, callback);
         }
@@ -61,7 +60,7 @@ class PreviewState implements State {
             public void captureResult(Bitmap bitmap, boolean isVertical) {
                 machine.getView().showPicture(bitmap, isVertical);
                 machine.setState(machine.getBorrowPictureState());
-                LogUtil.i("capture");
+                Timber.d( "capture");
             }
         });
     }
@@ -88,17 +87,17 @@ class PreviewState implements State {
 
     @Override
     public void cancle(SurfaceHolder holder, float screenProp) {
-        LogUtil.i("浏览状态下,没有 cancle 事件");
+        Timber.d( "浏览状态下,没有 cancle 事件");
     }
 
     @Override
     public void confirm() {
-        LogUtil.i("浏览状态下,没有 confirm 事件");
+        Timber.d( "浏览状态下,没有 confirm 事件");
     }
 
     @Override
     public void zoom(float zoom, int type) {
-        LogUtil.i(TAG, "zoom");
+        Timber.d("zoom");
         CameraInterface.getInstance().setZoom(zoom, type);
     }
 

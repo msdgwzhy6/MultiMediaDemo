@@ -11,5 +11,7 @@ import java.io.Serializable;
  * ================================================================
  */
 public class Key implements Serializable {
-    public static final String REQUEST_CODE = "requestCode";
+    public static final String REQUEST_CODE = "requestCode";//传递请求吗的key
+    public static final String RESULT_INTENT = "resulrIntent";//响应数据的key
+
 }

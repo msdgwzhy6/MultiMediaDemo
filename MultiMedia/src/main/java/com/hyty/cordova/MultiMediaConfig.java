@@ -1,8 +1,27 @@
 package com.hyty.cordova;
 
+import android.app.Application;
 import android.os.Environment;
 
+import com.blankj.utilcode.util.FileUtils;
 import com.hyty.cordova.bean.CameraFeature;
+import com.hyty.cordova.bean.Key;
+import com.hyty.cordova.mvp.impl.CopyFilesListener;
+import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.schedulers.Schedulers;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
+import timber.log.Timber;
 
 /**
  * ================================================================
@@ -62,5 +81,53 @@ public class MultiMediaConfig {
 
     public void setFileSavedPath(String mFileSavedPath) {
         fileSavedPath = FILE_SAVED_PATH + mFileSavedPath;
+    }
+
+    /**
+     * 将文件集合拷贝进指定存储目录并返回拷贝后的路径集合
+     *
+     * @param fromFiles
+     */
+    public void copyFileToSavePath(ArrayList<File> fromFiles, CopyFilesListener mCopyFilesListener,Application mApplication) {
+        Observable.create(new ObservableOnSubscribe<ArrayList<String>>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<ArrayList<String>> array) throws Exception {
+                ArrayList<String> canUseFilePaths_end = new ArrayList<>();
+                for (File file : fromFiles) {
+                    String newPath = getFileSavedPath() + "/" + file.getName();
+                    boolean isSucc = FileUtils.copyFile(file.getPath(), newPath);
+                    if (!isSucc) {
+                        array.onError(new ConcurrentModificationException());
+                        return;
+                    }
+                    canUseFilePaths_end.add(newPath);
+                }
+                array.onNext(canUseFilePaths_end);
+            }
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())//设置下游接收事件的线程
+                .subscribe(new ErrorHandleSubscriber<ArrayList<String>>(getRxErrorHandler(mApplication)) {
+                    @Override
+                    public void onNext(@NonNull ArrayList<String> mStrings) {
+                        Timber.d(fromFiles.size() + "张图片已拷贝完成");
+                        //图片压缩
+                        mCopyFilesListener.onSucc(mStrings);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Timber.e("图片拷贝出错，e" + e);
+                        mCopyFilesListener.onError("请重试");
+                    }
+                });
+    }
+
+
+    public RxErrorHandler getRxErrorHandler(Application mApplication){
+      return   RxErrorHandler
+                .builder()
+                .with(mApplication)
+                .responseErrorListener((context, t) -> Timber.e("异常"))
+                .build();
     }
 }

@@ -1,8 +1,11 @@
 package com.hyty.cordova.mvp.model;
 
 import android.app.Application;
+import android.graphics.Bitmap;
 
 import com.google.gson.Gson;
+import com.hyty.cordova.MultiMediaConfig;
+import com.hyty.cordova.camera.util.FileUtil;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 
@@ -39,4 +42,14 @@ public class TakeCameraModel extends BaseModel implements TakeCameraContract.Mod
         this.mApplication = null;
     }
 
+    /**
+     * 保存bitmap到系统相册并返回文件全路径
+     *
+     * @param mBitmap
+     * @return
+     */
+    @Override
+    public String saveBitmapAndResturnFileName(Bitmap mBitmap) {
+        return FileUtil.saveBitmapToFolder(MultiMediaConfig.CAMERA_FILE_PATH, mBitmap);
+    }
 }

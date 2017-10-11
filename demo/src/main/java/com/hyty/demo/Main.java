@@ -11,6 +11,7 @@ import android.widget.Button;
 import com.google.gson.Gson;
 import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.bean.ConfigParams;
+import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.plugins.MultiMediaPlugin;
 
 import org.json.JSONException;
@@ -104,7 +105,7 @@ public class Main extends AppCompatActivity {
         if (intent == null) return;
         if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA
                 && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA) {
-            Timber.d("仅拍照模式返回数据:(未确定，未打印)");
+            Timber.d("仅拍照模式返回数据:"+intent.getStringArrayListExtra(Key.RESULT_INTENT).size());
         }
     }
 }

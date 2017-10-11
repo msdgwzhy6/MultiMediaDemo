@@ -1,6 +1,10 @@
 package com.hyty.cordova.camera.util;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 
 import java.io.BufferedOutputStream;
@@ -17,7 +21,6 @@ import java.io.IOException;
  * =====================================
  */
 public class FileUtil {
-    private static final String TAG = "CJT";
     private static final File parentPath = Environment.getExternalStorageDirectory();
     private static String storagePath = "";
     private static String DST_FOLDER_NAME = "JCamera";
@@ -37,7 +40,7 @@ public class FileUtil {
         DST_FOLDER_NAME = dir;
         String path = initPath();
         long dataTake = System.currentTimeMillis();
-        String jpegName = path + File.separator + "picture_" + dataTake + ".jpg";
+        String jpegName = path + File.separator + "picture_" + dataTake + ".jpeg";
         try {
             FileOutputStream fout = new FileOutputStream(jpegName);
             BufferedOutputStream bos = new BufferedOutputStream(fout);
@@ -45,6 +48,21 @@ public class FileUtil {
             bos.flush();
             bos.close();
             return jpegName;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    public static String saveBitmapToFolder(String dir, Bitmap b) {
+        String jpegPath = dir + "/" + Build.SERIAL + "-" + System.currentTimeMillis() + ".jpg";
+        try {
+            FileOutputStream fout = new FileOutputStream(jpegPath);
+            BufferedOutputStream bos = new BufferedOutputStream(fout);
+            b.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+            bos.flush();
+            bos.close();
+            return jpegPath;
         } catch (IOException e) {
             e.printStackTrace();
             return "";
@@ -66,5 +84,15 @@ public class FileUtil {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 扫描图片
+     */
+    public static void galleryAddPic(Context context, File file) {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri contentUri = Uri.fromFile(file);
+        mediaScanIntent.setData(contentUri);
+        context.sendBroadcast(mediaScanIntent);
     }
 }

@@ -11,7 +11,6 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,11 +29,12 @@ import com.hyty.cordova.camera.listener.JCameraListener;
 import com.hyty.cordova.camera.listener.TypeListener;
 import com.hyty.cordova.camera.state.CameraMachine;
 import com.hyty.cordova.camera.util.FileUtil;
-import com.hyty.cordova.camera.util.LogUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
 import com.hyty.cordova.camera.view.CameraView;
 
 import java.io.IOException;
+
+import timber.log.Timber;
 
 
 /**
@@ -145,7 +145,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         layout_width = ScreenUtils.getScreenWidth(mContext);
         //缩放梯度
         zoomGradient = (int) (layout_width / 16f);
-        LogUtil.i("zoom = " + zoomGradient);
+        Timber.d("zoom = " + zoomGradient);
         machine = new CameraMachine(getContext(), this, this);
     }
 
@@ -215,7 +215,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
             @Override
             public void recordZoom(float zoom) {
-                LogUtil.i("recordZoom");
+                Timber.d("recordZoom");
                 machine.zoom(zoom, CameraInterface.TYPE_RECORDER);
             }
 
@@ -236,6 +236,10 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             @Override
             public void confirm() {
                 machine.confirm();
+//                mSwitchCamera.setVisibility(VISIBLE);
+//                mFlashLamp.setVisibility(VISIBLE);
+//                mPhoto.setVisibility(INVISIBLE);
+//                mVideoView.setVisibility(VISIBLE);
             }
         });
         //退出
@@ -282,7 +286,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     //生命周期onResume
     public void onResume() {
-        LogUtil.i("JCameraView onResume");
+        Timber.d("JCameraView onResume");
         resetState(TYPE_DEFAULT); //重置状态
         CameraInterface.getInstance().registerSensorManager(mContext);
         CameraInterface.getInstance().setSwitchView(mSwitchCamera, mFlashLamp);
@@ -291,7 +295,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     //生命周期onPause
     public void onPause() {
-        LogUtil.i("JCameraView onPause");
+        Timber.d("JCameraView onPause");
         stopVideo();
         resetState(TYPE_PICTURE);
         CameraInterface.getInstance().isPreview(false);
@@ -301,7 +305,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     //SurfaceView生命周期
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        LogUtil.i("JCameraView SurfaceCreated");
+        Timber.d("JCameraView SurfaceCreated");
         new Thread() {
             @Override
             public void run() {
@@ -316,7 +320,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        LogUtil.i("JCameraView SurfaceDestroyed");
+        Timber.d("JCameraView SurfaceDestroyed");
         CameraInterface.getInstance().doDestroyCamera();
     }
 
@@ -330,7 +334,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                     setFocusViewWidthAnimation(event.getX(), event.getY());
                 }
                 if (event.getPointerCount() == 2) {
-                    Log.i("CJT", "ACTION_DOWN = " + 2);
+                    Timber.d("ACTION_DOWN = " + 2);
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -464,7 +468,8 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             case TYPE_DEFAULT:
                 break;
         }
-        mCaptureLayout.resetCaptureLayout();
+        resetState(type);
+//        mCaptureLayout.resetCaptureLayout();
     }
 
     @Override
@@ -539,7 +544,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     @Override
     public void startPreviewCallback() {
-        LogUtil.i("startPreviewCallback");
+        Timber.d("startPreviewCallback");
         handlerFoucs(mFoucsView.getWidth() / 2, mFoucsView.getHeight() / 2);
     }
 

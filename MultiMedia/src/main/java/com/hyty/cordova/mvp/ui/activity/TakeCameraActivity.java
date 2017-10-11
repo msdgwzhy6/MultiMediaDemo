@@ -18,10 +18,13 @@ import com.hyty.cordova.camera.listener.JCameraListener;
 import com.hyty.cordova.di.component.DaggerTakeCameraComponent;
 import com.hyty.cordova.di.module.TakeCameraModule;
 import com.hyty.cordova.mvp.contract.TakeCameraContract;
+import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.hyty.cordova.mvp.presenter.TakeCameraPresenter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+
+import java.util.ArrayList;
 
 import timber.log.Timber;
 
@@ -83,9 +86,23 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         mCameraView.setJCameraLisenter(mCameraListener);
         mCameraView.setLeftClickListener(() -> finishPage(null));
         mCameraView.setRightClickListener(() -> {
-            Intent mIntent = new Intent();
-            mIntent.putExtra("ccc", "123");// TODO: 2017/10/10 预留返回数据格式
-            finishPage(mIntent);
+            showLoading("正在处理图片，请稍后...");
+            mPresenter.getResultData(new CopyFilesListener() {
+                @Override
+                public void onSucc(ArrayList<String> toFilesPath) {
+                    Intent mIntent = new Intent();
+                    mIntent.putStringArrayListExtra(Key.RESULT_INTENT, toFilesPath);
+                    hideLoading();
+                    finishPage(mIntent);
+                }
+
+                @Override
+                public void onError(String errorMsg) {
+                    hideLoading();
+                    showMessage(errorMsg);
+                    finishPage(null);
+                }
+            });
         });
     }
 
@@ -101,6 +118,8 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         @Override
         public void captureSuccess(Bitmap bitmap) {
             // TODO: 2017/10/10 预留连续拍照的bug
+            //将图片保存到相册目录下
+            mPresenter.saveBitmapToCameraFile(bitmap);
         }
 
         @Override
@@ -142,7 +161,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
     @Override
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+        ArmsUtils.showToast(message);
     }
 
     @Override
@@ -186,5 +205,15 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
             int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
             decorView.setSystemUiVisibility(option);
         }
+    }
+
+    /**
+     * 展示一个指定msg的进度条
+     *
+     * @param msg
+     */
+    @Override
+    public void showLoading(String msg) {
+        ArmsUtils.showLoading(msg, false, null);
     }
 }

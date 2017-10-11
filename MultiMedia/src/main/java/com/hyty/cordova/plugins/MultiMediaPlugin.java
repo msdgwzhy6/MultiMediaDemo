@@ -105,11 +105,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                                                      }
                                                  });
                                              }
-                                         }, new RxPermissions(mActivity), RxErrorHandler
-                        .builder()
-                        .with(mActivity.getApplication())
-                        .responseErrorListener((context, t) -> Timber.e("权限申请异常,t - " + t.getMessage()))
-                        .build(), Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                         }, new RxPermissions(mActivity),mMediaConfig.getRxErrorHandler(mActivity.getApplication()), Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.WAKE_LOCK,

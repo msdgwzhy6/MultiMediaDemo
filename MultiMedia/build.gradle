@@ -39,5 +39,7 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["dagger2-compiler"]) {
         exclude module: 'dagger'
     }
+
+    compile rootProject.ext.dependencies["Utils"]
     compile project(':MvpTools')
 }

@@ -5,7 +5,8 @@ import android.view.SurfaceHolder;
 
 import com.hyty.cordova.camera.CameraInterface;
 import com.hyty.cordova.camera.JCameraView;
-import com.hyty.cordova.camera.util.LogUtil;
+
+import timber.log.Timber;
 
 /**
  * =====================================
@@ -16,7 +17,6 @@ import com.hyty.cordova.camera.util.LogUtil;
  * =====================================
  */
 public class BorrowVideoState implements State {
-    private final String TAG = "BorrowVideoState";
     private CameraMachine machine;
 
     public BorrowVideoState(CameraMachine machine) {
@@ -79,7 +79,7 @@ public class BorrowVideoState implements State {
 
     @Override
     public void zoom(float zoom, int type) {
-        LogUtil.i(TAG, "zoom");
+        Timber.d(  "zoom");
     }
 
     @Override
