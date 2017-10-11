@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -100,7 +101,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
                 @Override
                 public void onError(String errorMsg) {
                     hideLoading();
-                    showMessage(errorMsg);
+                    if (!TextUtils.isEmpty(errorMsg)) showMessage(errorMsg);
                     finishPage(null);
                 }
             });

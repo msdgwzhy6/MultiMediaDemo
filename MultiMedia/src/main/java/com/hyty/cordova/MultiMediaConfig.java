@@ -22,6 +22,8 @@ import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import timber.log.Timber;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * ================================================================
@@ -36,6 +38,7 @@ public class MultiMediaConfig {
     public static final String CAMERA_FILE_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString() + "/Camera";//系统相册目录
     public static final String FILE_SAVED_PATH = Environment.getExternalStorageDirectory().toString() + "/";//文件存储目录头
     public static final int REQUEST_CODE_HOME_TAKECAMERA = 0x01;//从插件首页跳转拍照页面的请求码
+    private int p = 0;//拷贝文件重命名的表示，从0开始，使用完毕清0
 
     public static MultiMediaConfig getInstance() {
         mMediaConfig = mMediaConfig == null ? new MultiMediaConfig() : mMediaConfig;
@@ -88,7 +91,7 @@ public class MultiMediaConfig {
      *
      * @param fromFiles
      */
-    public void copyFileToSavePath(ArrayList<File> fromFiles, CopyFilesListener mCopyFilesListener,Application mApplication) {
+    public void copyFileToSavePath(ArrayList<File> fromFiles, CopyFilesListener mCopyFilesListener, Application mApplication) {
         Observable.create(new ObservableOnSubscribe<ArrayList<String>>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<ArrayList<String>> array) throws Exception {
@@ -123,11 +126,50 @@ public class MultiMediaConfig {
     }
 
 
-    public RxErrorHandler getRxErrorHandler(Application mApplication){
-      return   RxErrorHandler
+    public RxErrorHandler getRxErrorHandler(Application mApplication) {
+        return RxErrorHandler
                 .builder()
                 .with(mApplication)
                 .responseErrorListener((context, t) -> Timber.e("异常"))
                 .build();
+    }
+
+    /**
+     * 图片压缩
+     *
+     * @param formFilesPath
+     * @param mApplication
+     * @param mCopyFilesListener
+     */
+    public void commpImages(ArrayList<String> formFilesPath, Application mApplication, CopyFilesListener mCopyFilesListener) {
+        ArrayList<String> toFilesPath = new ArrayList<>();
+        Luban.with(mApplication)
+                .load(formFilesPath)
+                // 传人要压缩的图片列表
+                .ignoreBy(100)                                  // 忽略不压缩图片的大小
+                .setTargetDir(getFileSavedPath())                        // 设置压缩后文件存储位置
+                .setCompressListener(new OnCompressListener() { //设置回调
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        FileUtils.rename(file, new File(formFilesPath.get(p)).getName());
+                        toFilesPath.add(file.getPath());
+                        p++;
+                        if (p == formFilesPath.size()) {
+                            mCopyFilesListener.onSucc(toFilesPath);
+                            p = 0;
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        p = 0;
+                        mCopyFilesListener.onError(e.getLocalizedMessage());
+                    }
+                }).launch();    //启动压缩
+
     }
 }
