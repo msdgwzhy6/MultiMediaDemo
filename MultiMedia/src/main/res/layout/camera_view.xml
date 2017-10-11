@@ -5,10 +5,11 @@
              android:background="#000000"
              android:orientation="vertical">
 
-    <FrameLayout
+    <com.hyty.cordova.mvp.ui.view.MyFL
+        android:id="@+id/layout_camera"
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
         <VideoView
             android:id="@+id/video_preview"
@@ -20,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000"
-            android:visibility="invisible"/>
-    </FrameLayout>
+            android:visibility="visible"/>
+    </com.hyty.cordova.mvp.ui.view.MyFL>
 
 
     <LinearLayout
@@ -35,14 +36,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_flash_on"/>
+            android:src="@drawable/ic_flash_on"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/image_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_camera"/>
+            android:src="@drawable/ic_camera"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

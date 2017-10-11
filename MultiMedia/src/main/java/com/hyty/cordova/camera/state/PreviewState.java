@@ -11,13 +11,15 @@ import timber.log.Timber;
 
 /**
  * =====================================
- * 作    者: 赵文贇
+ * 作    者: 陈嘉桐
  * 版    本：1.1.4
  * 创建日期：2017/9/8
  * 描    述：空闲状态
  * =====================================
  */
 class PreviewState implements State {
+    public static final String TAG = "PreviewState";
+
     private CameraMachine machine;
 
     PreviewState(CameraMachine machine) {
@@ -37,7 +39,7 @@ class PreviewState implements State {
 
     @Override
     public void foucs(float x, float y, CameraInterface.FocusCallback callback) {
-        Timber.d( "preview state foucs");
+        Timber.d("preview state foucs");
         if (machine.getView().handlerFoucs(x, y)) {
             CameraInterface.getInstance().handleFocus(machine.getContext(), x, y, callback);
         }
@@ -60,7 +62,19 @@ class PreviewState implements State {
             public void captureResult(Bitmap bitmap, boolean isVertical) {
                 machine.getView().showPicture(bitmap, isVertical);
                 machine.setState(machine.getBorrowPictureState());
-                Timber.d( "capture");
+                Timber.d("capture");
+            }
+        });
+    }
+
+    @Override
+    public void continuousCapture() {
+        CameraInterface.getInstance().takePicture(new CameraInterface.TakePictureCallback() {
+            @Override
+            public void captureResult(Bitmap bitmap, boolean isVertical) {
+                machine.getView().continuousCapture(bitmap);
+//                machine.setState(machine.getBorrowPictureState());
+                Timber.d("continuousCapture");
             }
         });
     }
@@ -71,14 +85,14 @@ class PreviewState implements State {
     }
 
     @Override
-    public void stopRecord(final boolean isShort, long time) {
+    public void stopRecord(final boolean isShort, final long time) {
         CameraInterface.getInstance().stopRecord(isShort, new CameraInterface.StopRecordCallback() {
             @Override
             public void recordResult(String url, Bitmap firstFrame) {
                 if (isShort) {
                     machine.getView().resetState(JCameraView.TYPE_SHORT);
                 } else {
-                    machine.getView().playVideo(firstFrame, url);
+                    machine.getView().playVideo(firstFrame, url, time);
                     machine.setState(machine.getBorrowVideoState());
                 }
             }
@@ -87,17 +101,17 @@ class PreviewState implements State {
 
     @Override
     public void cancle(SurfaceHolder holder, float screenProp) {
-        Timber.d( "浏览状态下,没有 cancle 事件");
+        Timber.d("浏览状态下,没有 cancle 事件");
     }
 
     @Override
     public void confirm() {
-        Timber.d( "浏览状态下,没有 confirm 事件");
+        Timber.d("浏览状态下,没有 confirm 事件");
     }
 
     @Override
     public void zoom(float zoom, int type) {
-        Timber.d("zoom");
+        Timber.d(TAG, "zoom");
         CameraInterface.getInstance().setZoom(zoom, type);
     }
 

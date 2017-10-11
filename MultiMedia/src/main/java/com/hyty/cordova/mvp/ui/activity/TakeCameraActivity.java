@@ -81,6 +81,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
                 break;
         }
         mCameraView.setFeatures(mCameraFeatures);
+        mCameraView.setContinuousCapture(true);
         mCameraView.setTip("点击拍照");
         mCameraView.setErrorLisenter(mErrorListener);
         mCameraView.setJCameraLisenter(mCameraListener);
@@ -117,13 +118,12 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
     private JCameraListener mCameraListener = new JCameraListener() {
         @Override
         public void captureSuccess(Bitmap bitmap) {
-            // TODO: 2017/10/10 预留连续拍照的bug
             //将图片保存到相册目录下
             mPresenter.saveBitmapToCameraFile(bitmap);
         }
 
         @Override
-        public void recordSuccess(String url, Bitmap firstFrame) {
+        public void recordSuccess(String url, Bitmap firstFrame, long time) {
 
         }
     };

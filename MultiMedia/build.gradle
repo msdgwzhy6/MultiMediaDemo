@@ -41,5 +41,8 @@ dependencies {
     }
 
     compile rootProject.ext.dependencies["Utils"]
+    compile rootProject.ext.dependencies["LuBan"]
+
+
     compile project(':MvpTools')
 }

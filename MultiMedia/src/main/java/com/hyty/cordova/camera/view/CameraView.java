@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 /**
  * =====================================
- * 作    者: 赵文贇
+ * 作    者: 陈嘉桐
  * 版    本：1.1.4
  * 创建日期：2017/9/8
  * 描    述：
@@ -17,7 +17,9 @@ public interface CameraView {
 
     void showPicture(Bitmap bitmap, boolean isVertical);
 
-    void playVideo(Bitmap firstFrame, String url);
+    void continuousCapture(Bitmap bitmap);
+
+    void playVideo(Bitmap firstFrame, String url, long time);
 
     void stopVideo();
 

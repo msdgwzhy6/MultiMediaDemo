@@ -10,13 +10,14 @@ import timber.log.Timber;
 
 /**
  * =====================================
- * 作    者: 赵文贇
+ * 作    者: 陈嘉桐
  * 版    本：1.1.4
  * 创建日期：2017/9/8
  * 描    述：
  * =====================================
  */
 public class BorrowVideoState implements State {
+    private final String TAG = "BorrowVideoState";
     private CameraMachine machine;
 
     public BorrowVideoState(CameraMachine machine) {
@@ -56,6 +57,11 @@ public class BorrowVideoState implements State {
     }
 
     @Override
+    public void continuousCapture() {
+
+    }
+
+    @Override
     public void record(Surface surface, float screenProp) {
 
     }
@@ -79,7 +85,7 @@ public class BorrowVideoState implements State {
 
     @Override
     public void zoom(float zoom, int type) {
-        Timber.d(  "zoom");
+        Timber.d( "zoom");
     }
 
     @Override

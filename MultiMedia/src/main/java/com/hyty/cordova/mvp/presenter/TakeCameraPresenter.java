@@ -24,6 +24,8 @@ import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 import timber.log.Timber;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 import javax.inject.Inject;
 
@@ -52,7 +54,7 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
     private MultiMediaConfig mMultiMediaConfig;//全局配置类
     private ArrayList<File> canUseFiles_camera;//原图文件
     private ArrayList<String> canUseFilePaths_end;//压缩拷贝后
-
+    private int p = 0;//拷贝文件重命名的表示，从0开始，使用完毕清0
 
     @Inject
     public TakeCameraPresenter(TakeCameraContract.Model model, TakeCameraContract.View rootView
@@ -80,11 +82,64 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
     }
 
     public void getResultData(CopyFilesListener mCopyFilesListener) {
+        if (canUseFiles_camera.size() == 0) {
+            mCopyFilesListener.onError("您未拍照，取消清点击左侧按钮");
+            return;
+        }
         //将照片压缩后添加到指定存储文件的目录   copy 压缩
         //图片copy
-        Timber.d("开始拷贝图片,原目录 " + MultiMediaConfig.CAMERA_FILE_PATH + ",目标目录 " + mMultiMediaConfig.getFileSavedPath() + ",总计" + canUseFiles_camera.size() + "张图片");
-        mMultiMediaConfig.copyFileToSavePath(canUseFiles_camera, mCopyFilesListener, mApplication);
-        //图片压缩
+//        Timber.d("开始拷贝图片,原目录 " + MultiMediaConfig.CAMERA_FILE_PATH + ",目标目录 " + mMultiMediaConfig.getFileSavedPath() + ",总计" + canUseFiles_camera.size() + "张图片");
+        ArrayList<String> formFilesPath = new ArrayList<>();
+        ArrayList<String> toFilesPath = new ArrayList<>();
+
+        for (int i = 0; i < canUseFiles_camera.size(); i++) {
+            formFilesPath.add(canUseFiles_camera.get(i).getPath());
+        }
+        Luban.with(mApplication)
+                .load(formFilesPath)
+                // 传人要压缩的图片列表
+                .ignoreBy(100)                                  // 忽略不压缩图片的大小
+                .setTargetDir(mMultiMediaConfig.getFileSavedPath())                        // 设置压缩后文件存储位置
+                .setCompressListener(new OnCompressListener() { //设置回调
+                    @Override
+                    public void onStart() {
+                        // TODO 压缩开始前调用，可以在方法内启动 loading UI
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        // TODO 压缩成功后调用，返回压缩后的图片文件
+                        boolean isSucc = FileUtils.rename(file, new File(formFilesPath.get(p)).getName());
+                        toFilesPath.add(file.getPath());
+                        p++;
+                        if (p == formFilesPath.size()) {
+                            mCopyFilesListener.onSucc(toFilesPath);
+                            p = 0;
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        // TODO 当压缩过程出现问题时调用
+                        p = 0;
+                        mCopyFilesListener.onError(e.getLocalizedMessage());
+                    }
+                }).launch();    //启动压缩
+
+//        mMultiMediaConfig.copyFileToSavePath(canUseFiles_camera, new CopyFilesListener() {
+//            @Override
+//            public void onSucc(ArrayList<String> toFilesPath) {
+//                //图片压缩
+//                int i = 0;//修改压缩后的名称与压缩前一致
+//
+//            }
+//
+//            @Override
+//            public void onError(String errorMsg) {
+//
+//            }
+//        }, mApplication);
+
     }
 
     @Override
