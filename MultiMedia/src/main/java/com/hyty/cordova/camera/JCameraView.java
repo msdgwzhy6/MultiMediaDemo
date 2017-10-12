@@ -384,7 +384,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     }
 
     //对焦框指示器动画
-    private void setFocusViewWidthAnimation(float x, float y) {
+    public void setFocusViewWidthAnimation(float x, float y) {
         machine.foucs(x, y, new CameraInterface.FocusCallback() {
             @Override
             public void focusSuccess() {
@@ -518,7 +518,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 mFlashLamp.setVisibility(VISIBLE);
                 mPhoto.setVisibility(GONE);
                 mCaptureLayout.resetCaptureLayout();
-                if (jCameraLisenter!=null) jCameraLisenter.captureSuccess(bitmap);
+                if (jCameraLisenter != null) jCameraLisenter.captureSuccess(bitmap);
             }
         });
         animator.setDuration(500);
@@ -592,6 +592,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         Timber.d("startPreviewCallback");
         handlerFoucs(mFoucsView.getWidth() / 2, mFoucsView.getHeight() / 2);
     }
+
 
     @Override
     public boolean handlerFoucs(float x, float y) {

@@ -128,7 +128,7 @@ dependencies {
     compile rootProject.ext.dependencies["timber"]
     testCompile rootProject.ext.dependencies["junit"]
     compile 'com.android.support:multidex:1.0.1'
-    compile files('libs/cordovalib.jar')
-    compile files('libs/fastjson-1.1.42.android.jar')
+//    compile files('libs/cordovalib.jar')
+//    compile files('libs/fastjson-1.1.42.android.jar')
 }
 

@@ -39,7 +39,6 @@ dependencies {
 
 //    compile rootProject.ext.dependencies["gson"]
 //    compile rootProject.ext.dependencies["timber"]
-//    compile files('libs/cordovalib.jar')
 //    compile(name: 'MultiMedia-release', ext: 'aar')
 
 

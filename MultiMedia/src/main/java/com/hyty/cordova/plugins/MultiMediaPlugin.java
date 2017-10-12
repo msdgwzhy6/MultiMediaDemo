@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 
+import com.blankj.utilcode.util.Utils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.hyty.cordova.MultiMediaConfig;
@@ -52,6 +53,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
     }
 
     private MultiMediaPlugin(Activity mActivity) {
+        Utils.init(mActivity.getApplication());
         mMediaConfig = MultiMediaConfig.getInstance();
         this.mActivity = mActivity;
     }
@@ -107,9 +109,10 @@ public class MultiMediaPlugin extends CordovaPlugin {
                                              }
                                          }, new RxPermissions(mActivity),mMediaConfig.getRxErrorHandler(mActivity.getApplication()), Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.WAKE_LOCK,
-                Manifest.permission.WRITE_SETTINGS);
+                Manifest.permission.RECORD_AUDIO
+//                Manifest.permission.WAKE_LOCK,
+//                Manifest.permission.WRITE_SETTINGS
+        );
     }
 
     /**
