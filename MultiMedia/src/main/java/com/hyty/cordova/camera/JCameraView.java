@@ -80,7 +80,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private static final int TYPE_FLASH_AUTO = 0x021;
     private static final int TYPE_FLASH_ON = 0x022;
     private static final int TYPE_FLASH_OFF = 0x023;
-    private int type_flash = TYPE_FLASH_OFF;
+    private int type_flash = TYPE_FLASH_AUTO;
 
     //拍照浏览时候的类型
     public static final int TYPE_PICTURE = 0x001;

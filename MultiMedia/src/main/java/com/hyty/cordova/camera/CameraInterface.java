@@ -343,6 +343,9 @@ public class CameraInterface implements Camera.PreviewCallback {
     private synchronized void openCamera(int id) {
         try {
             this.mCamera = Camera.open(id);
+            Camera.Parameters p = mCamera.getParameters();
+            p.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
+            mCamera.setParameters(p);
         } catch (Exception var3) {
             var3.printStackTrace();
             if (this.errorLisenter != null) {
