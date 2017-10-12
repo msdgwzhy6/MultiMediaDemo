@@ -24,7 +24,7 @@ import static com.hyty.cordova.camera.JCameraView.BUTTON_STATE_ONLY_RECORDER;
 
 /**
  * =====================================
- * 作    者: 赵文贇 445263848@qq.com
+ * 作    者: 赵文贇 3648415@qq.com
  * 版    本：1.1.4
  * 创建日期：2017/4/25
  * 描    述：拍照按钮

@@ -2,7 +2,7 @@ package com.hyty.cordova.camera.listener;
 
 /**
  * create by CJT2325
- * 445263848@qq.com.
+ * 3648415@qq.com.
  */
 
 public interface CaptureListener {
