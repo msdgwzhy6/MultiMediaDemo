@@ -112,6 +112,10 @@ public class CameraInterface implements Camera.PreviewCallback {
         return mCameraInterface;
     }
 
+    public Camera getCamera(){
+        return mCamera;
+    }
+
     public void setSwitchView(ImageView mSwitchView, ImageView mFlashLamp) {
         this.mSwitchView = mSwitchView;
         this.mFlashLamp = mFlashLamp;

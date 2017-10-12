@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              android:background="#000000"
@@ -15,6 +16,24 @@
             android:id="@+id/video_preview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper
+            android:id="@+id/seekBarContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center|right"
+            android:layout_marginRight="20dp"
+            android:minWidth="10dp">
+
+            <com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:splitTrack="false"
+                app:seekBarRotation="CW270"/>
+        </com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper>
 
         <ImageView
             android:id="@+id/image_photo"

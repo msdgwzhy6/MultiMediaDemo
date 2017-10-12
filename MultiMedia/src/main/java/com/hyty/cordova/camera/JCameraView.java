@@ -23,6 +23,7 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.VideoView;
 
 import com.hyty.cordova.R;
@@ -35,11 +36,14 @@ import com.hyty.cordova.camera.state.CameraMachine;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
 import com.hyty.cordova.camera.view.CameraView;
+import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar;
 
 import java.io.IOException;
 import java.util.List;
 
 import timber.log.Timber;
+
+import static com.hyty.cordova.camera.CameraInterface.TYPE_RECORDER;
 
 
 /**
@@ -51,7 +55,7 @@ import timber.log.Timber;
  * =====================================
  */
 public class JCameraView extends FrameLayout implements CameraInterface.CameraOpenOverCallback, SurfaceHolder
-        .Callback, CameraView {
+        .Callback, CameraView, SeekBar.OnSeekBarChangeListener {
 //    private static final String TAG = "JCameraView";
 
     //Camera状态机
@@ -99,6 +103,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private FoucsView mFoucsView;
     private MediaPlayer mMediaPlayer;
     private FrameLayout cameraLayout;
+    private VerticalSeekBar mVerticalSeekBar;
 
     public ImageView getmFlashLamp() {
         return mFlashLamp;
@@ -170,6 +175,13 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mSwitchCamera = (ImageView) view.findViewById(R.id.image_switch);
         mSwitchCamera.setImageResource(iconSrc);
         mFlashLamp = (ImageView) view.findViewById(R.id.image_flash);
+        mVerticalSeekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
+
+        mVerticalSeekBar.setMax(70);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mVerticalSeekBar.setMin(0);
+        }
+        mVerticalSeekBar.setOnSeekBarChangeListener(this);
         setFlashRes();
         mFlashLamp.setOnClickListener(new OnClickListener() {
             @Override
@@ -233,7 +245,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             @Override
             public void recordZoom(float zoom) {
                 Timber.d("recordZoom");
-                machine.zoom(zoom, CameraInterface.TYPE_RECORDER);
+                machine.zoom(zoom, TYPE_RECORDER);
             }
 
             @Override
@@ -674,5 +686,33 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     public List<Camera.Size> getPreviewSizeList() {
         return CameraInterface.getInstance().getPreviewSizeList();
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar mSeekBar, int mI, boolean mB) {
+        setZoom(mI);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar mSeekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar mSeekBar) {
+
+    }
+
+    public void setZoom(int zoom) {
+        try {
+            Camera camera = CameraInterface.getInstance().getCamera();
+//        int progress1 = zoom/10;
+            Camera.Parameters p = camera.getParameters();
+            p.setZoom(zoom);
+            camera.setParameters(p);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Timber.e("设置焦距焦距异常");
+        }
     }
 }
