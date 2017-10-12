@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * =====================================
  * 作    者: 赵文贇
@@ -36,12 +38,16 @@ public class CameraParamUtil {
         }
     }
 
+    public CameraSizeComparator getSizeComparator() {
+        return sizeComparator;
+    }
+
     public Camera.Size getPreviewSize(List<Camera.Size> list, int th, float rate) {
         Collections.sort(list, sizeComparator);
         int i = 0;
         for (Camera.Size s : list) {
             if ((s.width > th) && equalRate(s, rate)) {
-                Log.i(TAG, "MakeSure Preview :w = " + s.width + " h = " + s.height);
+                Timber.d("MakeSure Preview :w = " + s.width + " h = " + s.height);
                 break;
             }
             i++;
@@ -58,7 +64,7 @@ public class CameraParamUtil {
         int i = 0;
         for (Camera.Size s : list) {
             if ((s.width > th) && equalRate(s, rate)) {
-                Log.i(TAG, "MakeSure Picture :w = " + s.width + " h = " + s.height);
+                Timber.d("MakeSure Picture :w = " + s.width + " h = " + s.height);
                 break;
             }
             i++;
@@ -122,12 +128,11 @@ public class CameraParamUtil {
                 return -1;
             }
         }
-
     }
 
     public int getCameraDisplayOrientation(Context context, int cameraId) {
-        android.hardware.Camera.CameraInfo info = new android.hardware.Camera.CameraInfo();
-        android.hardware.Camera.getCameraInfo(cameraId, info);
+        Camera.CameraInfo info = new Camera.CameraInfo();
+        Camera.getCameraInfo(cameraId, info);
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         int rotation = wm.getDefaultDisplay().getRotation();
         int degrees = 0;

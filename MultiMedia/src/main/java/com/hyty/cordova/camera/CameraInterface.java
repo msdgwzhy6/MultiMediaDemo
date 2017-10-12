@@ -19,6 +19,7 @@ import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+import android.util.Size;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.widget.ImageView;
@@ -40,6 +41,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import timber.log.Timber;
@@ -205,7 +208,7 @@ public class CameraInterface implements Camera.PreviewCallback {
             ObjectAnimator animC = ObjectAnimator.ofFloat(mSwitchView, "rotation", start_rotaion, end_rotation);
             ObjectAnimator animF = ObjectAnimator.ofFloat(mFlashLamp, "rotation", start_rotaion, end_rotation);
             ObjectAnimator animD = ObjectAnimator.ofFloat(mRL_Flag, "rotation", start_rotaion, end_rotation);
-            Timber.d("重力感应相关数据:\nstart_rotaion : " + start_rotaion + "\n end_rotation : " + end_rotation);
+//            Timber.d("重力感应相关数据:\nstart_rotaion : " + start_rotaion + "\n end_rotation : " + end_rotation);
 //            0 ~90 :将照片逆时针旋转90度后将水印打入底部；
 //            0 ~-90:将照片顺时针旋转90度后将水印打入底部；
 //            默认 ~直接将水印打入底部
@@ -404,9 +407,9 @@ public class CameraInterface implements Camera.PreviewCallback {
 
                 preview_width = previewSize.width;
                 preview_height = previewSize.height;
-
                 mParams.setPictureSize(pictureSize.width, pictureSize.height);
-
+                Timber.d("预览使用的分辨率:" + preview_width + " * " + preview_height);
+                Timber.d("成像使用的分辨率:" + pictureSize.width + " * " + pictureSize.height);
                 if (CameraParamUtil.getInstance().isSupportedFocusMode(
                         mParams.getSupportedFocusModes(),
                         Camera.Parameters.FOCUS_MODE_AUTO)) {
@@ -502,10 +505,10 @@ public class CameraInterface implements Camera.PreviewCallback {
         }
         alreadyTakePicsNum++;
 //        ArmsUtils.showLoading("处理中...", true, null);
+        MultiMediaConfig.startTime = new Date().getTime();
         mCamera.takePicture(null, null, new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
-                Timber.d("拍照成功");
                 Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                 Matrix matrix = new Matrix();
                 if (SELECTED_CAMERA == CAMERA_POST_POSITION) {
@@ -522,6 +525,7 @@ public class CameraInterface implements Camera.PreviewCallback {
                     } else {
                         callback.captureResult(bitmap, false);
                     }
+                    Timber.d("拍照成功,耗时:" + (new Date().getTime() - MultiMediaConfig.startTime) + " ms");
                 }
             }
         });

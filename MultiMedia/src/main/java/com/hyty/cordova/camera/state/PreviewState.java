@@ -40,7 +40,6 @@ class PreviewState implements State {
 
     @Override
     public void foucs(float x, float y, CameraInterface.FocusCallback callback) {
-        Timber.d("preview state foucs");
         if (machine.getView().handlerFoucs(x, y)) {
             CameraInterface.getInstance().handleFocus(machine.getContext(), x, y, callback);
         }
@@ -75,7 +74,7 @@ class PreviewState implements State {
             public void captureResult(Bitmap bitmap, boolean isVertical) {
                 machine.getView().continuousCapture(bitmap);
 //                machine.setState(machine.getBorrowPictureState());
-                Timber.d("continuousCapture");
+//                Timber.d("continuousCapture");
 //                ArmsUtils.dissMissLoading();
                 ArmsUtils.showLoading("正在加入水印...",false,null);
             }

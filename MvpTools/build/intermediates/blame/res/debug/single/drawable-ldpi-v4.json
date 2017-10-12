@@ -1,34 +1,34 @@
 [
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_reset.png",
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_reset.png",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_reset.png"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_next.png",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_next.png"
-    },
-    {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_cross.png",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_cross.png"
-    },
-    {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_rotate.png",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_rotate.png"
-    },
-    {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_scale.png",
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_scale.png",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_scale.png"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_angle.png",
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_cross.png",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_cross.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_angle.png",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_angle.png"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_crop.png",
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_rotate.png",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_rotate.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_crop.png",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_crop.png"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_done.png",
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_done.png",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_done.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable-ldpi-v4/ucrop_ic_next.png",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-ldpi-v4/ucrop_ic_next.png"
     }
 ]

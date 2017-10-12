@@ -38,6 +38,9 @@ public class MultiMediaConfig {
     public static final String CAMERA_FILE_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).toString() + "/Camera";//系统相册目录
     public static final String FILE_SAVED_PATH = Environment.getExternalStorageDirectory().toString() + "/";//文件存储目录头
     public static final int REQUEST_CODE_HOME_TAKECAMERA = 0x01;//从插件首页跳转拍照页面的请求码
+    public static final int REQUEST_CODE_HOME_IMAGE_PIKER = 0x02;//从插件首页跳转多图选择页面请求码
+
+    public static Long startTime;
     private int p = 0;//拷贝文件重命名的表示，从0开始，使用完毕清0
     private CameraTextFlagLocation mFlagLocation;//需要将水印打入的位置
 

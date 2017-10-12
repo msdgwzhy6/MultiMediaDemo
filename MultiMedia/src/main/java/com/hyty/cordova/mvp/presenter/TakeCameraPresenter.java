@@ -37,6 +37,7 @@ import com.jess.arms.utils.ArmsUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.Date;
 import java.util.List;
 
 
@@ -78,26 +79,26 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
     public void saveBitmapToCameraFile(Bitmap mBitmap) {
         //打入水印
         String str = "";
-        Bitmap mBitmap_Saved=null;
-
+        Bitmap mBitmap_Saved = null;
+        long t = new Date().getTime();
         switch (mMultiMediaConfig.getFlagLocation()) {
             case DEFAULT:
                 str = "将水印文字直接打入右下角";
-                mBitmap_Saved =  ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
                 break;
             case LEFT:
                 str = "图片逆时针旋转90°后将水印文字直接打入右下角";
                 //ImageUtil.rotateBitmap(mBitmap, 270)
-                mBitmap_Saved =  ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
                 break;
             case RIGHT:
                 str = "图片顺时针旋转90°后将水印文字直接打入右下角";
                 //ImageUtil.rotateBitmap(mBitmap, 90)
-                mBitmap_Saved =ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
                 break;
         }
 
-        if (mBitmap_Saved==null){
+        if (mBitmap_Saved == null) {
             mRootView.showMessage("bitmap操作失败，请稍后再试...");
             return;
         }
@@ -108,6 +109,8 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
         canUseFiles_camera.add(mFile);
         FileUtil.galleryAddPic(mApplication, mFile);//刷新图库
         ArmsUtils.dissMissLoading();
+        Timber.d("图片处理耗时:" + (new Date().getTime() - t) + " ms");
+        Timber.d("图片处理结束，耗时:" + (new Date().getTime() - MultiMediaConfig.startTime) + " ms");
     }
 
     public void getResultData(CopyFilesListener mCopyFilesListener) {

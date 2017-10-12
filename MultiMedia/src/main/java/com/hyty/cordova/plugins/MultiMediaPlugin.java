@@ -15,6 +15,7 @@ import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ViewUtils;
 import com.hyty.cordova.mvp.ui.activity.TakeCameraActivity;
+import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.PermissionUtil;
 import com.jess.arms.utils.logger.AndroidLogAdapter;
 import com.jess.arms.utils.logger.Logger;
@@ -125,42 +126,35 @@ public class MultiMediaPlugin extends CordovaPlugin {
         mMediaConfig.setFlagText(mConfigParams.getFlagText());
         init();//初始化参数
         initFile();//初始化文件夹
+        Intent mIntent = null;
+        int requestCode = 0;
         switch (mConfigParams.getType()) {
             case 1:
                 // TODO: 2017/10/10 直接打开拍照页面，需要最大可拍照数量，拍照结束后点击返回按钮关闭所有页面不返回任何参数，点击保存按钮对图片进行copy、压缩(只压缩copy进指定文件夹的图片) ,并将结果返回给调用者
-                // TODO: 2017/10/10 需要参数:最大可拍照数量、copy的路径
-                mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
-                mMediaConfig.setFolderName(TextUtils.isEmpty(mConfigParams.getFolderName()) ? "defaultfolder" : mConfigParams.getFolderName());
+                // TODO: 2017/10/10 需要参数:最大可拍照数量、copy的路径、水印文字
                 //设置内部参数
                 mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
-                Intent mIntent = new Intent(mActivity, TakeCameraActivity.class);
-                mIntent.putExtra(Key.REQUEST_CODE, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);//将请求码传递给下个页面，下个页面将把该请求码当做响应码使用
-                startActivityForResult(mIntent, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
-                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum());
+                mIntent = createIntent(TakeCameraActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
+                requestCode = MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA;
+                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
                 break;
             case 2:
-
+                // TODO: 2017/10/12 打开多图选择页面 带拍照按钮
+                // TODO: 2017/10/12 需要参数:最大可选数量、copy的路径、水印文字
+                //设置内部参数
+                mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
+//                mIntent = createIntent(ImagePikerActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
+                requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
+                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
                 break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-            case 6:
-
-                break;
-            case 7:
-
-                break;
-            case 8:
-
-                break;
-
         }
+        if (mIntent == null || requestCode == 0) {
+            ArmsUtils.showToast("参数为空");
+            return;
+        }
+        mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
+        mMediaConfig.setFolderName(TextUtils.isEmpty(mConfigParams.getFolderName()) ? "defaultfolder" : mConfigParams.getFolderName());
+        startActivityForResult(mIntent, requestCode);
     }
 
     /**
@@ -234,5 +228,11 @@ public class MultiMediaPlugin extends CordovaPlugin {
      */
     private void startActivityForResult(Intent mIntent, int requestCode) {
         mActivity.startActivityForResult(mIntent, requestCode);
+    }
+
+    private Intent createIntent(Class<? extends Activity> mClass, int requestCode) {
+        Intent mIntent = new Intent(mActivity, mClass);
+        mIntent.putExtra(Key.REQUEST_CODE, requestCode);
+        return mIntent;
     }
 }
