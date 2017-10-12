@@ -107,7 +107,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                                                      }
                                                  });
                                              }
-                                         }, new RxPermissions(mActivity),mMediaConfig.getRxErrorHandler(mActivity.getApplication()), Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                         }, new RxPermissions(mActivity), mMediaConfig.getRxErrorHandler(mActivity.getApplication()), Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO
 //                Manifest.permission.WAKE_LOCK,
@@ -122,6 +122,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
      */
     private void doSomething(ConfigParams mConfigParams) {
         mMediaConfig.setFileSavedPath(mConfigParams.getFolderName());//设置全局存储文件的目录名称
+        mMediaConfig.setFlagText(mConfigParams.getFlagText());
         init();//初始化参数
         initFile();//初始化文件夹
         switch (mConfigParams.getType()) {

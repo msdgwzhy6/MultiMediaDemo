@@ -22,7 +22,9 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.camera.listener.ErrorListener;
 import com.hyty.cordova.camera.util.AngleUtil;
 import com.hyty.cordova.camera.util.CameraParamUtil;
@@ -30,6 +32,9 @@ import com.hyty.cordova.camera.util.CheckPermission;
 import com.hyty.cordova.camera.util.DeviceUtil;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
+import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar;
+import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper;
+import com.jess.arms.utils.ArmsUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -55,6 +60,9 @@ public class CameraInterface implements Camera.PreviewCallback {
     private static final String TAG = "CJT";
 
     private volatile static CameraInterface mCameraInterface;
+    private final MultiMediaConfig mMultiMediaConfig;
+    private RelativeLayout mRL_Flag;
+    private int alreadyTakePicsNum = 0;
 
     public static void destroyCameraInterface() {
         if (mCameraInterface != null) {
@@ -112,12 +120,13 @@ public class CameraInterface implements Camera.PreviewCallback {
         return mCameraInterface;
     }
 
-    public Camera getCamera(){
+    public Camera getCamera() {
         return mCamera;
     }
 
-    public void setSwitchView(ImageView mSwitchView, ImageView mFlashLamp) {
+    public void setSwitchView(ImageView mSwitchView, ImageView mFlashLamp, RelativeLayout mRelativeLayout) {
         this.mSwitchView = mSwitchView;
+        this.mRL_Flag = mRelativeLayout;
         this.mFlashLamp = mFlashLamp;
         if (mSwitchView != null) {
             cameraAngle = CameraParamUtil.getInstance().getCameraDisplayOrientation(mSwitchView.getContext(),
@@ -195,8 +204,26 @@ public class CameraInterface implements Camera.PreviewCallback {
             }
             ObjectAnimator animC = ObjectAnimator.ofFloat(mSwitchView, "rotation", start_rotaion, end_rotation);
             ObjectAnimator animF = ObjectAnimator.ofFloat(mFlashLamp, "rotation", start_rotaion, end_rotation);
+            ObjectAnimator animD = ObjectAnimator.ofFloat(mRL_Flag, "rotation", start_rotaion, end_rotation);
+            Timber.d("重力感应相关数据:\nstart_rotaion : " + start_rotaion + "\n end_rotation : " + end_rotation);
+//            0 ~90 :将照片逆时针旋转90度后将水印打入底部；
+//            0 ~-90:将照片顺时针旋转90度后将水印打入底部；
+//            默认 ~直接将水印打入底部
+            MultiMediaConfig.CameraTextFlagLocation mFlagLocation;
+            if (start_rotaion == 0 && end_rotation == 90) {
+                mFlagLocation = MultiMediaConfig.CameraTextFlagLocation.LEFT;
+            } else if (start_rotaion == 90 && end_rotation == 0) {
+                mFlagLocation = MultiMediaConfig.CameraTextFlagLocation.DEFAULT;
+            } else if (start_rotaion == 0 && end_rotation == -90) {
+                mFlagLocation = MultiMediaConfig.CameraTextFlagLocation.RIGHT;
+            } else if (start_rotaion == -90 && end_rotation == -0) {
+                mFlagLocation = MultiMediaConfig.CameraTextFlagLocation.DEFAULT;
+            } else {
+                mFlagLocation = MultiMediaConfig.CameraTextFlagLocation.DEFAULT;
+            }
+            mMultiMediaConfig.setFlagLocation(mFlagLocation);
             AnimatorSet set = new AnimatorSet();
-            set.playTogether(animC, animF);
+            set.playTogether(animC, animF, animD);
             set.setDuration(500);
             set.start();
             rotation = angle;
@@ -288,6 +315,8 @@ public class CameraInterface implements Camera.PreviewCallback {
         findAvailableCameras();
         SELECTED_CAMERA = CAMERA_POST_POSITION;
         saveVideoPath = "";
+        mMultiMediaConfig = MultiMediaConfig.getInstance();
+//        maxPic = mMultiMediaConfig.getMaxOptionalNum();
     }
 
 
@@ -425,6 +454,7 @@ public class CameraInterface implements Camera.PreviewCallback {
      */
     void doDestroyCamera() {
         errorLisenter = null;
+        alreadyTakePicsNum = 0;
         if (null != mCamera) {
             try {
                 mCamera.setPreviewCallback(null);
@@ -466,9 +496,16 @@ public class CameraInterface implements Camera.PreviewCallback {
         }
 //
         Log.i("CJT", angle + " = " + cameraAngle + " = " + nowAngle);
+        if (alreadyTakePicsNum == mMultiMediaConfig.getMaxOptionalNum()) {
+            ArmsUtils.showToast("超出最大可拍照数量");
+            return;
+        }
+        alreadyTakePicsNum++;
+//        ArmsUtils.showLoading("处理中...", true, null);
         mCamera.takePicture(null, null, new Camera.PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
+                Timber.d("拍照成功");
                 Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
                 Matrix matrix = new Matrix();
                 if (SELECTED_CAMERA == CAMERA_POST_POSITION) {

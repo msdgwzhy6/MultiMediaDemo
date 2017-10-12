@@ -6,6 +6,7 @@ import android.view.SurfaceHolder;
 
 import com.hyty.cordova.camera.CameraInterface;
 import com.hyty.cordova.camera.JCameraView;
+import com.jess.arms.utils.ArmsUtils;
 
 import timber.log.Timber;
 
@@ -75,6 +76,8 @@ class PreviewState implements State {
                 machine.getView().continuousCapture(bitmap);
 //                machine.setState(machine.getBorrowPictureState());
                 Timber.d("continuousCapture");
+//                ArmsUtils.dissMissLoading();
+                ArmsUtils.showLoading("正在加入水印...",false,null);
             }
         });
     }

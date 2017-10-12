@@ -15,6 +15,7 @@ public class ConfigParams implements Serializable {
     private int type;//业务类型
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片 默认为:defaultfolder
+    private String flagText;//水印文字
 
     /**
      * 快速拍照需要传入的参数
@@ -22,11 +23,13 @@ public class ConfigParams implements Serializable {
      * @param mType           业务类型
      * @param mMaxOptionalNum 最大可选/可拍数量 默认为9张
      * @param mFolderName     存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
+     * @param flagText        水印文字
      */
-    public ConfigParams(int mType, int mMaxOptionalNum, String mFolderName) {
+    public ConfigParams(int mType, int mMaxOptionalNum, String mFolderName, String flagText) {
         type = mType;
         maxOptionalNum = mMaxOptionalNum;
         folderName = mFolderName;
+        this.flagText = flagText;
     }
 
 
@@ -52,5 +55,13 @@ public class ConfigParams implements Serializable {
 
     public void setFolderName(String mFolderName) {
         folderName = mFolderName;
+    }
+
+    public String getFlagText() {
+        return flagText;
+    }
+
+    public void setFlagText(String mFlagText) {
+        flagText = mFlagText;
     }
 }

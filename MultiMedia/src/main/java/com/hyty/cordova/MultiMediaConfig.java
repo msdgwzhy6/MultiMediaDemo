@@ -39,20 +39,26 @@ public class MultiMediaConfig {
     public static final String FILE_SAVED_PATH = Environment.getExternalStorageDirectory().toString() + "/";//文件存储目录头
     public static final int REQUEST_CODE_HOME_TAKECAMERA = 0x01;//从插件首页跳转拍照页面的请求码
     private int p = 0;//拷贝文件重命名的表示，从0开始，使用完毕清0
+    private CameraTextFlagLocation mFlagLocation;//需要将水印打入的位置
 
     public static MultiMediaConfig getInstance() {
-        mMediaConfig = mMediaConfig == null ? new MultiMediaConfig() : mMediaConfig;
+        mMediaConfig = mMediaConfig == null ? new MultiMediaConfig(CameraTextFlagLocation.DEFAULT) : mMediaConfig;
         return mMediaConfig;
+    }
+
+    private MultiMediaConfig(CameraTextFlagLocation mFlagLocation) {
+        this.mFlagLocation = mFlagLocation;//相机位置默认
     }
 
     //lib内部参数定义
     private CameraFeature mCameraFeature;//相机模式 仅拍照/录像/两者都可
     private String fileSavedPath;//存储文件的文件夹
+    private String flagText_willUse;//待使用的水印文字
 
     //外部传入参数定义
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
-
+    private String flagText;//水印文字
 
     public int getMaxOptionalNum() {
         return maxOptionalNum;
@@ -84,6 +90,22 @@ public class MultiMediaConfig {
 
     public void setFileSavedPath(String mFileSavedPath) {
         fileSavedPath = FILE_SAVED_PATH + mFileSavedPath;
+    }
+
+    public String getFlagText() {
+        return flagText;
+    }
+
+    public void setFlagText(String mFlagText) {
+        flagText = mFlagText;
+    }
+
+    public String getFlagText_willUse() {
+        return flagText_willUse;
+    }
+
+    public void setFlagText_willUse(String mFlagText_willUse) {
+        flagText_willUse = mFlagText_willUse;
     }
 
     /**
@@ -171,5 +193,19 @@ public class MultiMediaConfig {
                     }
                 }).launch();    //启动压缩
 
+    }
+
+    public CameraTextFlagLocation getFlagLocation() {
+        return mFlagLocation;
+    }
+
+    public void setFlagLocation(CameraTextFlagLocation mFlagLocation) {
+        this.mFlagLocation = mFlagLocation;
+    }
+
+    public static enum CameraTextFlagLocation {
+        DEFAULT,//默认直接打入右下角
+        LEFT,//逆时针旋转90度后打入右下角
+        RIGHT,//顺时针旋转90度后打入右下角
     }
 }

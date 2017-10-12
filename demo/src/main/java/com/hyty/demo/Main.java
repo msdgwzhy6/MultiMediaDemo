@@ -62,7 +62,7 @@ public class Main extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.bt1:
                 log("快速拍照");
-                String str = new Gson().toJson(new ConfigParams(1, 10, "cgzf"));
+                String str = new Gson().toJson(new ConfigParams(1, 3, "cgzf","测试的水印文字"));
                 try {
                     MultiMediaPlugin.getInstance(this).execute("", str, null);
                 } catch (JSONException mE) {

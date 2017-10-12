@@ -3,11 +3,13 @@ package com.hyty.cordova.mvp.presenter;
 import android.app.Application;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.FileUtil;
+import com.hyty.cordova.camera.util.ImageUtil;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.hyty.cordova.mvp.impl.OnGetIntent;
 import com.jess.arms.integration.AppManager;
@@ -30,6 +32,7 @@ import top.zibin.luban.OnCompressListener;
 import javax.inject.Inject;
 
 import com.hyty.cordova.mvp.contract.TakeCameraContract;
+import com.jess.arms.utils.ArmsUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -73,9 +76,38 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
      * @param mBitmap
      */
     public void saveBitmapToCameraFile(Bitmap mBitmap) {
-        File mFile = new File(mModel.saveBitmapAndResturnFileName(mBitmap));
+        //打入水印
+        String str = "";
+        Bitmap mBitmap_Saved=null;
+
+        switch (mMultiMediaConfig.getFlagLocation()) {
+            case DEFAULT:
+                str = "将水印文字直接打入右下角";
+                mBitmap_Saved =  ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                break;
+            case LEFT:
+                str = "图片逆时针旋转90°后将水印文字直接打入右下角";
+                //ImageUtil.rotateBitmap(mBitmap, 270)
+                mBitmap_Saved =  ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                break;
+            case RIGHT:
+                str = "图片顺时针旋转90°后将水印文字直接打入右下角";
+                //ImageUtil.rotateBitmap(mBitmap, 90)
+                mBitmap_Saved =ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                break;
+        }
+
+        if (mBitmap_Saved==null){
+            mRootView.showMessage("bitmap操作失败，请稍后再试...");
+            return;
+        }
+        //加入水印
+
+        Timber.d(str);
+        File mFile = new File(mModel.saveBitmapAndResturnFileName(mBitmap_Saved));
         canUseFiles_camera.add(mFile);
         FileUtil.galleryAddPic(mApplication, mFile);//刷新图库
+        ArmsUtils.dissMissLoading();
     }
 
     public void getResultData(CopyFilesListener mCopyFilesListener) {

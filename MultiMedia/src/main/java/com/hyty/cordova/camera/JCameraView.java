@@ -13,6 +13,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -23,9 +24,12 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.R;
 import com.hyty.cordova.camera.listener.CaptureListener;
 import com.hyty.cordova.camera.listener.ClickListener;
@@ -37,10 +41,21 @@ import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
 import com.hyty.cordova.camera.view.CameraView;
 import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar;
+import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 import static com.hyty.cordova.camera.CameraInterface.TYPE_RECORDER;
@@ -104,6 +119,10 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private MediaPlayer mMediaPlayer;
     private FrameLayout cameraLayout;
     private VerticalSeekBar mVerticalSeekBar;
+    private RelativeLayout mRL_Flag;
+    private TextView mTV_Flag;
+    private MultiMediaConfig mMultiMediaConfig;
+    private Disposable mDisposable;
 
     public ImageView getmFlashLamp() {
         return mFlashLamp;
@@ -164,6 +183,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         zoomGradient = (int) (layout_width / 16f);
         Timber.d("zoom = " + zoomGradient);
         machine = new CameraMachine(getContext(), this, this);
+        mMultiMediaConfig = MultiMediaConfig.getInstance();
     }
 
     private void initView() {
@@ -176,7 +196,9 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mSwitchCamera.setImageResource(iconSrc);
         mFlashLamp = (ImageView) view.findViewById(R.id.image_flash);
         mVerticalSeekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
-
+        mRL_Flag = (RelativeLayout) findViewById(R.id.rl_flag);
+        mTV_Flag = (TextView) findViewById(R.id.tv_flag);
+//        mTV_Flag.setText(TextUtils.isEmpty(mMultiMediaConfig.getFlagText()) ? "" : mMultiMediaConfig.getFlagText());
         mVerticalSeekBar.setMax(70);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mVerticalSeekBar.setMin(0);
@@ -208,6 +230,8 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mCaptureLayout.setCaptureLisenter(new CaptureListener() {
             @Override
             public void takePictures() {
+                Timber.d("拍照");
+                mMultiMediaConfig.setFlagText_willUse(mTV_Flag.getText().toString());
                 mSwitchCamera.setVisibility(INVISIBLE);
                 mFlashLamp.setVisibility(INVISIBLE);
                 if (continuous_capture) {
@@ -294,6 +318,15 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         });
     }
 
+    private void setText() {
+        mDisposable = Observable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(mLong -> {
+                    String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                    mTV_Flag.setText(TextUtils.isEmpty(mMultiMediaConfig.getFlagText()) ? (time) : (mMultiMediaConfig.getFlagText() + " " + time));
+                });
+    }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -314,8 +347,9 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         Timber.d("JCameraView onResume");
         resetState(TYPE_DEFAULT); //重置状态
         CameraInterface.getInstance().registerSensorManager(mContext);
-        CameraInterface.getInstance().setSwitchView(mSwitchCamera, mFlashLamp);
+        CameraInterface.getInstance().setSwitchView(mSwitchCamera, mFlashLamp, mRL_Flag);
         machine.start(mVideoView.getHolder(), screenProp);
+        setText();
     }
 
     //生命周期onPause
@@ -325,6 +359,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         resetState(TYPE_PICTURE);
         CameraInterface.getInstance().isPreview(false);
         CameraInterface.getInstance().unregisterSensorManager(mContext);
+        if (mDisposable != null && !mDisposable.isDisposed()) mDisposable.dispose();
     }
 
     //SurfaceView生命周期
