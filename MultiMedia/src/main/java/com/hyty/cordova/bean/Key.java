@@ -13,5 +13,7 @@ import java.io.Serializable;
 public class Key implements Serializable {
     public static final String REQUEST_CODE = "requestCode";//传递请求吗的key
     public static final String RESULT_INTENT = "resulrIntent";//响应数据的key
+    public static final String REQUEST_ALLREADY_SELECTED_IMAGES = "requestAlreadySelectedImages";//请求跳转拍照页面，携带已选中照片
+
 
 }

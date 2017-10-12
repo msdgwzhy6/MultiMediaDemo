@@ -216,12 +216,12 @@
         "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/custom_scan_line.png",
         "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/custom_scan_line.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable-xhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",

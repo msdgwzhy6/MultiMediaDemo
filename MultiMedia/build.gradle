@@ -42,7 +42,7 @@ dependencies {
 
     compile rootProject.ext.dependencies["Utils"]
     compile rootProject.ext.dependencies["LuBan"]
-
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
 
     compile project(':MvpTools')
 }

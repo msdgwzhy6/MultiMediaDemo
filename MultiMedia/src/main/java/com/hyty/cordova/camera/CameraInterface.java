@@ -33,6 +33,7 @@ import com.hyty.cordova.camera.util.CheckPermission;
 import com.hyty.cordova.camera.util.DeviceUtil;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
+import com.hyty.cordova.imagepicker.ImagePicker;
 import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar;
 import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper;
 import com.jess.arms.utils.ArmsUtils;
@@ -502,7 +503,7 @@ public class CameraInterface implements Camera.PreviewCallback {
         }
 //
         Log.i("CJT", angle + " = " + cameraAngle + " = " + nowAngle);
-        if (alreadyTakePicsNum == mMultiMediaConfig.getMaxOptionalNum()) {
+        if (alreadyTakePicsNum == mMultiMediaConfig.getMaxOptionalNum() && mMultiMediaConfig.getDoType() == 1) {
             ArmsUtils.showToast("超出最大可拍照数量");
             return;
         }

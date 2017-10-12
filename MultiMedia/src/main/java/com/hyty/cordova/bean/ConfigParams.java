@@ -20,7 +20,7 @@ public class ConfigParams implements Serializable {
     /**
      * 快速拍照需要传入的参数
      *
-     * @param mType           业务类型
+     * @param mType           业务类型 1 ~ 快速拍照   2 ~ 多图选择+拍照
      * @param mMaxOptionalNum 最大可选/可拍数量 默认为9张
      * @param mFolderName     存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
      * @param flagText        水印文字

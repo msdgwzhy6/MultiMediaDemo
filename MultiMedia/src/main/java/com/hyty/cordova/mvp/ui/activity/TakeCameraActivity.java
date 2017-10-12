@@ -25,6 +25,8 @@ import com.hyty.cordova.camera.listener.ErrorListener;
 import com.hyty.cordova.camera.listener.JCameraListener;
 import com.hyty.cordova.di.component.DaggerTakeCameraComponent;
 import com.hyty.cordova.di.module.TakeCameraModule;
+import com.hyty.cordova.imagepicker.ImagePicker;
+import com.hyty.cordova.imagepicker.bean.ImageItem;
 import com.hyty.cordova.mvp.contract.TakeCameraContract;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.hyty.cordova.mvp.presenter.TakeCameraPresenter;
@@ -113,6 +115,10 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         mCameraView.setJCameraLisenter(mCameraListener);
         mCameraView.setLeftClickListener(() -> finishPage(null));
         mCameraView.setRightClickListener(() -> {
+            if (mMultiMediaConfig.getDoType() != 1) {
+                finishPage(null);
+                return;
+            }
             showLoading("正在处理图片，请稍后...");
             mPresenter.getResultData(new CopyFilesListener() {
                 @Override
@@ -138,6 +144,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
     }
 
     private void finishPage(Intent mIntent) {
+//        ImagePicker.getInstance().setSelectedImages(mPresenter.getSelectedImages((ArrayList<ImageItem>) getIntent().getSerializableExtra(Key.REQUEST_ALLREADY_SELECTED_IMAGES)));
         setResult(resultcode, mIntent);
         finish();
     }
@@ -315,7 +322,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
                                 //移动后静止一段时间，可以发生对焦行为
                                 if (!isFocusing) {
                                     canFocusIn = false;
-                                    mCameraView.setFocusViewWidthAnimation(ScreenUtils.getScreenWidth()/2,ScreenUtils.getScreenHeight()/2);
+                                    mCameraView.setFocusViewWidthAnimation(ScreenUtils.getScreenWidth() / 2, ScreenUtils.getScreenHeight() / 2);
 //                                onCameraFocus();
 //                                    if (mCameraFocusListener != null) {
 //                                        mCameraFocusListener.onFocus();

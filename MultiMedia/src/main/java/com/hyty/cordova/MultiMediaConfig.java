@@ -39,6 +39,8 @@ public class MultiMediaConfig {
     public static final String FILE_SAVED_PATH = Environment.getExternalStorageDirectory().toString() + "/";//文件存储目录头
     public static final int REQUEST_CODE_HOME_TAKECAMERA = 0x01;//从插件首页跳转拍照页面的请求码
     public static final int REQUEST_CODE_HOME_IMAGE_PIKER = 0x02;//从插件首页跳转多图选择页面请求码
+    public static final int REQUEST_CODE_IMAGEPICKER_TAKECAMERA = 0x03;//从多图选择页面跳转拍照页面请求码
+
 
     public static Long startTime;
     private int p = 0;//拷贝文件重命名的表示，从0开始，使用完毕清0
@@ -57,6 +59,7 @@ public class MultiMediaConfig {
     private CameraFeature mCameraFeature;//相机模式 仅拍照/录像/两者都可
     private String fileSavedPath;//存储文件的文件夹
     private String flagText_willUse;//待使用的水印文字
+    private int doType ;//当前操作类型
 
     //外部传入参数定义
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
@@ -180,8 +183,17 @@ public class MultiMediaConfig {
 
                     @Override
                     public void onSuccess(File file) {
-                        FileUtils.rename(file, new File(formFilesPath.get(p)).getName());
-                        toFilesPath.add(file.getPath());
+                        if (FileUtils.rename(file, new File(formFilesPath.get(p)).getName())) {
+                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + new File(formFilesPath.get(p)).getName());
+                        } else {
+                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + new File(formFilesPath.get(p)).getName());
+                            Timber.e("重命名失败，目标目录下同名文件存在，直接使用目标文件");
+                            if (file.delete()) {
+                                Timber.w("删除生成的新文件(未重命名)成功");
+                            } else {
+                                Timber.e("删除生成的新文件(未重命名)失败");
+                            }
+                        }
                         p++;
                         if (p == formFilesPath.size()) {
                             mCopyFilesListener.onSucc(toFilesPath);
@@ -204,6 +216,14 @@ public class MultiMediaConfig {
 
     public void setFlagLocation(CameraTextFlagLocation mFlagLocation) {
         this.mFlagLocation = mFlagLocation;
+    }
+
+    public int getDoType() {
+        return doType;
+    }
+
+    public void setDoType(int mDoType) {
+        doType = mDoType;
     }
 
     public static enum CameraTextFlagLocation {

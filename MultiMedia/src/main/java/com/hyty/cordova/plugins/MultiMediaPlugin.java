@@ -14,6 +14,9 @@ import com.hyty.cordova.bean.ConfigParams;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ViewUtils;
+import com.hyty.cordova.imagepicker.ImagePicker;
+import com.hyty.cordova.imagepicker.loader.GlideImageLoader;
+import com.hyty.cordova.imagepicker.ui.ImageGridActivity;
 import com.hyty.cordova.mvp.ui.activity.TakeCameraActivity;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.PermissionUtil;
@@ -47,6 +50,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
     private MultiMediaConfig mMediaConfig;//全局配置类
     private static boolean isInitLog = false;//日志初始化标识符
     private Activity mActivity;//super.cordova.getActivity();
+    private ImagePicker mImagePicker;//图片加载器
 
     public static MultiMediaPlugin getInstance(Activity mActivity) {
         mPlugin = mPlugin == null ? new MultiMediaPlugin(mActivity) : mPlugin;
@@ -56,6 +60,8 @@ public class MultiMediaPlugin extends CordovaPlugin {
     private MultiMediaPlugin(Activity mActivity) {
         Utils.init(mActivity.getApplication());
         mMediaConfig = MultiMediaConfig.getInstance();
+        mImagePicker = ImagePicker.getInstance();
+        mImagePicker.setImageLoader(new GlideImageLoader());
         this.mActivity = mActivity;
     }
 
@@ -143,7 +149,9 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 // TODO: 2017/10/12 需要参数:最大可选数量、copy的路径、水印文字
                 //设置内部参数
                 mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
-//                mIntent = createIntent(ImagePikerActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
+                mImagePicker.setCrop(false);//关闭裁剪
+                mImagePicker.setShowCamera(true);
+                mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
                 Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
                 break;
@@ -154,8 +162,10 @@ public class MultiMediaPlugin extends CordovaPlugin {
         }
         mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
         mMediaConfig.setFolderName(TextUtils.isEmpty(mConfigParams.getFolderName()) ? "defaultfolder" : mConfigParams.getFolderName());
+        mMediaConfig.setDoType(mConfigParams.getType());
         startActivityForResult(mIntent, requestCode);
     }
+
 
     /**
      * 初始化存储目录，不存在则创建

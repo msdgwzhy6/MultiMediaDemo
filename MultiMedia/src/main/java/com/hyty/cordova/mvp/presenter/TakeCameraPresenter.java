@@ -10,6 +10,7 @@ import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ImageUtil;
+import com.hyty.cordova.imagepicker.bean.ImageItem;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.hyty.cordova.mvp.impl.OnGetIntent;
 import com.jess.arms.integration.AppManager;
@@ -111,6 +112,18 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
         ArmsUtils.dissMissLoading();
         Timber.d("图片处理耗时:" + (new Date().getTime() - t) + " ms");
         Timber.d("图片处理结束，耗时:" + (new Date().getTime() - MultiMediaConfig.startTime) + " ms");
+
+    }
+
+    public ArrayList<ImageItem> getSelectedImages(ArrayList<ImageItem> images_from) {
+        for (File mFile : canUseFiles_camera) {
+            ImageItem mImageItem = new ImageItem();
+            mImageItem.name = mFile.getName();
+            mImageItem.path = mFile.getPath();
+            images_from.add(mImageItem);
+        }
+
+        return images_from;
     }
 
     public void getResultData(CopyFilesListener mCopyFilesListener) {
