@@ -123,6 +123,7 @@ Codova多媒体插件
     //========================================================以上为插件所必须的依赖========================================================
 
 ```
+##编译一下，如果报错请将 minSdkVersion  修改为 16
 ### 4.在清单文件application中加入(android:name="com.hyty.cordova.BaseApplication"),如果项目本身已经有了BaseApplication类时，则使用你的BaseApplication类继承com.hyty.cordova.BaseApplication即可:
 ```xml
     <application

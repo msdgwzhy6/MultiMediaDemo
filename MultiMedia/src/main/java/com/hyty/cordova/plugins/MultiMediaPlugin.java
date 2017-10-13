@@ -46,24 +46,24 @@ import timber.log.Timber;
  * ================================================================
  */
 public class MultiMediaPlugin extends CordovaPlugin {
-    private static MultiMediaPlugin mPlugin;// TODO: 2017/10/10 记得删除单利测试模式
+//    private static MultiMediaPlugin mPlugin;// TODO: 2017/10/10 记得删除单利测试模式
     private MultiMediaConfig mMediaConfig;//全局配置类
     private static boolean isInitLog = false;//日志初始化标识符
     private Activity mActivity;//super.cordova.getActivity();
     private ImagePicker mImagePicker;//图片加载器
 
-    public static MultiMediaPlugin getInstance(Activity mActivity) {
-        mPlugin = mPlugin == null ? new MultiMediaPlugin(mActivity) : mPlugin;
-        return mPlugin;
-    }
+//    public static MultiMediaPlugin getInstance(Activity mActivity) {
+//        mPlugin = mPlugin == null ? new MultiMediaPlugin(mActivity) : mPlugin;
+//        return mPlugin;
+//    }
 
-    private MultiMediaPlugin(Activity mActivity) {
-        Utils.init(mActivity.getApplication());
-        mMediaConfig = MultiMediaConfig.getInstance();
-        mImagePicker = ImagePicker.getInstance();
-        mImagePicker.setImageLoader(new GlideImageLoader());
-        this.mActivity = mActivity;
-    }
+//    private MultiMediaPlugin(Activity mActivity) {
+//        Utils.init(mActivity.getApplication());
+//        mMediaConfig = MultiMediaConfig.getInstance();
+//        mImagePicker = ImagePicker.getInstance();
+//        mImagePicker.setImageLoader(new GlideImageLoader());
+//        this.mActivity = mActivity;
+//    }
 
     @Override
     public boolean execute(String action, String rawArgs, CallbackContext callbackContext) throws JSONException {
@@ -71,6 +71,9 @@ public class MultiMediaPlugin extends CordovaPlugin {
             Timber.e("传入参数不能为空");
             return false;
         }
+        mMediaConfig = MultiMediaConfig.getInstance();
+        mImagePicker = ImagePicker.getInstance();
+        mImagePicker.setImageLoader(new GlideImageLoader());
         ConfigParams mConfigParams = null;
         try {
             mConfigParams = new Gson().fromJson(rawArgs, ConfigParams.class);
@@ -83,7 +86,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
             return false;
         }
         Timber.d("传入参数:" + rawArgs);
-//        mActivity = super.cordova.getActivity();// TODO: 2017/10/10 正式模式记得打开此处注释
+        mActivity = super.cordova.getActivity();// TODO: 2017/10/10 正式模式记得打开此处注释
         requestPermissions(mConfigParams);//请求权限
         return true;
     }
