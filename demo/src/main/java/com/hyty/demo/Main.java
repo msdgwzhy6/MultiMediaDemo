@@ -67,8 +67,8 @@ public class Main extends AppCompatActivity {
     @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8})
     public void onClick(View view) {
         final List<DataBean> mDataBeen = new ArrayList<>();
-        mDataBeen.add(new DataBean("N7M6R15505005380-1507857947765.jpg", "finaNeme_65_www"));
-        mDataBeen.add(new DataBean("N7M6R15505005380-1507857939956.jpg", "finaNeme_56_www"));
+        mDataBeen.add(new DataBean("YVF6R17330001250-1507882821188.jpg", "finaNeme_1188_www"));
+        mDataBeen.add(new DataBean("YVF6R17330001250-1507882874324.jpg", "finaNeme_4324_www"));
         mDataBeen.add(new DataBean("141219/4-141219163521.jpg", "141219/4-141219163521.jpg"));
         String str = "";
         switch (view.getId()) {

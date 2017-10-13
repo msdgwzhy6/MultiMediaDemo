@@ -20,12 +20,12 @@
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable-xhdpi-v4/abc_ic_star_black_16dp.png"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable-xhdpi-v4/ucrop_ic_rotate.png",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-xhdpi-v4/ucrop_ic_rotate.png"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable-xhdpi-v4/ucrop_ic_rotate.png",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable-xhdpi-v4/ucrop_ic_rotate.png"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable-xhdpi-v4/camera.png",
