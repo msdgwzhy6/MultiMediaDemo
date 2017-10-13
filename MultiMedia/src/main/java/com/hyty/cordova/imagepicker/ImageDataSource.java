@@ -8,13 +8,17 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 
+import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.R;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.imagepicker.bean.ImageFolder;
 import com.hyty.cordova.imagepicker.bean.ImageItem;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -37,6 +41,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             MediaStore.Images.Media.HEIGHT,         //图片的高度，int型  1080
             MediaStore.Images.Media.MIME_TYPE,      //图片的类型     image/jpeg
             MediaStore.Images.Media.DATE_ADDED};    //图片被添加的时间，long型  1450518608
+    private MultiMediaConfig mMultiMediaConfig;
 
     private FragmentActivity activity;
     private OnImagesLoadedListener loadedListener;                     //图片加载完成的回调接口
@@ -49,6 +54,31 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
      */
     public ImageDataSource(FragmentActivity activity, String path, OnImagesLoadedListener loadedListener) {
         this.activity = activity;
+        mMultiMediaConfig = MultiMediaConfig.getInstance();
+        if (MultiMediaConfig.getInstance().getDoType() == 3) {
+            //当前模式为预览 直接组装传入的数据
+            ArrayList<ImageItem> allImages = new ArrayList<>();
+            for (DataBean mDataBean : mMultiMediaConfig.getPreViewData()) {
+                ImageItem imageItem = new ImageItem();
+                File mFile = new File(mMultiMediaConfig.getFileSavedPath() + "/" + mDataBean.getFileName());
+                boolean exists = mFile.exists();
+                imageItem.name = exists ? mFile.getName() : mDataBean.getFileName_www();
+                imageItem.path = exists ? mFile.getPath() : mMultiMediaConfig.getParentUrl() + "/" + mDataBean.getFileName_www();
+//                imageItem.size = exists ? mFile.getTotalSpace() : 0;
+//                imageItem.width = imageWidth;
+//                imageItem.height = imageHeight;
+//                imageItem.mimeType = imageMimeType;
+//                imageItem.addTime = imageAddTime;
+                Timber.d(exists ? "文件存在，组装路径:" + mFile.getPath() : "文件不存在,组装路径:" + mMultiMediaConfig.getParentUrl() + "/" + mDataBean.getFileName_www());
+                allImages.add(imageItem);
+            }
+            List<ImageFolder> imageFolders = new ArrayList<>();
+            ImageFolder mImageFolder = new ImageFolder();
+            mImageFolder.images = allImages;
+            imageFolders.add(mImageFolder);
+            loadedListener.onImagesLoaded(imageFolders);
+            return;
+        }
         this.loadedListener = loadedListener;
 
         LoaderManager loaderManager = activity.getSupportLoaderManager();
@@ -84,7 +114,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
                 //查询数据
                 String imageName = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                 String imagePath = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
-                
+
                 File file = new File(imagePath);
                 if (!file.exists() || file.length() <= 0) {
                     continue;
@@ -123,7 +153,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
                 }
             }
             //防止没有图片报异常
-            if (data.getCount() > 0 && allImages.size()>0) {
+            if (data.getCount() > 0 && allImages.size() > 0) {
                 //构造所有图片的集合
                 ImageFolder allImagesFolder = new ImageFolder();
                 allImagesFolder.name = activity.getResources().getString(R.string.ip_all_images);
@@ -144,7 +174,9 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         System.out.println("--------");
     }
 
-    /** 所有图片加载完成的回调接口 */
+    /**
+     * 所有图片加载完成的回调接口
+     */
     public interface OnImagesLoadedListener {
         void onImagesLoaded(List<ImageFolder> imageFolders);
     }

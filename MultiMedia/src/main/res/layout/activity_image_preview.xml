@@ -26,6 +26,7 @@
         tools:visibility="visible">
 
         <RelativeLayout
+            android:id="@+id/rl_selecte"
             android:layout_width="match_parent"
             android:layout_height="48dp">
 

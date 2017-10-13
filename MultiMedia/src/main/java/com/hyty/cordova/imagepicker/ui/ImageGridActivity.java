@@ -75,6 +75,8 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     private boolean directPhoto = false; // 默认不是直接调取相机
     private RecyclerView mRecyclerView;
     private ImageRecyclerAdapter mRecyclerAdapter;
+    private int resultCode = 0;
+    private MultiMediaConfig mMultiMediaConfig;
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -92,14 +94,19 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_grid);
-
+        resultCode = getIntent().getIntExtra(Key.REQUEST_CODE, 0);
         imagePicker = ImagePicker.getInstance();
+        mMultiMediaConfig = MultiMediaConfig.getInstance();
         imagePicker.clear();
         imagePicker.addOnImageSelectedListener(this);
-        imagePicker.setSelectLimit(MultiMediaConfig.getInstance().getMaxOptionalNum());
+        if (mMultiMediaConfig.getDoType() == 3) {
+            imagePicker.setSelectLimit(mMultiMediaConfig.getPreViewData().size());
+        } else {
+            imagePicker.setSelectLimit(mMultiMediaConfig.getMaxOptionalNum());
+        }
         Intent data = getIntent();
         // 新增可直接拍照
-        if (data != null && data.getExtras() != null) {
+        if (data != null && data.getExtras() != null && mMultiMediaConfig.getDoType() != 3) {
             directPhoto = data.getBooleanExtra(EXTRAS_TAKE_PICKERS, false); // 默认不是直接打开相机
             if (directPhoto) {
                 if (!(checkPermission(Manifest.permission.CAMERA))) {
@@ -115,21 +122,45 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler);
 
         findViewById(R.id.btn_back).setOnClickListener(this);
+        mFooterBar = findViewById(R.id.footer_bar);
         mBtnOk = (Button) findViewById(R.id.btn_ok);
         mBtnOk.setOnClickListener(this);
+        if (mMultiMediaConfig.getDoType() == 3 && mMultiMediaConfig.isCanDelete()) {
+                mBtnOk.setVisibility(View.VISIBLE);
+                mFooterBar.setVisibility(View.VISIBLE);
+        }else if (mMultiMediaConfig.getDoType() == 3 && !mMultiMediaConfig.isCanDelete()){
+                mBtnOk.setVisibility(View.GONE);
+                mFooterBar.setVisibility(View.GONE);
+        }else {
+            mBtnOk.setVisibility(View.VISIBLE);
+            mFooterBar.setVisibility(View.VISIBLE);
+        }
         mBtnPre = (TextView) findViewById(R.id.btn_preview);
         mBtnPre.setOnClickListener(this);
-        mFooterBar = findViewById(R.id.footer_bar);
+
         mllDir = findViewById(R.id.ll_dir);
         mllDir.setOnClickListener(this);
         mtvDir = (TextView) findViewById(R.id.tv_dir);
-        if (imagePicker.isMultiMode()) {
+        if (imagePicker.isMultiMode() &&  mMultiMediaConfig.isCanDelete()) {
             mBtnOk.setVisibility(View.VISIBLE);
             mBtnPre.setVisibility(View.VISIBLE);
-        } else {
-            mBtnOk.setVisibility(View.GONE);
-            mBtnPre.setVisibility(View.GONE);
+        } else if (imagePicker.isMultiMode() &&  !mMultiMediaConfig.isCanDelete()){
+            if (mMultiMediaConfig.getDoType()==3){
+                mBtnOk.setVisibility(View.GONE);
+                mBtnPre.setVisibility(View.GONE);
+            }else {
+                mBtnOk.setVisibility(View.VISIBLE);
+                mBtnPre.setVisibility(View.VISIBLE);
+            }
         }
+//        if (imagePicker.isMultiMode()){
+//            mBtnOk.setVisibility(View.VISIBLE);
+//            mBtnPre.setVisibility(View.VISIBLE);
+//
+//        }else {
+//            mBtnOk.setVisibility(View.GONE);
+//            mBtnPre.setVisibility(View.GONE);
+//        }
 
 //        mImageGridAdapter = new ImageGridAdapter(this, null);
         mImageFolderAdapter = new ImageFolderAdapter(this, null);
@@ -178,18 +209,26 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         int id = v.getId();
         if (id == R.id.btn_ok) {
             Intent intent = new Intent();
-//            intent.putExtra(ImagePicker.EXTRA_RESULT_ITEMS, imagePicker.getSelectedImages());
-            ArmsUtils.showLoading("处理中，请稍后...", false, null);
             ArrayList<String> paths = new ArrayList<>();
             for (ImageItem item : imagePicker.getSelectedImages()) {
                 paths.add(item.path);
             }
-            MultiMediaConfig.getInstance().commpImages(paths, getApplication(), new CopyFilesListener() {
+
+            if (mMultiMediaConfig.getDoType()==3){
+                intent.putExtra(Key.RESULT_INTENT, paths);
+                setResult(resultCode, intent);
+                finish();
+                return;
+            }
+
+//            intent.putExtra(ImagePicker.EXTRA_RESULT_ITEMS, imagePicker.getSelectedImages());
+            ArmsUtils.showLoading("处理中，请稍后...", false, null);
+            mMultiMediaConfig.commpImages(paths, getApplication(), new CopyFilesListener() {
                 @Override
                 public void onSucc(ArrayList<String> toFilesPath) {
                     ArmsUtils.dissMissLoading();
                     intent.putExtra(Key.RESULT_INTENT, toFilesPath);
-                    setResult(getIntent().getIntExtra(Key.REQUEST_CODE, 0), intent);  //多选不允许裁剪裁剪，返回数据
+                    setResult(resultCode, intent);  //多选不允许裁剪裁剪，返回数据
                     finish();
                 }
 
@@ -310,17 +349,29 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     @Override
     public void onImageSelected(int position, ImageItem item, boolean isAdd) {
         if (imagePicker.getSelectImageCount() > 0) {
-            mBtnOk.setText(getString(R.string.ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+            if (mMultiMediaConfig.getDoType() == 3) {
+                mBtnOk.setText(getString(R.string.ip_select_delete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+                mBtnPre.setText(getResources().getString(R.string.ip_preview_delete, imagePicker.getSelectImageCount()));
+            } else {
+                mBtnOk.setText(getString(R.string.ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+                mBtnPre.setText(getResources().getString(R.string.ip_preview_count, imagePicker.getSelectImageCount()));
+            }
             mBtnOk.setEnabled(true);
             mBtnPre.setEnabled(true);
-            mBtnPre.setText(getResources().getString(R.string.ip_preview_count, imagePicker.getSelectImageCount()));
             mBtnPre.setTextColor(ContextCompat.getColor(this, R.color.ip_text_primary_inverted));
             mBtnOk.setTextColor(ContextCompat.getColor(this, R.color.ip_text_primary_inverted));
         } else {
-            mBtnOk.setText(getString(R.string.ip_complete));
+            if (mMultiMediaConfig.getDoType() == 3) {
+                mBtnOk.setText(getString(R.string.ip_complete_delete));
+                mBtnPre.setText(getResources().getString(R.string.ip_preview_delete1));
+            } else {
+                mBtnOk.setText(getString(R.string.ip_complete));
+                mBtnPre.setText(getResources().getString(R.string.ip_preview));
+            }
+
             mBtnOk.setEnabled(false);
             mBtnPre.setEnabled(false);
-            mBtnPre.setText(getResources().getString(R.string.ip_preview));
+
             mBtnPre.setTextColor(ContextCompat.getColor(this, R.color.ip_text_secondary_inverted));
             mBtnOk.setTextColor(ContextCompat.getColor(this, R.color.ip_text_secondary_inverted));
         }

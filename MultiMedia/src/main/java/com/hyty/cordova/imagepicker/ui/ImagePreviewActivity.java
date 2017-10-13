@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.imagepicker.ImagePicker;
 import com.hyty.cordova.R;
 import com.hyty.cordova.imagepicker.bean.ImageItem;
@@ -38,15 +39,33 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
     private Button mBtnOk;                         //确认图片的选择
     private View bottomBar;
     private View marginView;
-
+    private MultiMediaConfig mMultiMediaConfig;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mMultiMediaConfig = MultiMediaConfig.getInstance();
         isOrigin = getIntent().getBooleanExtra(ImagePreviewActivity.ISORIGIN, false);
         imagePicker.addOnImageSelectedListener(this);
         mBtnOk = (Button) findViewById(R.id.btn_ok);
-        mBtnOk.setVisibility(View.VISIBLE);
+//        if (MultiMediaConfig.getInstance().getDoType() == 3 && MultiMediaConfig.getInstance().isCanDelete()) {
+//            mBtnOk.setVisibility(View.VISIBLE);
+//        } else if (MultiMediaConfig.getInstance().getDoType() == 3 && !MultiMediaConfig.getInstance().isCanDelete()) {
+//            if (imagePicker.isMultiMode()) {
+//                mBtnOk.setVisibility(View.VISIBLE);
+//            } else {
+//                mBtnOk.setVisibility(View.GONE);
+//            }
+//        }
+
+        if (imagePicker.isMultiMode() &&  mMultiMediaConfig.isCanDelete()) {
+            mBtnOk.setVisibility(View.VISIBLE);
+        } else if (imagePicker.isMultiMode() &&  !mMultiMediaConfig.isCanDelete()){
+            if (mMultiMediaConfig.getDoType()==3){
+                mBtnOk.setVisibility(View.GONE);
+            }else {
+                mBtnOk.setVisibility(View.VISIBLE);
+            }
+        }
         mBtnOk.setOnClickListener(this);
 
         bottomBar = findViewById(R.id.bottom_bar);
@@ -121,7 +140,6 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
                     }
                 });
     }
-
 
 
     /**

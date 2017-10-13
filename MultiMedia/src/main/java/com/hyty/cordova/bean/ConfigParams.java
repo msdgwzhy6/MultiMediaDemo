@@ -1,6 +1,7 @@
 package com.hyty.cordova.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ================================================================
@@ -16,6 +17,9 @@ public class ConfigParams implements Serializable {
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片 默认为:defaultfolder
     private String flagText;//水印文字
+    private boolean isCanDelete;//是否具备删除功能,仅在预览模式有效
+    private String urlPathHeader;//当本地文件不存在时在网络获取的请求前缀 仅在预览模式有效
+    private List<DataBean> data;
 
     /**
      * 快速拍照需要传入的参数
@@ -32,6 +36,22 @@ public class ConfigParams implements Serializable {
         this.flagText = flagText;
     }
 
+    /**
+     * 图片预览 构造参数
+     *
+     * @param mType         业务类型
+     * @param mFolderName   存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
+     * @param urlPathHeader 网络请求前缀 比如:http://www.baidu.image/
+     * @param mIsCanDelete  是否具备删除功能
+     * @param data          预览的数据源
+     */
+    public ConfigParams(int mType, String mFolderName, String urlPathHeader, boolean mIsCanDelete, List<DataBean> data) {
+        type = mType;
+        folderName = mFolderName;
+        this.urlPathHeader = urlPathHeader;
+        isCanDelete = mIsCanDelete;
+        this.data = data;
+    }
 
     public int getType() {
         return type;
@@ -63,5 +83,29 @@ public class ConfigParams implements Serializable {
 
     public void setFlagText(String mFlagText) {
         flagText = mFlagText;
+    }
+
+    public boolean isCanDelete() {
+        return isCanDelete;
+    }
+
+    public void setCanDelete(boolean mCanDelete) {
+        isCanDelete = mCanDelete;
+    }
+
+    public String getUrlPathHeader() {
+        return urlPathHeader;
+    }
+
+    public void setUrlPathHeader(String mUrlPathHeader) {
+        urlPathHeader = mUrlPathHeader;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> mData) {
+        data = mData;
     }
 }

@@ -140,6 +140,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 // TODO: 2017/10/10 需要参数:最大可拍照数量、copy的路径、水印文字
                 //设置内部参数
                 mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
+                mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
                 mIntent = createIntent(TakeCameraActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA;
                 Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
@@ -151,16 +152,34 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
                 mImagePicker.setCrop(false);//关闭裁剪
                 mImagePicker.setShowCamera(true);
+                mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
                 Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
+                break;
+            case 3:
+                // TODO: 2017/10/13 图片预览模式 可选择是否具备删除功能
+                // TODO: 2017/10/13  需要参数:copy的路径、是否具备删除功能
+                if (TextUtils.isEmpty(mConfigParams.getUrlPathHeader())
+                        || mConfigParams.getData() == null
+                        || mConfigParams.getData().size() == 0) {
+                    Timber.e("预览时参数不能为空，请检查UrlPathHeader、Data字段");
+                    return;
+                }
+                mImagePicker.setCrop(false);//关闭裁剪
+                mImagePicker.setShowCamera(false);
+                mMediaConfig.setCanDelete(mConfigParams.isCanDelete());
+                mMediaConfig.setParentUrl(mConfigParams.getUrlPathHeader());
+                mMediaConfig.setPreViewData(mConfigParams.getData());
+                mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW);
+                requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW;
+                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",网络请求前缀:" + mConfigParams.getUrlPathHeader() + ",预览的数据长度:" + mConfigParams.getData().size());
                 break;
         }
         if (mIntent == null || requestCode == 0) {
             ArmsUtils.showToast("参数为空");
             return;
         }
-        mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
         mMediaConfig.setFolderName(TextUtils.isEmpty(mConfigParams.getFolderName()) ? "defaultfolder" : mConfigParams.getFolderName());
         mMediaConfig.setDoType(mConfigParams.getType());
         startActivityForResult(mIntent, requestCode);

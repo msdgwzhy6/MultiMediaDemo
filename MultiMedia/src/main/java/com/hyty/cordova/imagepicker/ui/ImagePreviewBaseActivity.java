@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.imagepicker.DataHolder;
 import com.hyty.cordova.imagepicker.ImagePicker;
 import com.hyty.cordova.R;
@@ -37,6 +38,7 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
     protected ViewPagerFixed mViewPager;
     protected ImagePageAdapter mAdapter;
     protected boolean isFromItems = false;
+    private RelativeLayout rl_selecte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,11 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
 
         mCurrentPosition = getIntent().getIntExtra(ImagePicker.EXTRA_SELECTED_IMAGE_POSITION, 0);
         isFromItems = getIntent().getBooleanExtra(ImagePicker.EXTRA_FROM_ITEMS, false);
-
+        rl_selecte = (RelativeLayout) findViewById(R.id.rl_selecte);
+        if (MultiMediaConfig.getInstance().getDoType() == 3
+                && !MultiMediaConfig.getInstance().isCanDelete()) {
+            rl_selecte.setVisibility(View.GONE);
+        }
         if (isFromItems) {
             // 据说这样会导致大量图片崩溃
             mImageItems = (ArrayList<ImageItem>) getIntent().getSerializableExtra(ImagePicker.EXTRA_IMAGE_ITEMS);
@@ -92,7 +98,9 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
         mTitleCount.setText(getString(R.string.ip_preview_image_count, mCurrentPosition + 1, mImageItems.size()));
     }
 
-    /** 单击时，隐藏头和尾 */
+    /**
+     * 单击时，隐藏头和尾
+     */
     public abstract void onImageSingleTap();
 
     @Override

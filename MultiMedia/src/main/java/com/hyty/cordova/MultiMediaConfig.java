@@ -5,6 +5,7 @@ import android.os.Environment;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.hyty.cordova.bean.CameraFeature;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -12,6 +13,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -40,6 +42,7 @@ public class MultiMediaConfig {
     public static final int REQUEST_CODE_HOME_TAKECAMERA = 0x01;//从插件首页跳转拍照页面的请求码
     public static final int REQUEST_CODE_HOME_IMAGE_PIKER = 0x02;//从插件首页跳转多图选择页面请求码
     public static final int REQUEST_CODE_IMAGEPICKER_TAKECAMERA = 0x03;//从多图选择页面跳转拍照页面请求码
+    public static final int REQUEST_CODE_HOME_IMAGE_PREVIEW = 0x04;//从插件首页跳转图片预览页面(原多图选择页面，隐藏部分view)
 
 
     public static Long startTime;
@@ -59,60 +62,15 @@ public class MultiMediaConfig {
     private CameraFeature mCameraFeature;//相机模式 仅拍照/录像/两者都可
     private String fileSavedPath;//存储文件的文件夹
     private String flagText_willUse;//待使用的水印文字
-    private int doType ;//当前操作类型
+    private int doType;//当前操作类型
 
     //外部传入参数定义
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
     private String flagText;//水印文字
-
-    public int getMaxOptionalNum() {
-        return maxOptionalNum;
-    }
-
-    public void setMaxOptionalNum(int mMaxOptionalNum) {
-        maxOptionalNum = mMaxOptionalNum;
-    }
-
-    public String getFolderName() {
-        return folderName;
-    }
-
-    public void setFolderName(String mFolderName) {
-        folderName = mFolderName;
-    }
-
-    public CameraFeature getCameraFeature() {
-        return mCameraFeature;
-    }
-
-    public void setCameraFeature(CameraFeature mCameraFeature) {
-        this.mCameraFeature = mCameraFeature;
-    }
-
-    public String getFileSavedPath() {
-        return fileSavedPath;
-    }
-
-    public void setFileSavedPath(String mFileSavedPath) {
-        fileSavedPath = FILE_SAVED_PATH + mFileSavedPath;
-    }
-
-    public String getFlagText() {
-        return flagText;
-    }
-
-    public void setFlagText(String mFlagText) {
-        flagText = mFlagText;
-    }
-
-    public String getFlagText_willUse() {
-        return flagText_willUse;
-    }
-
-    public void setFlagText_willUse(String mFlagText_willUse) {
-        flagText_willUse = mFlagText_willUse;
-    }
+    private boolean isCanDelete = false;//预览模式下是否可以删除
+    private String parentUrl;//预览模式下的网络图片请求前缀
+    private List<DataBean> preViewData;//预览的数据源
 
     /**
      * 将文件集合拷贝进指定存储目录并返回拷贝后的路径集合
@@ -210,6 +168,55 @@ public class MultiMediaConfig {
 
     }
 
+
+    public int getMaxOptionalNum() {
+        return maxOptionalNum;
+    }
+
+    public void setMaxOptionalNum(int mMaxOptionalNum) {
+        maxOptionalNum = mMaxOptionalNum;
+    }
+
+    public String getFolderName() {
+        return folderName;
+    }
+
+    public void setFolderName(String mFolderName) {
+        folderName = mFolderName;
+    }
+
+    public CameraFeature getCameraFeature() {
+        return mCameraFeature;
+    }
+
+    public void setCameraFeature(CameraFeature mCameraFeature) {
+        this.mCameraFeature = mCameraFeature;
+    }
+
+    public String getFileSavedPath() {
+        return fileSavedPath;
+    }
+
+    public void setFileSavedPath(String mFileSavedPath) {
+        fileSavedPath = FILE_SAVED_PATH + mFileSavedPath;
+    }
+
+    public String getFlagText() {
+        return flagText;
+    }
+
+    public void setFlagText(String mFlagText) {
+        flagText = mFlagText;
+    }
+
+    public String getFlagText_willUse() {
+        return flagText_willUse;
+    }
+
+    public void setFlagText_willUse(String mFlagText_willUse) {
+        flagText_willUse = mFlagText_willUse;
+    }
+
     public CameraTextFlagLocation getFlagLocation() {
         return mFlagLocation;
     }
@@ -224,6 +231,30 @@ public class MultiMediaConfig {
 
     public void setDoType(int mDoType) {
         doType = mDoType;
+    }
+
+    public boolean isCanDelete() {
+        return isCanDelete;
+    }
+
+    public void setCanDelete(boolean mCanDelete) {
+        isCanDelete = mCanDelete;
+    }
+
+    public String getParentUrl() {
+        return parentUrl;
+    }
+
+    public void setParentUrl(String mParentUrl) {
+        parentUrl = mParentUrl;
+    }
+
+    public List<DataBean> getPreViewData() {
+        return preViewData;
+    }
+
+    public void setPreViewData(List<DataBean> mPreViewData) {
+        preViewData = mPreViewData;
     }
 
     public static enum CameraTextFlagLocation {

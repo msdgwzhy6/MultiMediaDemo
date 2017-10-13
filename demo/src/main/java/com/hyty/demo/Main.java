@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.google.gson.Gson;
 import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.bean.ConfigParams;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.ViewUtils;
 import com.hyty.cordova.imagepicker.bean.ImageItem;
@@ -21,6 +22,7 @@ import com.jess.arms.utils.ArmsUtils;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +67,10 @@ public class Main extends AppCompatActivity {
 
     @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6, R.id.bt7, R.id.bt8})
     public void onClick(View view) {
+        final List<DataBean> mDataBeen = new ArrayList<>();
+        mDataBeen.add(new DataBean("N7M6R15505005380-1507857947765.jpg", "finaNeme_65_www"));
+        mDataBeen.add(new DataBean("N7M6R15505005380-1507857939956.jpg", "finaNeme_56_www"));
+        mDataBeen.add(new DataBean("141219/4-141219163521.jpg", "141219/4-141219163521.jpg"));
         String str = "";
         switch (view.getId()) {
             case R.id.bt1:
@@ -88,12 +94,29 @@ public class Main extends AppCompatActivity {
                 log("录音选取列表+录音");
                 break;
             case R.id.bt7:
-                log("图片、视频预览列表");
+                log("图片预览列表");
+                ViewUtils.showDialog(this, "是否显示删除按钮(前两张为本地图片，第三张为网络图片)", new ViewUtils.DialogClickListenr() {
+                    @Override
+                    public void onClickSubmit() {
+                        to(new Gson().toJson(new ConfigParams(3, "cgzf", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507859674&di=7a65819a34d0c21c3589e5060af4f502&src=http://4493bz.1985t.com/uploads/allimg", true, mDataBeen)));
+                    }
+
+                    @Override
+                    public void onClickCancel() {
+                        to(new Gson().toJson(new ConfigParams(3, "cgzf", "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1507859674&di=7a65819a34d0c21c3589e5060af4f502&src=http://4493bz.1985t.com/uploads/allimg", false, mDataBeen)));
+                    }
+                });
+
                 break;
             case R.id.bt8:
                 log("流媒体播放(单一页面，全屏播放)");
                 break;
         }
+        to(str);
+
+    }
+
+    private void to(String str) {
         if (TextUtils.isEmpty(str)) {
             ArmsUtils.showToast("入参不能为空");
             return;
@@ -121,6 +144,9 @@ public class Main extends AppCompatActivity {
         } else if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER
                 && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER) {
             printLog(intent, "多图选择");
+        } else if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW
+                && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW) {
+            printLog(intent, "图片预览(返回数据为用户已选删除的图片路径)");
         }
     }
 
@@ -132,6 +158,6 @@ public class Main extends AppCompatActivity {
             sb.append(list.get(i) + "\n");
         }
         Timber.d(sb.toString());
-        ArmsUtils.showToast(sb.toString());
+        ArmsUtils.showToastLong(sb.toString());
     }
 }
