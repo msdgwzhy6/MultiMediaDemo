@@ -160,4 +160,10 @@ public class Main extends AppCompatActivity {
         Timber.d(sb.toString());
         ArmsUtils.showToastLong(sb.toString());
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        System.exit(0);
+    }
 }

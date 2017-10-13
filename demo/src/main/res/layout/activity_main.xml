@@ -10,48 +10,59 @@
         android:id="@+id/bt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@color/actionsheet_blue"
         android:text="快速拍照"/>
 
     <Button
         android:id="@+id/bt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:background="@color/actionsheet_blue"
         android:text="多图选择+拍照"/>
 
     <Button
         android:id="@+id/bt3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:text="快速录像"/>
 
     <Button
         android:id="@+id/bt4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:text="录像选择+录像"/>
 
     <Button
         android:id="@+id/bt5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:text="快速录音"/>
 
     <Button
         android:id="@+id/bt6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:text="录音选取列表+录音"/>
 
     <Button
         android:id="@+id/bt7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="图片、视频预览列表"/>
+        android:layout_margin="2dp"
+        android:background="@color/actionsheet_blue"
+        android:text="图片预览列表"/>
 
     <Button
         android:id="@+id/bt8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="2dp"
         android:text="流媒体播放(单一页面，全屏播放)"/>
 
 
