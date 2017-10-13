@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name="com.hyty.cordova.BaseApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".Main">
             <intent-filter>
@@ -15,6 +16,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <!--拍照页面-->
+        <activity
+            android:theme="@style/No_All"
+            android:name="com.hyty.cordova.mvp.ui.activity.TakeCameraActivity"
+            android:launchMode="singleTop">
         </activity>
     </application>
 

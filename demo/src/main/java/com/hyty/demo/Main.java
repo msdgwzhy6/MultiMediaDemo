@@ -15,7 +15,6 @@ import com.hyty.cordova.bean.ConfigParams;
 import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.ViewUtils;
-import com.hyty.cordova.imagepicker.bean.ImageItem;
 import com.hyty.cordova.plugins.MultiMediaPlugin;
 import com.jess.arms.utils.ArmsUtils;
 
@@ -75,11 +74,11 @@ public class Main extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.bt1:
                 log("快速拍照");
-                str = new Gson().toJson(new ConfigParams(1, 3, "cgzf", "测试的水印文字"));
+                str = new Gson().toJson(new ConfigParams(1, 3, "cgzf", "快速拍照-工作使我快乐"));
                 break;
             case R.id.bt2:
                 log("多图选择+拍照");
-                str = new Gson().toJson(new ConfigParams(2, 10, "cgzf", "测试的水印文字"));
+                str = new Gson().toJson(new ConfigParams(2, 10, "cgzf", "多图选择-工作使我快乐"));
                 break;
             case R.id.bt3:
                 log("快速录像");

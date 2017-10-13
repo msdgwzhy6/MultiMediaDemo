@@ -1,42 +1,42 @@
 [
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_btn_checkable.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_btn_checkable.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_default.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_default.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_color_highlight_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_seek_thumb.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_seek_thumb.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_spinner.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_spinner.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_text_material.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_text_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_track.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_switch_track.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_default.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_default.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/design_tint_password_toggle.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/color-v23/design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_color_highlight_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_spinner.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_seek_thumb.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_btn_checkable.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_edittext.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_edittext.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/design_tint_password_toggle.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/color-v23/design_tint_password_toggle.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/color-v23/abc_tint_switch_track.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/color-v23/abc_tint_switch_track.xml"
     }
 ]

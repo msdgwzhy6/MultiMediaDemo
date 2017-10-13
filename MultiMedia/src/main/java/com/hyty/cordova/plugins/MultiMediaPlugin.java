@@ -143,7 +143,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
                 mIntent = createIntent(TakeCameraActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA;
-                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
+                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText());
                 break;
             case 2:
                 // TODO: 2017/10/12 打开多图选择页面 带拍照按钮
@@ -155,7 +155,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
-                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",最大可选:" + mMediaConfig.getMaxOptionalNum() + ",水印文字:" + mMediaConfig.getFlagText());
+                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText());
                 break;
             case 3:
                 // TODO: 2017/10/13 图片预览模式 可选择是否具备删除功能
@@ -173,7 +173,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setPreViewData(mConfigParams.getData());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW;
-                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mMediaConfig.getFolderName() + ",网络请求前缀:" + mConfigParams.getUrlPathHeader() + ",预览的数据长度:" + mConfigParams.getData().size());
+                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mConfigParams.getFolderName() + ",网络请求前缀:" + mConfigParams.getUrlPathHeader() + ",预览的数据长度:" + mConfigParams.getData().size());
                 break;
         }
         if (mIntent == null || requestCode == 0) {

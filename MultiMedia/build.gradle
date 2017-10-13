@@ -39,10 +39,10 @@ dependencies {
     annotationProcessor(rootProject.ext.dependencies["dagger2-compiler"]) {
         exclude module: 'dagger'
     }
-
     compile rootProject.ext.dependencies["Utils"]
     compile rootProject.ext.dependencies["LuBan"]
     compile 'com.github.chrisbanes.photoview:library:1.2.4'
-
     compile project(':MvpTools')
+    compile files('libs/cordovalib.jar')
+    compile files('libs/fastjson-1.1.42.android.jar')
 }

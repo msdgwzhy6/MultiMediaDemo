@@ -1,330 +1,330 @@
 [
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_right.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_right.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bga_banner_selector_point_hollow.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_hollow.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_snackbar_background.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_snackbar_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bga_banner_selector_point_solid.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_solid.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_contact_select.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_contact_select.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_actionsheet_header.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_actionsheet_header.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bt.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bt.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_loader.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_loader.xml",
         "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_loader.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_right_selector.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_right_selector.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_more_unselect.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_more_unselect.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_ic_crop.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_ic_crop.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/shape_boxing_popup_background.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/shape_boxing_popup_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_left.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_left.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_bottom.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_bottom.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_thumb_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_rotate_mum.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_rotate_mum.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_actionsheet_cancel.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_actionsheet_cancel.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_go_search_api_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_go_search_api_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_light.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_icon_background.xml",
-        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_icon_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_fab_background.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_fab_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/shape_boxing_unchecked.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/shape_boxing_unchecked.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_password_eye.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_password_eye.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_cab_background_internal_bg.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_cab_background_internal_bg.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_more_select.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_more_select.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_gray_round_corner.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_gray_round_corner.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_bottom_navigation_item_background.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_bottom_navigation_item_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_tick_mark_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_tick_mark_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertview_alert.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertview_alert.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tooltip_frame_light.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/tooltip_frame_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_shadow_upside.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_shadow_upside.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_colored_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_colored_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_rotate_mum_light.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_rotate_mum_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_gray_round_l_corner.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_gray_round_l_corner.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_speech_unselect.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_speech_unselect.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_indicator_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_indicator_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_small_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_small_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_progress.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_progress.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_progress_light.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_progress_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_speech_select.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_speech_select.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_default_mtrl_shape.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_default_mtrl_shape.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_item_background_holo_dark.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_item_background_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_wihte_round_corner.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_wihte_round_corner.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/selector_boxing_btn_solid.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/selector_boxing_btn_solid.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_borderless_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_borderless_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_track_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_track_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_text_cursor_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_text_cursor_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_home_select.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_home_select.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_check_material.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_check_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_check_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_voice_search_api_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_voice_search_api_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_single_selector.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_single_selector.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_textfield_search_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_textfield_search_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_radio_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_radio_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_bg_low.xml",
-        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_bg_low.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_contact_unselect.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_contact_unselect.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_loader_animated.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_loader_animated.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_cab_background_top_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_cab_background_top_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_dialog_material_background.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_dialog_material_background.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_light.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_holo_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_switch_thumb_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_switch_thumb_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_home_unselect.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_home_unselect.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/navigation_empty_icon.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/navigation_empty_icon.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_tab_indicator_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_tab_indicator_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_menu_overflow_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_menu_overflow_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
-        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_tile_bg.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_spinner_mum.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_spinner_mum.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_spinner_textfield_background_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_spinner_textfield_background_material.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_spinner_mum_light.png",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_spinner_mum_light.png"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_vector_test.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_vector_test.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_item_background_holo_light.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_item_background_holo_light.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_dark.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_holo_dark.xml"
-    },
-    {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_ab_back_material.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_ab_back_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_ab_back_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_material.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_indicator_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_none.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_none.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_rotate_mum.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_rotate_mum.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_edit_text_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_edit_text_material.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_go_search_api_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_left_selector.xml",
-        "source": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_left_selector.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_speech_select.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_speech_select.png"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_search_api_material.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_search_api_material.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tooltip_frame_light.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/tooltip_frame_light.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_clear_material.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_default_mtrl_shape.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_home_unselect.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_home_unselect.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_contact_unselect.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_contact_unselect.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_gray_round_corner.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_gray_round_corner.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_vector_test.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_vector_test.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_item_background_holo_dark.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_left.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_left.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_clear_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_clear_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_bg.xml",
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_textfield_search_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_spinner_mum_light.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_spinner_mum_light.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_track_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertview_alert.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertview_alert.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_spinner_textfield_background_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_dark.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tooltip_frame_dark.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/tooltip_frame_dark.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_bottom.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_bottom.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_tab_indicator_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_background_transition_holo_light.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_small_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_borderless_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bga_banner_selector_point_solid.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_solid.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_single_selector.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_single_selector.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_ic_crop.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_ic_crop.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_gray_round_l_corner.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_gray_round_l_corner.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_menu_overflow_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_none.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_none.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_wihte_round_corner.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_wihte_round_corner.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_vector_loader_animated.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_loader_animated.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_light.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_contact_select.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_contact_select.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_progress.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_progress.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/selector_boxing_btn_solid.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/selector_boxing_btn_solid.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_bottom_navigation_item_background.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_voice_search_api_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_text_cursor_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_actionsheet_cancel.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_actionsheet_cancel.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_list_selector_holo_dark.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_more_unselect.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_more_unselect.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_edit_text_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_rotate_mum_light.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_rotate_mum_light.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_tile_bg.xml",
+        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bga_banner_selector_point_hollow.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_hollow.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_item_background_holo_light.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_snackbar_background.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_snackbar_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/shape_boxing_popup_background.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/shape_boxing_popup_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_actionsheet_header.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_actionsheet_header.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_left_selector.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_left_selector.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/shape_boxing_unchecked.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/shape_boxing_unchecked.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_bg.xml",
         "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tooltip_frame_dark.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/tooltip_frame_dark.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_password_eye.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_cab_background_top_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_colored_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/alertdialog_right_selector.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/alertdialog_right_selector.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_more_select.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_more_select.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_dialog_material_background.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/design_fab_background.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/design_fab_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bg_alertbutton_right.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bg_alertbutton_right.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_shape_progress_light.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_shape_progress_light.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_speech_unselect.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_speech_unselect.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_switch_thumb_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ic_search_api_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/ucrop_shadow_upside.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_shadow_upside.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_cab_background_internal_bg.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_icon_background.xml",
+        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/tab_home_select.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/tab_home_select.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/dialogui_spinner_mum.png",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/dialogui_spinner_mum.png"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_thumb_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_seekbar_tick_mark_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/notification_bg_low.xml",
+        "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_btn_radio_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/abc_ratingbar_material.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/navigation_empty_icon.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/drawable/navigation_empty_icon.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/drawable/bt.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bt.xml"
     }
 ]
