@@ -3,12 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MultiMedia/MultiMedia.iml" filepath="$PROJECT_DIR$/MultiMedia/MultiMedia.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MultiMedia/MultiMedia.iml" filepath="$PROJECT_DIR$/MultiMedia/MultiMedia.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MultiMediaDemo.iml" filepath="$PROJECT_DIR$/MultiMediaDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MultiMediaDemo.iml" filepath="$PROJECT_DIR$/MultiMediaDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MvpTools/MvpTools.iml" filepath="$PROJECT_DIR$/MvpTools/MvpTools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MvpTools/MvpTools.iml" filepath="$PROJECT_DIR$/MvpTools/MvpTools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
     </modules>
   </component>

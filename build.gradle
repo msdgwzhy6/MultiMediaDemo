@@ -1,5 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from: "config.gradle"
+
 buildscript {
     repositories {
         jcenter()
@@ -17,6 +18,9 @@ buildscript {
         //webp图片压缩
         classpath 'com.chuyun923.android.plugin:webpcompress:3.0.0'
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'//数据库
+
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
     }
 }
 
@@ -26,9 +30,11 @@ allprojects {
         maven { url "https://jitpack.io" }
         maven { url "https://maven.google.com" }
         maven { url "http://dl.bintray.com/mb-14/ConfigDroid" }
+        maven { url 'https://dl.bintray.com/devzwy/maven' }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+

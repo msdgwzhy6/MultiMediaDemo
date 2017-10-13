@@ -20,12 +20,12 @@
         "source": "/Users/alan/.android/build-cache/a713a54f2efce2de2f2bb1eedf16b10ce3ce7d37/output/res/drawable/notification_bg.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable/bga_banner_selector_point_hollow.xml",
-        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_hollow.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable/bga_banner_selector_point_hollow.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/drawable/bga_banner_selector_point_hollow.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",

@@ -4,12 +4,12 @@
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_edit_text_material.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable/ucrop_vector_loader_animated.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_loader_animated.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable/ucrop_vector_loader_animated.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/drawable/ucrop_vector_loader_animated.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/drawable/tab_home_unselect.png",

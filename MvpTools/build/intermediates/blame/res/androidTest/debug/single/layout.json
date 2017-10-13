@@ -136,12 +136,12 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/bga_banner_item_image.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/activity_boxing.xml",
-        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/activity_boxing.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/abc_expanded_menu_layout.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/activity_boxing.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/activity_boxing.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/abc_action_mode_bar.xml",
@@ -168,16 +168,16 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/item_alertbutton.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/dialogui_loading_horizontal.xml",
-        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/dialogui_loading_horizontal.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/abc_popup_menu_item_layout.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/layout_tab_segment.xml",
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/layout_tab_segment.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_popup_menu_item_layout.xml"
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/dialogui_loading_horizontal.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/bundles/debug/res/layout/dialogui_loading_horizontal.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/androidTest/debug/layout/layout_boxing_recycleview_item.xml",

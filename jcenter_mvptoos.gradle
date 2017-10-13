@@ -1,62 +1,11 @@
-apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'//retrolambda语法
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
-
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
-    //tools
-    provided rootProject.ext.dependencies["javax.annotation"]
-    compile rootProject.ext.dependencies["dagger2"]
-    annotationProcessor(rootProject.ext.dependencies["dagger2-compiler"]) {
-        exclude module: 'dagger'
-    }
-    compile rootProject.ext.dependencies["Utils"]
-    compile rootProject.ext.dependencies["LuBan"]
-    compile 'com.github.chrisbanes.photoview:library:1.2.4'
-    compile project(':MvpTools')
-    compile files('libs/cordovalib.jar')
-    compile files('libs/fastjson-1.1.42.android.jar')
-}
-
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-version = "1.0.0"
+version = "2.2.1"
 
 //upload infos.
 def siteUrl = 'https://github.com/devzwy/MultiMediaDemo'
 def gitUrl = 'https://github.com/devzwy/MultiMediaDemo.git'
-group = "com.hyty.cordova"
+group = "com.zwy"
 
 install {
     repositories.mavenInstaller {
@@ -127,11 +76,10 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "AndroidPlugin"
+        name = "MVPTools"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
         publish = true
     }
 }
-
