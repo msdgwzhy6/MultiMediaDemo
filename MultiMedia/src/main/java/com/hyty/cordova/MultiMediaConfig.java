@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.List;
+import java.util.Random;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -69,8 +70,9 @@ public class MultiMediaConfig {
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
     private String flagText;//水印文字
     private boolean isCanDelete = false;//预览模式下是否可以删除
-    private String parentUrl;//预览模式下的网络图片请求前缀
+//    private String parentUrl;//预览模式下的网络图片请求前缀
     private List<DataBean> preViewData;//预览的数据源
+    private String lat_lng ;//外部传入的经纬度
 
     /**
      * 将文件集合拷贝进指定存储目录并返回拷贝后的路径集合
@@ -141,17 +143,13 @@ public class MultiMediaConfig {
 
                     @Override
                     public void onSuccess(File file) {
-                        if (FileUtils.rename(file, new File(formFilesPath.get(p)).getName())) {
-                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + new File(formFilesPath.get(p)).getName());
-                        } else {
-                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + new File(formFilesPath.get(p)).getName());
-                            Timber.e("重命名失败，目标目录下同名文件存在，直接使用目标文件");
-                            if (file.delete()) {
-                                Timber.w("删除生成的新文件(未重命名)成功");
-                            } else {
-                                Timber.e("删除生成的新文件(未重命名)失败");
-                            }
+                        File mFromFile = new File(formFilesPath.get(p));
+                        File mToFile = rename(file, mFromFile.getName());
+                        if (mToFile == null) {
+                            mCopyFilesListener.onError("重命名失败");
+                            return;
                         }
+                        toFilesPath.add(mToFile.getPath());
                         p++;
                         if (p == formFilesPath.size()) {
                             mCopyFilesListener.onSucc(toFilesPath);
@@ -241,13 +239,13 @@ public class MultiMediaConfig {
         isCanDelete = mCanDelete;
     }
 
-    public String getParentUrl() {
-        return parentUrl;
-    }
-
-    public void setParentUrl(String mParentUrl) {
-        parentUrl = mParentUrl;
-    }
+//    public String getParentUrl() {
+//        return parentUrl;
+//    }
+//
+//    public void setParentUrl(String mParentUrl) {
+//        parentUrl = mParentUrl;
+//    }
 
     public List<DataBean> getPreViewData() {
         return preViewData;
@@ -257,9 +255,59 @@ public class MultiMediaConfig {
         preViewData = mPreViewData;
     }
 
+    public String getLat_lng() {
+        return lat_lng;
+    }
+
+    public void setLat_lng(String mLat_lng) {
+        lat_lng = mLat_lng;
+    }
+
     public static enum CameraTextFlagLocation {
         DEFAULT,//默认直接打入右下角
         LEFT,//逆时针旋转90度后打入右下角
         RIGHT,//顺时针旋转90度后打入右下角
+    }
+
+    private int renameTimes = 0;//重命名次数 ==100时自动取消重命名
+
+    /**
+     * 重命名文件，如果失败时自动添加新名称+随机数
+     *
+     * @param file    原文件
+     * @param newName 新文件名
+     * @return 新命名后的文件
+     */
+    private File rename(File file, String newName) {
+        if (renameTimes == 99) {
+            renameTimes = 0;
+            return null;
+        }
+        if (FileUtils.rename(file, newName)) {
+            renameTimes = 0;
+            return new File(mMediaConfig.getFileSavedPath() + "/" + newName);
+        } else {
+            int r = new Random().nextInt(100);
+            renameTimes++;
+            String startName = newName.split("\\.")[0];
+            String endName = newName.split("\\.")[1];
+            return rename(file, "copyFrom-" + startName + "(" + r + ")" + "." + endName);
+        }
+
+        //                        if (FileUtils.rename(file, .getName())) {
+//                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + new File(formFilesPath.get(p)).getName());
+//                        } else {
+//
+
+//                            int r = new Random().nextInt(100);
+//                            toFilesPath.add(mMediaConfig.getFileSavedPath() + "/" + "copyFrom-" + startName + "(" + r + ")" + "." + endName);
+//
+//                            Timber.e("重命名失败，目标目录下同名文件存在，重新命名:" + "copyFrom-" + startName + "(" + r + ")" + "." + endName);
+//                            if (file.delete()) {
+//                                Timber.w("删除生成的新文件(未重命名)成功");
+//                            } else {
+//                                Timber.e("删除生成的新文件(未重命名)失败");
+//                            }
+//                        }
     }
 }

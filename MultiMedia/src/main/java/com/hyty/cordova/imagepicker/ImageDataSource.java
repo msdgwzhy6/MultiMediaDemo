@@ -62,14 +62,31 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
                 ImageItem imageItem = new ImageItem();
                 File mFile = new File(mMultiMediaConfig.getFileSavedPath() + "/" + mDataBean.getFileName());
                 boolean exists = mFile.exists();
-                imageItem.name = exists ? mFile.getName() : mDataBean.getFileName_www();
-                imageItem.path = exists ? mFile.getPath() : mMultiMediaConfig.getParentUrl() + "/" + mDataBean.getFileName_www();
+                String name_ = "";
+                String path_ = "";
+
+                if (exists) {
+                    name_ = mFile.getName();
+                    path_ = mFile.getPath();
+                } else {
+                    String image_url = mDataBean.getFilePath_www();
+                    String[] mStrings = image_url.split("\\/");
+                    name_ = mStrings[mStrings.length - 1];
+                    path_ = image_url;
+                }
+//                imageItem.name = exists ? mFile.getName() : mDataBean.getFileName_www();
+                imageItem.name = name_;
+                imageItem.path = path_;
+
+//                imageItem.path = exists ? mFile.getPath() : mMultiMediaConfig.getParentUrl() + "/" + mDataBean.getFileName_www();
+//                imageItem.path = exists ? mFile.getPath() : mDataBean.getFileName_www();
+
 //                imageItem.size = exists ? mFile.getTotalSpace() : 0;
 //                imageItem.width = imageWidth;
 //                imageItem.height = imageHeight;
 //                imageItem.mimeType = imageMimeType;
 //                imageItem.addTime = imageAddTime;
-                Timber.d(exists ? "文件存在，组装路径:" + mFile.getPath() : "文件不存在,组装路径:" + mMultiMediaConfig.getParentUrl() + "/" + mDataBean.getFileName_www());
+                Timber.d(exists ? "文件存在，组装路径:" + mFile.getPath() : "文件不存在,组装路径:"+mDataBean.getFilePath_www());
                 allImages.add(imageItem);
             }
             List<ImageFolder> imageFolders = new ArrayList<>();

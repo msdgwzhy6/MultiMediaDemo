@@ -322,8 +322,11 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mDisposable = Observable.interval(1, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(mLong -> {
+                    String startStr = TextUtils.isEmpty(mMultiMediaConfig.getFlagText()) ? "" : mMultiMediaConfig.getFlagText();//222公里999米
                     String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-                    mTV_Flag.setText(TextUtils.isEmpty(mMultiMediaConfig.getFlagText()) ? (time) : (mMultiMediaConfig.getFlagText() + " " + time));
+                    String lat_lng = TextUtils.isEmpty(mMultiMediaConfig.getLat_lng()) ? "" : mMultiMediaConfig.getLat_lng();
+
+                    mTV_Flag.setText(startStr + " " + time + " " + lat_lng);
                 });
     }
 

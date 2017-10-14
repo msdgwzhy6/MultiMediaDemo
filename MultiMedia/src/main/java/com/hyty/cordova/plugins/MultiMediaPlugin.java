@@ -3,7 +3,10 @@ package com.hyty.cordova.plugins;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
+import android.util.Base64;
 
 import com.blankj.utilcode.util.Utils;
 import com.google.gson.Gson;
@@ -30,10 +33,19 @@ import org.apache.cordova.CordovaArgs;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import timber.log.Timber;
 
@@ -46,12 +58,12 @@ import timber.log.Timber;
  * ================================================================
  */
 public class MultiMediaPlugin extends CordovaPlugin {
-//    private static MultiMediaPlugin mPlugin;// TODO: 2017/10/10 记得删除单利测试模式
+    //    private static MultiMediaPlugin mPlugin;// TODO: 2017/10/10 记得删除单利测试模式
     private MultiMediaConfig mMediaConfig;//全局配置类
     private static boolean isInitLog = false;//日志初始化标识符
     private Activity mActivity;//super.cordova.getActivity();
     private ImagePicker mImagePicker;//图片加载器
-
+    private CallbackContext mCallbackContext;
 //    public static MultiMediaPlugin getInstance(Activity mActivity) {
 //        mPlugin = mPlugin == null ? new MultiMediaPlugin(mActivity) : mPlugin;
 //        return mPlugin;
@@ -71,6 +83,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
             Timber.e("传入参数不能为空");
             return false;
         }
+        this.mCallbackContext = callbackContext;
         mMediaConfig = MultiMediaConfig.getInstance();
         mImagePicker = ImagePicker.getInstance();
         mImagePicker.setImageLoader(new GlideImageLoader());
@@ -87,7 +100,15 @@ public class MultiMediaPlugin extends CordovaPlugin {
         }
         Timber.d("传入参数:" + rawArgs);
         mActivity = super.cordova.getActivity();// TODO: 2017/10/10 正式模式记得打开此处注释
-        requestPermissions(mConfigParams);//请求权限
+        ConfigParams finalMConfigParams = mConfigParams;
+        Observable.create(new ObservableOnSubscribe<Object>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Object> e) throws Exception {
+                e.onNext("");
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(mO -> requestPermissions(finalMConfigParams));//请求权限
         return true;
     }
 
@@ -135,6 +156,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
         mMediaConfig.setFlagText(mConfigParams.getFlagText());
         init();//初始化参数
         initFile();//初始化文件夹
+        Utils.init(mActivity.getApplication());
         Intent mIntent = null;
         int requestCode = 0;
         switch (mConfigParams.getType()) {
@@ -144,9 +166,10 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 //设置内部参数
                 mMediaConfig.setCameraFeature(CameraFeature.BUTTON_STATE_ONLY_CAPTURE);
                 mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
+                mMediaConfig.setLat_lng(TextUtils.isEmpty(mConfigParams.getLat_lng()) ? "" : mConfigParams.getLat_lng());
                 mIntent = createIntent(TakeCameraActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA;
-                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText());
+                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText()+",经纬度:"+mConfigParams.getLat_lng());
                 break;
             case 2:
                 // TODO: 2017/10/12 打开多图选择页面 带拍照按钮
@@ -156,27 +179,28 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mImagePicker.setCrop(false);//关闭裁剪
                 mImagePicker.setShowCamera(true);
                 mMediaConfig.setMaxOptionalNum(mConfigParams.getMaxOptionalNum() == 0 ? 9 : mConfigParams.getMaxOptionalNum());
+                mMediaConfig.setLat_lng(TextUtils.isEmpty(mConfigParams.getLat_lng()) ? "" : mConfigParams.getLat_lng());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
-                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText());
+                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText()+",经纬度:"+mConfigParams.getLat_lng());
                 break;
             case 3:
                 // TODO: 2017/10/13 图片预览模式 可选择是否具备删除功能
                 // TODO: 2017/10/13  需要参数:copy的路径、是否具备删除功能
-                if (TextUtils.isEmpty(mConfigParams.getUrlPathHeader())
-                        || mConfigParams.getData() == null
-                        || mConfigParams.getData().size() == 0) {
-                    Timber.e("预览时参数不能为空，请检查UrlPathHeader、Data字段");
-                    return;
-                }
+//                if (TextUtils.isEmpty(mConfigParams.getUrlPathHeader())
+//                        || mConfigParams.getData() == null
+//                        || mConfigParams.getData().size() == 0) {
+//                    Timber.e("预览时参数不能为空，请检查UrlPathHeader、Data字段");
+//                    return;
+//                }
                 mImagePicker.setCrop(false);//关闭裁剪
                 mImagePicker.setShowCamera(false);
                 mMediaConfig.setCanDelete(mConfigParams.isCanDelete());
-                mMediaConfig.setParentUrl(mConfigParams.getUrlPathHeader());
+//                mMediaConfig.setParentUrl(mConfigParams.getUrlPathHeader());
                 mMediaConfig.setPreViewData(mConfigParams.getData());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW;
-                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mConfigParams.getFolderName() + ",网络请求前缀:" + mConfigParams.getUrlPathHeader() + ",预览的数据长度:" + mConfigParams.getData().size());
+                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mConfigParams.getFolderName() +",预览的数据长度:" + mConfigParams.getData().size());
                 break;
         }
         if (mIntent == null || requestCode == 0) {
@@ -248,8 +272,82 @@ public class MultiMediaPlugin extends CordovaPlugin {
         if (intent == null) return;
         if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA
                 && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA) {
-            Timber.d("仅拍照模式返回数据:(未确定，未打印)");
+            createPicDataAndResult(printLog(intent, "仅拍照"));
+        } else if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER
+                && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER) {
+            createPicDataAndResult(printLog(intent, "多图选择"));
+        } else if (requestCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW
+                && resultCode == MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW) {
+            createDeletedDataAndResult(printLog(intent, "图片预览(返回数据为用户已选删除的图片路径)"));//构造参数并返回数据给调用者
         }
+    }
+
+    private void createPicDataAndResult(ArrayList<String> mList) {
+        JSONArray res = new JSONArray();
+        for (String pathL : mList) {
+            String fileName = new File(pathL).getName();
+            String jsOut = processPicture(Bitmap.createScaledBitmap(BitmapFactory.decodeFile(pathL), 200, 200, true), fileName);
+            org.json.JSONObject jsb = new org.json.JSONObject();
+            try {
+                jsb.put("js_out", jsOut);
+                jsb.put("pictureName", fileName);
+                res.put(jsb);
+            } catch (JSONException e) {
+                Timber.e(e.getMessage());
+                if (mCallbackContext != null) mCallbackContext.error(e.getMessage());
+                return;
+            }
+        }
+        if (mCallbackContext != null) this.mCallbackContext.success(res);
+    }
+
+    private void createDeletedDataAndResult(ArrayList<String> mList) {
+        JSONArray jsonArray = new JSONArray();
+        try {
+            for (int i = 0; i < mList.size(); i++) {
+                JSONObject jobject = new JSONObject();
+                jobject.put("fileName", new File(mList.get(i)).getName());
+                jsonArray.put(jobject);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            if (mCallbackContext != null) mCallbackContext.error("如果传入了网络图片的预览时不支持删除功能");
+            Timber.e("如果传入了网络图片的预览时不支持删除功能");
+            return;
+        }
+
+        if (mCallbackContext != null) mCallbackContext.success(jsonArray);
+    }
+
+    private ArrayList<String> printLog(Intent mIntent, String msg) {
+        ArrayList<String> list = mIntent.getStringArrayListExtra(Key.RESULT_INTENT);
+        Timber.d(msg + "模式返回数据:list.size():" + list.size());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i) + "\n");
+        }
+        Timber.d(sb.toString());
+        return list;
+    }
+
+    public String processPicture(Bitmap bitmap, String fileName) {
+        ByteArrayOutputStream jpeg_data = new ByteArrayOutputStream();
+        Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
+        if (fileName.endsWith("png") || fileName.endsWith("PNG")) {
+            compressFormat = Bitmap.CompressFormat.PNG;
+        }
+
+
+        String js_out = null;
+        if (bitmap.compress(compressFormat, 100, jpeg_data)) {
+            byte[] code = jpeg_data.toByteArray();
+            byte[] output = Base64.encode(code, Base64.NO_WRAP);
+            js_out = new String(output);
+            output = null;
+            code = null;
+        }
+        jpeg_data = null;
+        return js_out;
     }
 
     /**
@@ -259,7 +357,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
      * @param requestCode
      */
     private void startActivityForResult(Intent mIntent, int requestCode) {
-        mActivity.startActivityForResult(mIntent, requestCode);
+        super.cordova.startActivityForResult(this, mIntent, requestCode);
     }
 
     private Intent createIntent(Class<? extends Activity> mClass, int requestCode) {

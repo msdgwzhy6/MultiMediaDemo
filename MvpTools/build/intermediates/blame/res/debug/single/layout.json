@@ -16,12 +16,12 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/item_alertbutton.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/ucrop_view.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/layout/ucrop_view.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/layout_tab.xml",
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/layout_tab.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/ucrop_view.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/layout/ucrop_view.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/shortcut_main.xml",
@@ -60,12 +60,12 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/layout_alertview_alert_vertical.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_screen_content_include.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
+        "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/abc_screen_content_include.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
@@ -76,12 +76,12 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/activity_boxing_view.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/include_alertheader.xml",
-        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/include_alertheader.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
         "source": "/Users/alan/.android/build-cache/0f204e5e43b45cfd1dcce2557e1c982dc2bae74f/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/include_alertheader.xml",
+        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/include_alertheader.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/notification_media_cancel_action.xml",
@@ -104,12 +104,12 @@
         "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/layout/layout_boxing_album_item.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/layout/design_layout_snackbar.xml"
-    },
-    {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/notification_template_big_media_narrow_custom.xml",
         "source": "/Users/alan/.android/build-cache/08276f20403aeb7b685b2c1e91767a7b5fab84bb/output/res/layout/notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
+        "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/layout/design_layout_snackbar.xml"
     },
     {
         "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",

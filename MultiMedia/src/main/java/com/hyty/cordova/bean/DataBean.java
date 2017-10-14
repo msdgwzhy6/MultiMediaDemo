@@ -12,11 +12,11 @@ import java.io.Serializable;
  */
 public class DataBean implements Serializable {
     private String fileName;//本地文件名称
-    private String fileName_www;//网络存储的名称
+    private String filePath_www;//网络存储的名称
 
-    public DataBean(String mFileName, String mFileName_www) {
+    public DataBean(String mFileName, String mFilePath_www) {
         fileName = mFileName;
-        fileName_www = mFileName_www;
+        filePath_www = mFilePath_www;
     }
 
     public String getFileName() {
@@ -27,11 +27,11 @@ public class DataBean implements Serializable {
         fileName = mFileName;
     }
 
-    public String getFileName_www() {
-        return fileName_www;
+    public String getFilePath_www() {
+        return filePath_www;
     }
 
-    public void setFileName_www(String mFileName_www) {
-        fileName_www = mFileName_www;
+    public void setFilePath_www(String mFilePath_www) {
+        filePath_www = mFilePath_www;
     }
 }

@@ -86,10 +86,10 @@ dependencies {
     }
 //    compile(name: 'MultiMedia', ext: 'aar')
 //    compile(name: 'MvpTools', ext: 'aar')
-    compile 'com.hyty.cordova:MultiMedia:1.0.0'
-    compile 'com.zwy:MvpTools:2.2.1'
+//    compile 'com.hyty.cordova:MultiMedia:1.0.0'
+//    compile 'com.zwy:MvpTools:2.2.1'
 //========================================================以上为插件所必须的依赖========================================================
 
-//    compile project(':MultiMedia')
+    compile project(':MultiMedia')
 }
 repositories { flatDir { dirs '../aars' } }

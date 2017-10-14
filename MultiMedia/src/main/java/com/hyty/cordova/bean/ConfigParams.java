@@ -18,9 +18,9 @@ public class ConfigParams implements Serializable {
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片 默认为:defaultfolder
     private String flagText;//水印文字
     private boolean isCanDelete;//是否具备删除功能,仅在预览模式有效
-    private String urlPathHeader;//当本地文件不存在时在网络获取的请求前缀 仅在预览模式有效
+//    private String urlPathHeader;//当本地文件不存在时在网络获取的请求前缀 仅在预览模式有效
     private List<DataBean> data;
-
+    private String lat_lng;//经纬度信息
     /**
      * 快速拍照需要传入的参数
      *
@@ -29,11 +29,12 @@ public class ConfigParams implements Serializable {
      * @param mFolderName     存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
      * @param flagText        水印文字
      */
-    public ConfigParams(int mType, int mMaxOptionalNum, String mFolderName, String flagText) {
+    public ConfigParams(int mType, int mMaxOptionalNum, String mFolderName, String flagText,String lat_lng) {
         type = mType;
         maxOptionalNum = mMaxOptionalNum;
         folderName = mFolderName;
         this.flagText = flagText;
+        this.lat_lng =lat_lng;
     }
 
     /**
@@ -41,14 +42,12 @@ public class ConfigParams implements Serializable {
      *
      * @param mType         业务类型
      * @param mFolderName   存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
-     * @param urlPathHeader 网络请求前缀 比如:http://www.baidu.image/
      * @param mIsCanDelete  是否具备删除功能
      * @param data          预览的数据源
      */
-    public ConfigParams(int mType, String mFolderName, String urlPathHeader, boolean mIsCanDelete, List<DataBean> data) {
+    public ConfigParams(int mType, String mFolderName, boolean mIsCanDelete, List<DataBean> data) {
         type = mType;
         folderName = mFolderName;
-        this.urlPathHeader = urlPathHeader;
         isCanDelete = mIsCanDelete;
         this.data = data;
     }
@@ -93,19 +92,19 @@ public class ConfigParams implements Serializable {
         isCanDelete = mCanDelete;
     }
 
-    public String getUrlPathHeader() {
-        return urlPathHeader;
-    }
-
-    public void setUrlPathHeader(String mUrlPathHeader) {
-        urlPathHeader = mUrlPathHeader;
-    }
-
     public List<DataBean> getData() {
         return data;
     }
 
     public void setData(List<DataBean> mData) {
         data = mData;
+    }
+
+    public String getLat_lng() {
+        return lat_lng;
+    }
+
+    public void setLat_lng(String mLat_lng) {
+        lat_lng = mLat_lng;
     }
 }

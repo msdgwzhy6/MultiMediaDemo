@@ -1,7 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -130,10 +128,10 @@ dependencies {
     testCompile rootProject.ext.dependencies["junit"]
     compile 'com.android.support:multidex:1.0.1'
 }
-
+//
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "2.2.2"
+version = "2.2.9"
 
 //upload infos.
 def siteUrl = 'https://github.com/devzwy/MultiMediaDemo'

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'me.tatarka.retrolambda'//retrolambda语法
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -10,7 +10,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0.1"
+        versionName "1.0.8"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -48,10 +48,10 @@ dependencies {
     compile files('libs/cordovalib.jar')
     compile files('libs/fastjson-1.1.42.android.jar')
 }
-
+//
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = "1.0.1"
+version = "1.0.9"
 
 //upload infos.
 def siteUrl = 'https://github.com/devzwy/MultiMediaDemo'

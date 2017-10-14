@@ -2,12 +2,12 @@
 -charset 'UTF-8'
 -classpath '/android-sdk/platforms/android-26/android.jar:/android-sdk/platforms/android-26/optional/org.apache.http.legacy.jar'
 -d '/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/docs/javadoc'
--doctitle 'MvpTools 2.2.2 API'
+-doctitle 'MvpTools 2.2.9 API'
 -encoding 'UTF-8'
 -link 'http://docs.oracle.com/javase/7/docs/api'
 -quiet 
 -version 
--windowtitle 'MvpTools 2.2.2 API'
+-windowtitle 'MvpTools 2.2.9 API'
 '/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/java/com/jess/arms/di/module/GlobalConfigModule.java'
 '/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/java/com/jess/arms/di/module/AppModule.java'
 '/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/java/com/jess/arms/di/module/ClientModule.java'

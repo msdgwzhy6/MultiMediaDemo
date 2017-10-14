@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jess.arms"
     android:versionCode="1"
-    android:versionName="1.0.1" >
+    android:versionName="2.2.9" >
 
     <uses-sdk
         android:minSdkVersion="16"
