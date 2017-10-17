@@ -40,6 +40,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
     private View bottomBar;
     private View marginView;
     private MultiMediaConfig mMultiMediaConfig;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +58,12 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
 //            }
 //        }
 
-        if (imagePicker.isMultiMode() &&  mMultiMediaConfig.isCanDelete()) {
+        if (imagePicker.isMultiMode() && mMultiMediaConfig.isCanDelete()) {
             mBtnOk.setVisibility(View.VISIBLE);
-        } else if (imagePicker.isMultiMode() &&  !mMultiMediaConfig.isCanDelete()){
-            if (mMultiMediaConfig.getDoType()==3){
+        } else if (imagePicker.isMultiMode() && !mMultiMediaConfig.isCanDelete()) {
+            if (mMultiMediaConfig.getDoType() == 3) {
                 mBtnOk.setVisibility(View.GONE);
-            }else {
+            } else {
                 mBtnOk.setVisibility(View.VISIBLE);
             }
         }
@@ -149,9 +150,17 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
     @Override
     public void onImageSelected(int position, ImageItem item, boolean isAdd) {
         if (imagePicker.getSelectImageCount() > 0) {
-            mBtnOk.setText(getString(R.string.ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+            if (mMultiMediaConfig.getDoType() == 1 || mMultiMediaConfig.getDoType() == 3) {
+                mBtnOk.setText(getString(R.string.ip_select_delete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+            } else {
+                mBtnOk.setText(getString(R.string.ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+            }
         } else {
-            mBtnOk.setText(getString(R.string.ip_complete));
+            if (mMultiMediaConfig.getDoType() == 1 || mMultiMediaConfig.getDoType() == 3) {
+                mBtnOk.setText(getString(R.string.ip_complete_delete));
+            } else {
+                mBtnOk.setText(getString(R.string.ip_complete));
+            }
         }
 
         if (mCbOrigin.isChecked()) {
