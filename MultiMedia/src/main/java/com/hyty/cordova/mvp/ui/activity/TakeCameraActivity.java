@@ -128,7 +128,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         mCameraView.setLeftClickListener(() -> finishPage(null));
         //预览按钮
         mCameraView.setPreviewIconClickListener(mView -> {
-            if (mPresenter.getSelectedImages().size() == 0){
+            if (mPresenter.getSelectedImages().size() == 0) {
                 ArmsUtils.showToast("您还没有拍照");
                 return;
             }
@@ -341,9 +341,8 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
 //                Log.d(TAG, "pX:" + px + "  pY:" + py + "  pZ:" + pz + "    stamp:"
 //                        + stamp + "  second:" + second);
                     double value = Math.sqrt(px * px + py * py + pz * pz);
-                    if (value > 1.4) {
-//                    textviewF.setText("检测手机在移动..");
-//                    Log.i(TAG,"mobile moving");
+                    if (value > 1.8) {
+                        //检测手机在移动
                         STATUE = STATUS_MOVE;
                     } else {
 //                    textviewF.setText("检测手机静止..");
@@ -454,45 +453,28 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
             Timber.d("全部已拍照片长度 = " + path_old.size());
 
             ArrayList<File> backFiles = new ArrayList<>();
-           List<String> mList =  getDiffrent(path_old,paths_delete);
-            for (String path :mList){
+            List<String> mList = getDiffrent(path_old, paths_delete);
+            for (String path : mList) {
                 backFiles.add(new File(path));
             }
             mPresenter.setSelectedImages(backFiles);
             mMultiMediaConfig.setCamerasNumber(mPresenter.getSelectedImages().size());
-
-//            Observable.create(new ObservableOnSubscribe<File>() {
-//                @Override
-//                public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<File> e) throws Exception {
-//
-//                    e.onComplete();
-//                }
-//            }).subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe(new DefaultObserver<File>() {
-//                        @Override
-//                        public void onNext(@io.reactivex.annotations.NonNull File mFile) {
-//                            backFiles.add(mFile);
-//                        }
-//
-//                        @Override
-//                        public void onError(@io.reactivex.annotations.NonNull Throwable e) {
-//
-//                        }
-//
-//                        @Override
-//                        public void onComplete() {
-//                            mPresenter.setSelectedImages(backFiles);
-//                            mMultiMediaConfig.setCamerasNumber(mPresenter.getSelectedImages().size());
-//                        }
-//                    });
+            for (String p : paths_delete) {
+                File f = new File(p);
+                if (f.exists()){
+                    f.delete();
+                    Timber.d("文件:" + f.getName() + "删除成功");
+                }
+            }
 //
         }
 
 
     }
+
     /**
      * 获取两个List的不同元素
+     *
      * @param list1
      * @param list2
      * @return
@@ -502,31 +484,27 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         List<String> diff = new ArrayList<String>();
         List<String> maxList = list1;
         List<String> minList = list2;
-        if(list2.size()>list1.size())
-        {
+        if (list2.size() > list1.size()) {
             maxList = list2;
             minList = list1;
         }
-        Map<String,Integer> map = new HashMap<String,Integer>(maxList.size());
+        Map<String, Integer> map = new HashMap<String, Integer>(maxList.size());
         for (String string : maxList) {
             map.put(string, 1);
         }
         for (String string : minList) {
-            if(map.get(string)!=null)
-            {
+            if (map.get(string) != null) {
                 map.put(string, 2);
                 continue;
             }
             diff.add(string);
         }
-        for(Map.Entry<String, Integer> entry:map.entrySet())
-        {
-            if(entry.getValue()==1)
-            {
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
                 diff.add(entry.getKey());
             }
         }
-        System.out.println("getDiffrent5 total times "+(System.nanoTime()-st));
+        System.out.println("getDiffrent5 total times " + (System.nanoTime() - st));
         return diff;
 
     }

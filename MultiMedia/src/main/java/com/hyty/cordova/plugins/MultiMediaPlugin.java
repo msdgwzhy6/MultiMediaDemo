@@ -169,7 +169,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setLat_lng(TextUtils.isEmpty(mConfigParams.getLat_lng()) ? "" : mConfigParams.getLat_lng());
                 mIntent = createIntent(TakeCameraActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_TAKECAMERA;
-                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText()+",经纬度:"+mConfigParams.getLat_lng());
+                Timber.d("跳转快速拍照页面(模式:仅拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText() + ",经纬度:" + mConfigParams.getLat_lng());
                 break;
             case 2:
                 // TODO: 2017/10/12 打开多图选择页面 带拍照按钮
@@ -182,7 +182,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setLat_lng(TextUtils.isEmpty(mConfigParams.getLat_lng()) ? "" : mConfigParams.getLat_lng());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PIKER;
-                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText()+",经纬度:"+mConfigParams.getLat_lng());
+                Timber.d("跳转多图选择+拍照页面(模式:多图选择+拍照),存储的文件夹名称:" + mConfigParams.getFolderName() + ",最大可选:" + mConfigParams.getMaxOptionalNum() + ",水印文字:" + mConfigParams.getFlagText() + ",经纬度:" + mConfigParams.getLat_lng());
                 break;
             case 3:
                 // TODO: 2017/10/13 图片预览模式 可选择是否具备删除功能
@@ -200,7 +200,7 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 mMediaConfig.setPreViewData(mConfigParams.getData());
                 mIntent = createIntent(ImageGridActivity.class, MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW);
                 requestCode = MultiMediaConfig.REQUEST_CODE_HOME_IMAGE_PREVIEW;
-                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mConfigParams.getFolderName() +",预览的数据长度:" + mConfigParams.getData().size());
+                Timber.d("跳转图片预览页面(是否具备删除功能:" + mConfigParams.isCanDelete() + "),存储的文件夹名称:" + mConfigParams.getFolderName() + ",预览的数据长度:" + mConfigParams.getData().size());
                 break;
         }
         if (mIntent == null || requestCode == 0) {
@@ -306,8 +306,13 @@ public class MultiMediaPlugin extends CordovaPlugin {
         try {
             for (int i = 0; i < mList.size(); i++) {
                 JSONObject jobject = new JSONObject();
-                jobject.put("fileName", new File(mList.get(i)).getName());
+                File f = new File(mList.get(i));
+                jobject.put("fileName", f.getName());
                 jsonArray.put(jobject);
+                if (f.exists()) {
+                    f.delete();
+                    Timber.d("文件:" + f.getName() + "删除成功");
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();

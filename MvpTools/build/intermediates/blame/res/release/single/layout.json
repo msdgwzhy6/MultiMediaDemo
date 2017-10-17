@@ -40,12 +40,12 @@
         "source": "/projects/MultiMediaDemo/MvpTools/src/main/res/layout/layout_boxing_album_item.xml"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/item_alertbutton.xml",
-        "source": "/projects/MultiMediaDemo/MvpTools/src/main/res/layout/item_alertbutton.xml"
-    },
-    {
         "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/design_text_input_password_icon.xml",
         "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/layout/design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/item_alertbutton.xml",
+        "source": "/projects/MultiMediaDemo/MvpTools/src/main/res/layout/item_alertbutton.xml"
     },
     {
         "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/notification_template_part_time.xml",
@@ -92,12 +92,12 @@
         "source": "/Users/alan/.android/build-cache/49e5373e717a62a3b4d7dd29aa86faf039dc5491/output/res/layout/design_navigation_item_separator.xml"
     },
     {
-        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/notification_template_lines_media.xml",
-        "source": "/Users/alan/.android/build-cache/08276f20403aeb7b685b2c1e91767a7b5fab84bb/output/res/layout/notification_template_lines_media.xml"
-    },
-    {
         "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/include_alertheader.xml",
         "source": "/projects/MultiMediaDemo/MvpTools/src/main/res/layout/include_alertheader.xml"
+    },
+    {
+        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/notification_template_lines_media.xml",
+        "source": "/Users/alan/.android/build-cache/08276f20403aeb7b685b2c1e91767a7b5fab84bb/output/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/release/layout/design_navigation_item_header.xml",
