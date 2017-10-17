@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/menu/activity_boxing_image_viewer.xml",
-        "source": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/src/main/res/menu/activity_boxing_image_viewer.xml"
+        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/menu/ucrop_menu_activity.xml",
+        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/menu/ucrop_menu_activity.xml"
     },
     {
-        "merged": "/Users/alan/Desktop/news/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/menu/ucrop_menu_activity.xml",
-        "source": "/Users/alan/.android/build-cache/d10c38d6101f2e649c2e2706abee4f0262e2a0ee/output/res/menu/ucrop_menu_activity.xml"
+        "merged": "/projects/MultiMediaDemo/MvpTools/build/intermediates/res/merged/debug/menu/activity_boxing_image_viewer.xml",
+        "source": "/projects/MultiMediaDemo/MvpTools/src/main/res/menu/activity_boxing_image_viewer.xml"
     }
 ]

@@ -44,6 +44,7 @@ public class MultiMediaConfig {
     public static final int REQUEST_CODE_HOME_IMAGE_PIKER = 0x02;//从插件首页跳转多图选择页面请求码
     public static final int REQUEST_CODE_IMAGEPICKER_TAKECAMERA = 0x03;//从多图选择页面跳转拍照页面请求码
     public static final int REQUEST_CODE_HOME_IMAGE_PREVIEW = 0x04;//从插件首页跳转图片预览页面(原多图选择页面，隐藏部分view)
+    public static final int REQUEST_CODE_TAKECAMERA_PREVIEW_ONLY = 0x05;//从拍照页面跳转预览(带删除功能)页面
 
 
     public static Long startTime;
@@ -64,6 +65,7 @@ public class MultiMediaConfig {
     private String fileSavedPath;//存储文件的文件夹
     private String flagText_willUse;//待使用的水印文字
     private int doType;//当前操作类型
+    private int camerasNumber;//当前已拍数量
 
     //外部传入参数定义
     private int maxOptionalNum;//最大可选/可拍数量 默认为9张
@@ -261,6 +263,14 @@ public class MultiMediaConfig {
 
     public void setLat_lng(String mLat_lng) {
         lat_lng = mLat_lng;
+    }
+
+    public int getCamerasNumber() {
+        return camerasNumber;
+    }
+
+    public void setCamerasNumber(int mCamerasNumber) {
+        camerasNumber = mCamerasNumber;
     }
 
     public static enum CameraTextFlagLocation {

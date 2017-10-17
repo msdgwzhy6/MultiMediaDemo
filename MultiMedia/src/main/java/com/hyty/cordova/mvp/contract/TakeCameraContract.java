@@ -21,6 +21,12 @@ public interface TakeCameraContract {
          * @param msg
          */
         void showLoading(String msg);
+
+        /**
+         * 设置预览的数字
+         * @param count
+         */
+        void setPreviewCount(int count);
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存

@@ -7,6 +7,7 @@ import android.graphics.Color;
 
 import com.blankj.utilcode.util.FileUtils;
 import com.hyty.cordova.MultiMediaConfig;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ImageUtil;
@@ -85,17 +86,17 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
         switch (mMultiMediaConfig.getFlagLocation()) {
             case DEFAULT:
                 str = "将水印文字直接打入右下角";
-                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 35, Color.RED, 15, 15);
                 break;
             case LEFT:
                 str = "图片逆时针旋转90°后将水印文字直接打入右下角";
                 //ImageUtil.rotateBitmap(mBitmap, 270)
-                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 35, Color.RED, 15, 15);
                 break;
             case RIGHT:
                 str = "图片顺时针旋转90°后将水印文字直接打入右下角";
                 //ImageUtil.rotateBitmap(mBitmap, 90)
-                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 40, Color.RED, 15, 15);
+                mBitmap_Saved = ImageUtil.drawTextToRightBottom(mApplication, mBitmap, mMultiMediaConfig.getFlagText_willUse(), 35, Color.RED, 15, 15);
                 break;
         }
 
@@ -110,20 +111,33 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
         canUseFiles_camera.add(mFile);
         FileUtil.galleryAddPic(mApplication, mFile);//刷新图库
         ArmsUtils.dissMissLoading();
+
+        mRootView.setPreviewCount(canUseFiles_camera.size());
         Timber.d("图片处理耗时:" + (new Date().getTime() - t) + " ms");
         Timber.d("图片处理结束，耗时:" + (new Date().getTime() - MultiMediaConfig.startTime) + " ms");
 
     }
 
-    public ArrayList<ImageItem> getSelectedImages(ArrayList<ImageItem> images_from) {
+    public List<DataBean> getSelectedImages() {
+        List<DataBean> mPreViewData = new ArrayList<>();
         for (File mFile : canUseFiles_camera) {
-            ImageItem mImageItem = new ImageItem();
-            mImageItem.name = mFile.getName();
-            mImageItem.path = mFile.getPath();
-            images_from.add(mImageItem);
+//            ImageItem mImageItem = new ImageItem();
+//            mImageItem.name = mFile.getName();
+//            mImageItem.path = mFile.getPath();
+            mPreViewData.add(new DataBean(mFile.getName(), "unknow"));
         }
 
-        return images_from;
+        return mPreViewData;
+    }
+
+    public void setSelectedImages(ArrayList<File> canUseFiles_camera) {
+        if (canUseFiles_camera == null) {
+            this.canUseFiles_camera = new ArrayList<>();
+            mRootView.setPreviewCount(0);
+            return;
+        }
+        this.canUseFiles_camera = canUseFiles_camera;
+        mRootView.setPreviewCount(canUseFiles_camera.size());
     }
 
     public void getResultData(CopyFilesListener mCopyFilesListener) {
@@ -135,7 +149,8 @@ public class TakeCameraPresenter extends BasePresenter<TakeCameraContract.Model,
         for (File mFile : canUseFiles_camera) {
             formFilesPath.add(mFile.getPath());
         }
-        mMultiMediaConfig.commpImages(formFilesPath, mApplication, mCopyFilesListener);
+        if (mCopyFilesListener != null)
+            mMultiMediaConfig.commpImages(formFilesPath, mApplication, mCopyFilesListener);
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
@@ -22,8 +23,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -40,13 +43,16 @@ import com.hyty.cordova.camera.state.CameraMachine;
 import com.hyty.cordova.camera.util.FileUtil;
 import com.hyty.cordova.camera.util.ScreenUtils;
 import com.hyty.cordova.camera.view.CameraView;
+import com.hyty.cordova.imagepicker.ImagePicker;
 import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBar;
 import com.hyty.cordova.mvp.ui.view.seekbar.VerticalSeekBarWrapper;
+import com.jess.arms.utils.ArmsUtils;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -108,6 +114,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private JCameraListener jCameraLisenter;
     private ClickListener leftClickListener;
     private ClickListener rightClickListener;
+    private OnClickListener previewClickListener;
 
     private Context mContext;
     private VideoView mVideoView;
@@ -123,6 +130,9 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     private TextView mTV_Flag;
     private MultiMediaConfig mMultiMediaConfig;
     private Disposable mDisposable;
+    private ImageView mIvPreview;
+    private LinearLayout mPreviewLayout;
+    private TextView mNumberTextView;
 
     public ImageView getmFlashLamp() {
         return mFlashLamp;
@@ -195,6 +205,12 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mSwitchCamera = (ImageView) view.findViewById(R.id.image_switch);
         mSwitchCamera.setImageResource(iconSrc);
         mFlashLamp = (ImageView) view.findViewById(R.id.image_flash);
+        mIvPreview = (ImageView) view.findViewById(R.id.iv_preview);
+        mPreviewLayout = (LinearLayout) view.findViewById(R.id.ll_preview);
+        mNumberTextView = (TextView) view.findViewById(R.id.tv_number);
+        mPreviewLayout.setOnClickListener(mView -> {
+            if (previewClickListener != null) previewClickListener.onClick(mView);
+        });
         mVerticalSeekBar = (VerticalSeekBar) findViewById(R.id.seekBar);
         mRL_Flag = (RelativeLayout) findViewById(R.id.rl_flag);
         mTV_Flag = (TextView) findViewById(R.id.tv_flag);
@@ -214,6 +230,12 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 setFlashRes();
             }
         });
+//        if (mMultiMediaConfig.getDoType() == 1) {
+//            mIvPreview.setVisibility(VISIBLE);
+//            mIvPreview.setOnClickListener(mView -> {
+//                if (previewClickListener != null) previewClickListener.onClick(mView);
+//            });
+//        }
         mCaptureLayout = (CaptureLayout) view.findViewById(R.id.capture_layout);
         mCaptureLayout.setDuration(duration);
         mCaptureLayout.setIconSrc(iconLeft, iconRight);
@@ -230,6 +252,11 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
         mCaptureLayout.setCaptureLisenter(new CaptureListener() {
             @Override
             public void takePictures() {
+//                maxNumber -= ImagePicker.getInstance().getSelectImageCount();
+                if (mMultiMediaConfig.getCamerasNumber() == mMultiMediaConfig.getMaxOptionalNum() && mMultiMediaConfig.getDoType() == 1) {
+                    ArmsUtils.showToast("超出最大可拍照数量");
+                    return;
+                }
                 Timber.d("拍照");
                 mMultiMediaConfig.setFlagText_willUse(mTV_Flag.getText().toString());
                 mSwitchCamera.setVisibility(INVISIBLE);
@@ -239,6 +266,7 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 } else {
                     machine.capture();
                 }
+                mMultiMediaConfig.setCamerasNumber(mMultiMediaConfig.getCamerasNumber() + 1);
             }
 
             @Override
@@ -316,6 +344,17 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 }
             }
         });
+
+        FrameLayout fl_top = (FrameLayout) view.findViewById(R.id.fl_top);
+        fl_top.setOnClickListener(mView -> {
+        });
+        int w = ScreenUtils.getScreenWidth(mContext);
+        int h = ScreenUtils.getScreenHeight(mContext);
+
+        ViewGroup.LayoutParams mLayoutParams = fl_top.getLayoutParams();
+        mLayoutParams.width = w;
+        mLayoutParams.height = ((h - w) / 2) -40;
+        fl_top.setLayoutParams(mLayoutParams);
     }
 
     private void setText() {
@@ -323,10 +362,12 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(mLong -> {
                     String startStr = TextUtils.isEmpty(mMultiMediaConfig.getFlagText()) ? "" : mMultiMediaConfig.getFlagText();//222公里999米
-                    String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+                    String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US).format(new Date());
                     String lat_lng = TextUtils.isEmpty(mMultiMediaConfig.getLat_lng()) ? "" : mMultiMediaConfig.getLat_lng();
 
-                    mTV_Flag.setText(startStr + " " + time + " " + lat_lng);
+//                    mTV_Flag.setText(startStr + " " + time + " " + lat_lng);
+                    mTV_Flag.setText(startStr.trim() + " " + time);
+
                 });
     }
 
@@ -385,6 +426,8 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     public void surfaceDestroyed(SurfaceHolder holder) {
         Timber.d("JCameraView SurfaceDestroyed");
         CameraInterface.getInstance().doDestroyCamera();
+//        maxNumber = MultiMediaConfig.getInstance().getMaxOptionalNum();
+        mMultiMediaConfig.setCamerasNumber(0);
     }
 
 
@@ -741,6 +784,10 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
 
     }
 
+    public void setPreviewIconClickListener(OnClickListener clickListener) {
+        previewClickListener = clickListener;
+    }
+
     public void setZoom(int zoom) {
         try {
             Camera camera = CameraInterface.getInstance().getCamera();
@@ -752,5 +799,11 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
             e.printStackTrace();
             Timber.e("设置焦距焦距异常");
         }
+    }
+
+    public void setPreview(int number) {
+        if (mMultiMediaConfig.getDoType() != 1) number = 0;
+        mPreviewLayout.setVisibility(number > 0 ? VISIBLE : GONE);
+        mNumberTextView.setText(String.valueOf(number) + " 张");
     }
 }

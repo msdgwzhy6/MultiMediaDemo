@@ -9,7 +9,7 @@
     <com.hyty.cordova.mvp.ui.view.MyFL
         android:id="@+id/layout_camera"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <VideoView
@@ -51,7 +51,7 @@
                 android:layout_marginRight="10dp"
                 android:text="2017年10月12日10:16:01"
                 android:textColor="@color/actionsheet_red"
-                android:textSize="18sp"/>
+                android:textSize="16sp"/>
         </RelativeLayout>
 
 
@@ -63,11 +63,34 @@
             android:visibility="visible"/>
     </com.hyty.cordova.mvp.ui.view.MyFL>
 
-
     <LinearLayout
+        android:id="@+id/ll_preview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_preview"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_margin="16dp"
+            android:src="@mipmap/previewimg"/>
+
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:text="0 张"
+            android:textColor="@color/white"
+            android:textSize="17sp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
@@ -75,6 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_toLeftOf="@+id/image_switch"
             android:src="@drawable/ic_flash_on"
             android:visibility="gone"/>
 
@@ -82,11 +106,19 @@
             android:id="@+id/image_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_margin="16dp"
             android:src="@drawable/ic_camera"
             android:visibility="gone"/>
 
-    </LinearLayout>
+        <FrameLayout
+            android:id="@+id/fl_top"
+            android:layout_width="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"></FrameLayout>
+
+    </RelativeLayout>
 
 
     <com.hyty.cordova.camera.CaptureLayout
@@ -101,4 +133,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="invisible"/>
+
 </FrameLayout>

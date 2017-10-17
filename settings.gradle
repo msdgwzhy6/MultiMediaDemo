@@ -1,1 +1,1 @@
-include ':demo', ':MultiMedia', ':MvpTools'
+include ':demo', ':MvpTools', ':MultiMedia'

@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hyty.cordova.MultiMediaConfig;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.imagepicker.DataHolder;
 import com.hyty.cordova.imagepicker.ImageDataSource;
@@ -35,6 +36,7 @@ import com.hyty.cordova.imagepicker.view.GridSpacingItemDecoration;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.jess.arms.utils.ArmsUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,7 +101,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         mMultiMediaConfig = MultiMediaConfig.getInstance();
         imagePicker.clear();
         imagePicker.addOnImageSelectedListener(this);
-        if (mMultiMediaConfig.getDoType() == 3) {
+        if (mMultiMediaConfig.getDoType() == 3 || mMultiMediaConfig.getDoType() == 1) {
             imagePicker.setSelectLimit(mMultiMediaConfig.getPreViewData().size());
         } else {
             imagePicker.setSelectLimit(mMultiMediaConfig.getMaxOptionalNum());
@@ -126,12 +128,12 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         mBtnOk = (Button) findViewById(R.id.btn_ok);
         mBtnOk.setOnClickListener(this);
         if (mMultiMediaConfig.getDoType() == 3 && mMultiMediaConfig.isCanDelete()) {
-                mBtnOk.setVisibility(View.VISIBLE);
-                mFooterBar.setVisibility(View.VISIBLE);
-        }else if (mMultiMediaConfig.getDoType() == 3 && !mMultiMediaConfig.isCanDelete()){
-                mBtnOk.setVisibility(View.GONE);
-                mFooterBar.setVisibility(View.GONE);
-        }else {
+            mBtnOk.setVisibility(View.VISIBLE);
+            mFooterBar.setVisibility(View.VISIBLE);
+        } else if (mMultiMediaConfig.getDoType() == 3 && !mMultiMediaConfig.isCanDelete()) {
+            mBtnOk.setVisibility(View.GONE);
+            mFooterBar.setVisibility(View.GONE);
+        } else {
             mBtnOk.setVisibility(View.VISIBLE);
             mFooterBar.setVisibility(View.VISIBLE);
         }
@@ -141,14 +143,14 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
         mllDir = findViewById(R.id.ll_dir);
         mllDir.setOnClickListener(this);
         mtvDir = (TextView) findViewById(R.id.tv_dir);
-        if (imagePicker.isMultiMode() &&  mMultiMediaConfig.isCanDelete()) {
+        if (imagePicker.isMultiMode() && mMultiMediaConfig.isCanDelete()) {
             mBtnOk.setVisibility(View.VISIBLE);
             mBtnPre.setVisibility(View.VISIBLE);
-        } else if (imagePicker.isMultiMode() &&  !mMultiMediaConfig.isCanDelete()){
-            if (mMultiMediaConfig.getDoType()==3){
+        } else if (imagePicker.isMultiMode() && !mMultiMediaConfig.isCanDelete()) {
+            if (mMultiMediaConfig.getDoType() == 3) {
                 mBtnOk.setVisibility(View.GONE);
                 mBtnPre.setVisibility(View.GONE);
-            }else {
+            } else {
                 mBtnOk.setVisibility(View.VISIBLE);
                 mBtnPre.setVisibility(View.VISIBLE);
             }
@@ -214,14 +216,34 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
                 paths.add(item.path);
             }
 
-            if (mMultiMediaConfig.getDoType()==3){
+            if (mMultiMediaConfig.getDoType() == 3 || mMultiMediaConfig.getDoType() == 1) {
                 intent.putExtra(Key.RESULT_INTENT, paths);
                 setResult(resultCode, intent);
                 finish();
                 return;
             }
+//            if (mMultiMediaConfig.getDoType() == 1) {
+////                mMultiMediaConfig.setMaxOptionalNum(mMultiMediaConfig.getMaxOptionalNum() + imagePicker.getSelectImageCount());
+//                List<DataBean> mDataBeanList = mMultiMediaConfig.getPreViewData();
+//                ArrayList<String> backFilesPath = new ArrayList<>();
+//                if (mDataBeanList.size() != imagePicker.getSelectImageCount()) {
+//                    for (ImageItem item : imagePicker.getSelectedImages()) {//已经选中的图片 123.jpg
+//                        for (DataBean mDataBean : mDataBeanList) {//全部预览的图片 123.jpg 456.jpb
+//                            if (!item.name.trim().equals(mDataBean.getFileName().trim())) {
+//                                backFilesPath.add(MultiMediaConfig.CAMERA_FILE_PATH + "/" + mDataBean.getFileName());
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                intent.putExtra(Key.RESULT_INTENT, backFilesPath);
+//                setResult(resultCode, intent);
+//                finish();
+//                return;
+//            }
 
 //            intent.putExtra(ImagePicker.EXTRA_RESULT_ITEMS, imagePicker.getSelectedImages());
+
             ArmsUtils.showLoading("处理中，请稍后...", false, null);
             mMultiMediaConfig.commpImages(paths, getApplication(), new CopyFilesListener() {
                 @Override
@@ -349,7 +371,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     @Override
     public void onImageSelected(int position, ImageItem item, boolean isAdd) {
         if (imagePicker.getSelectImageCount() > 0) {
-            if (mMultiMediaConfig.getDoType() == 3) {
+            if (mMultiMediaConfig.getDoType() == 3 || mMultiMediaConfig.getDoType()==1) {
                 mBtnOk.setText(getString(R.string.ip_select_delete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
                 mBtnPre.setText(getResources().getString(R.string.ip_preview_delete, imagePicker.getSelectImageCount()));
             } else {
@@ -361,7 +383,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
             mBtnPre.setTextColor(ContextCompat.getColor(this, R.color.ip_text_primary_inverted));
             mBtnOk.setTextColor(ContextCompat.getColor(this, R.color.ip_text_primary_inverted));
         } else {
-            if (mMultiMediaConfig.getDoType() == 3) {
+            if (mMultiMediaConfig.getDoType() == 3 || mMultiMediaConfig.getDoType()==1) {
                 mBtnOk.setText(getString(R.string.ip_complete_delete));
                 mBtnPre.setText(getResources().getString(R.string.ip_preview_delete1));
             } else {

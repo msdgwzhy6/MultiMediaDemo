@@ -135,11 +135,11 @@ public class ImageUtil
 	 * @param paddingTop
 	 * @return
 	 */
-	public static Bitmap drawTextToRightBottom(Context context, Bitmap bitmap, String text, int size, int color, int paddingRight, int paddingBottom)
+	public static Bitmap drawTextToRightBottom(Context context, Bitmap bitmap, String text, float size, int color, int paddingRight, int paddingBottom)
 	{
 		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
 		paint.setColor(color);
-		paint.setTextSize(dp2px(context, size));
+		paint.setTextSize(dp2px(context, size+10));
 		Rect bounds = new Rect();
 		paint.getTextBounds(text, 0, text.length(), bounds);
 		return drawTextToBitmap(context, bitmap, text, paint, bounds, bitmap.getWidth() - bounds.width() - dp2px(context, paddingRight),

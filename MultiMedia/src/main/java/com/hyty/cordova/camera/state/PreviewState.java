@@ -76,7 +76,7 @@ class PreviewState implements State {
 //                machine.setState(machine.getBorrowPictureState());
 //                Timber.d("continuousCapture");
 //                ArmsUtils.dissMissLoading();
-                ArmsUtils.showLoading("正在加入水印...",false,null);
+                ArmsUtils.showLoading("请稍后...",false,null);
             }
         });
     }

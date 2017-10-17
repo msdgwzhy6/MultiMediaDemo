@@ -55,12 +55,15 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     public ImageDataSource(FragmentActivity activity, String path, OnImagesLoadedListener loadedListener) {
         this.activity = activity;
         mMultiMediaConfig = MultiMediaConfig.getInstance();
-        if (MultiMediaConfig.getInstance().getDoType() == 3) {
+        if (MultiMediaConfig.getInstance().getDoType() == 3||MultiMediaConfig.getInstance().getDoType() == 1) {
             //当前模式为预览 直接组装传入的数据
             ArrayList<ImageItem> allImages = new ArrayList<>();
             for (DataBean mDataBean : mMultiMediaConfig.getPreViewData()) {
                 ImageItem imageItem = new ImageItem();
-                File mFile = new File(mMultiMediaConfig.getFileSavedPath() + "/" + mDataBean.getFileName());
+                File mFile = new File(
+                        (MultiMediaConfig.getInstance().getDoType() == 3
+                                ?mMultiMediaConfig.getFileSavedPath()
+                                :MultiMediaConfig.CAMERA_FILE_PATH) + "/" + mDataBean.getFileName());
                 boolean exists = mFile.exists();
                 String name_ = "";
                 String path_ = "";

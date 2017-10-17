@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.hyty.cordova.MultiMediaConfig;
 import com.hyty.cordova.R;
+import com.hyty.cordova.bean.DataBean;
 import com.hyty.cordova.bean.Key;
 import com.hyty.cordova.camera.JCameraView;
 import com.hyty.cordova.camera.listener.ErrorListener;
@@ -27,6 +28,7 @@ import com.hyty.cordova.di.component.DaggerTakeCameraComponent;
 import com.hyty.cordova.di.module.TakeCameraModule;
 import com.hyty.cordova.imagepicker.ImagePicker;
 import com.hyty.cordova.imagepicker.bean.ImageItem;
+import com.hyty.cordova.imagepicker.ui.ImageGridActivity;
 import com.hyty.cordova.mvp.contract.TakeCameraContract;
 import com.hyty.cordova.mvp.impl.CopyFilesListener;
 import com.hyty.cordova.mvp.presenter.TakeCameraPresenter;
@@ -34,9 +36,19 @@ import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DefaultObserver;
+import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -110,12 +122,27 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
         }
         mCameraView.setFeatures(mCameraFeatures);
         mCameraView.setContinuousCapture(true);
-        mCameraView.setTip("点击拍照");
+        mCameraView.setTip("");
         mCameraView.setErrorLisenter(mErrorListener);
         mCameraView.setJCameraLisenter(mCameraListener);
         mCameraView.setLeftClickListener(() -> finishPage(null));
+        //预览按钮
+        mCameraView.setPreviewIconClickListener(mView -> {
+            if (mPresenter.getSelectedImages().size() == 0){
+                ArmsUtils.showToast("您还没有拍照");
+                return;
+            }
+            Intent mIntent = new Intent(this, ImageGridActivity.class);
+            mMultiMediaConfig.setCanDelete(true);
+            ImagePicker.getInstance().setShowCamera(false);
+            //设置预览的数据
+            mMultiMediaConfig.setPreViewData(mPresenter.getSelectedImages());
+            mIntent.putExtra(Key.REQUEST_CODE, MultiMediaConfig.REQUEST_CODE_TAKECAMERA_PREVIEW_ONLY);
+            startActivityForResult(mIntent, MultiMediaConfig.REQUEST_CODE_TAKECAMERA_PREVIEW_ONLY);
+        });
+        //确定按钮
         mCameraView.setRightClickListener(() -> {
-            if (mMultiMediaConfig.getDoType() != 1) {
+            if (mMultiMediaConfig.getDoType() != 1 || mPresenter.getSelectedImages().size() == 0) {
                 finishPage(null);
                 return;
             }
@@ -187,7 +214,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
 
     @Override
     public void showLoading() {
-        ArmsUtils.showLoading("加载中...", true, null);
+        ArmsUtils.showLoading("请稍后...", true, null);
     }
 
     @Override
@@ -265,6 +292,16 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
     @Override
     public void showLoading(String msg) {
         ArmsUtils.showLoading(msg, false, null);
+    }
+
+    /**
+     * 设置预览的数字
+     *
+     * @param count
+     */
+    @Override
+    public void setPreviewCount(int count) {
+        mCameraView.setPreview(count);
     }
 
 
@@ -394,5 +431,103 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
 
     public interface CameraFocusListener {
         void onFocus();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == MultiMediaConfig.REQUEST_CODE_TAKECAMERA_PREVIEW_ONLY) {
+            if (data == null) {
+                mMultiMediaConfig.setCamerasNumber(mPresenter.getSelectedImages().size());
+//                mMultiMediaConfig.setMaxOptionalNum(mMultiMediaConfig.getMaxOptionalNum() - mPresenter.getSelectedImages().size());
+                return;
+            }
+            List<DataBean> mDataBeanList = mPresenter.getSelectedImages();
+            //未删除前所有已拍照片
+            ArrayList<String> path_old = new ArrayList<>();
+            for (int i = 0; i < mDataBeanList.size(); i++) {
+                path_old.add(MultiMediaConfig.CAMERA_FILE_PATH + "/" + mDataBeanList.get(i).getFileName());
+            }
+            //已删除的图片路径
+            ArrayList<String> paths_delete = data.getStringArrayListExtra(Key.RESULT_INTENT);
+
+            Timber.d("已删除的照片长度 = " + paths_delete.size());
+            Timber.d("全部已拍照片长度 = " + path_old.size());
+
+            ArrayList<File> backFiles = new ArrayList<>();
+           List<String> mList =  getDiffrent(path_old,paths_delete);
+            for (String path :mList){
+                backFiles.add(new File(path));
+            }
+            mPresenter.setSelectedImages(backFiles);
+            mMultiMediaConfig.setCamerasNumber(mPresenter.getSelectedImages().size());
+
+//            Observable.create(new ObservableOnSubscribe<File>() {
+//                @Override
+//                public void subscribe(@io.reactivex.annotations.NonNull ObservableEmitter<File> e) throws Exception {
+//
+//                    e.onComplete();
+//                }
+//            }).subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(new DefaultObserver<File>() {
+//                        @Override
+//                        public void onNext(@io.reactivex.annotations.NonNull File mFile) {
+//                            backFiles.add(mFile);
+//                        }
+//
+//                        @Override
+//                        public void onError(@io.reactivex.annotations.NonNull Throwable e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onComplete() {
+//                            mPresenter.setSelectedImages(backFiles);
+//                            mMultiMediaConfig.setCamerasNumber(mPresenter.getSelectedImages().size());
+//                        }
+//                    });
+//
+        }
+
+
+    }
+    /**
+     * 获取两个List的不同元素
+     * @param list1
+     * @param list2
+     * @return
+     */
+    private static List<String> getDiffrent(List<String> list1, List<String> list2) {
+        long st = System.nanoTime();
+        List<String> diff = new ArrayList<String>();
+        List<String> maxList = list1;
+        List<String> minList = list2;
+        if(list2.size()>list1.size())
+        {
+            maxList = list2;
+            minList = list1;
+        }
+        Map<String,Integer> map = new HashMap<String,Integer>(maxList.size());
+        for (String string : maxList) {
+            map.put(string, 1);
+        }
+        for (String string : minList) {
+            if(map.get(string)!=null)
+            {
+                map.put(string, 2);
+                continue;
+            }
+            diff.add(string);
+        }
+        for(Map.Entry<String, Integer> entry:map.entrySet())
+        {
+            if(entry.getValue()==1)
+            {
+                diff.add(entry.getKey());
+            }
+        }
+        System.out.println("getDiffrent5 total times "+(System.nanoTime()-st));
+        return diff;
+
     }
 }
