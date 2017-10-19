@@ -3,7 +3,7 @@ MultiMedia多媒体插件集成步骤:
 -
 **********  
 [ ![Download](https://api.bintray.com/packages/devzwy/maven/AndroidPlugin/images/download.svg) ](https://bintray.com/devzwy/maven/AndroidPlugin/_latestVersion)
-## 1.将配置文件([点击获取](MultiMediaDemo/config.gradle))放入项目根目录(将配置文件中的MultiMediaPluginVersion改为上面icon中的数字)
+## 1.将配置文件config.gradle([点击获取](https://github.com/devzwy/MultiMediaDemo/blob/master/config.gradle))放入项目根目录(将配置文件中的MultiMediaPluginVersion改为上面icon中的数字),(如果不方便下载时可在项目根目录下建立config.gradle文件，然后copy内容进去)
 ## 2.修改项目根目录下的build.gradle文件(该文件共修改三处，修改完成后请检查)
 ```gradle
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
