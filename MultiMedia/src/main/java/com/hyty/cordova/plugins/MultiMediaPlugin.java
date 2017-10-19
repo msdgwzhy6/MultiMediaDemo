@@ -309,10 +309,10 @@ public class MultiMediaPlugin extends CordovaPlugin {
                 File f = new File(mList.get(i));
                 jobject.put("fileName", f.getName());
                 jsonArray.put(jobject);
-                if (f.exists()) {
-                    f.delete();
-                    Timber.d("文件:" + f.getName() + "删除成功");
-                }
+//                if (f.exists()) {
+//                    f.delete();
+//                    Timber.d("文件:" + f.getName() + "删除成功");
+//                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();

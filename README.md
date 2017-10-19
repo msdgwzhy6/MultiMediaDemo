@@ -100,7 +100,7 @@ allprojects {
 ```xml
     <activity
             android:theme="@style/No_All"
-            android:name="com.hyty.cordova.mvp.ui.activity.TakeCameraActivity"
+            android:name="com.hyty.cordova.mvp.ui.activity.TakeCameraActivity">
     </activity>
 ```
 **********
