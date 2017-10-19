@@ -128,7 +128,7 @@ dependencies {
     testCompile rootProject.ext.dependencies["junit"]
     compile 'com.android.support:multidex:1.0.1'
 }
-//
+
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 version = rootProject.ext.android["versionName"]

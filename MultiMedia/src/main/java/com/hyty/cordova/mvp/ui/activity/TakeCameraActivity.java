@@ -341,7 +341,7 @@ public class TakeCameraActivity extends BaseActivity<TakeCameraPresenter> implem
 //                Log.d(TAG, "pX:" + px + "  pY:" + py + "  pZ:" + pz + "    stamp:"
 //                        + stamp + "  second:" + second);
                     double value = Math.sqrt(px * px + py * py + pz * pz);
-                    if (value > 1.8) {
+                    if (value > 1.4) {
                         //检测手机在移动
                         STATUE = STATUS_MOVE;
                     } else {

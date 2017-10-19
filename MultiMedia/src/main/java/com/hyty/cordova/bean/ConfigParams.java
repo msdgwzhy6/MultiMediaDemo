@@ -14,8 +14,8 @@ import java.util.List;
 public class ConfigParams implements Serializable {
 
     private int type;//业务类型
-    private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String folderName;//存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片 默认为:defaultfolder
+    private int maxOptionalNum;//最大可选/可拍数量 默认为9张
     private String flagText;//水印文字
     private boolean isCanDelete;//是否具备删除功能,仅在预览模式有效
 //    private String urlPathHeader;//当本地文件不存在时在网络获取的请求前缀 仅在预览模式有效
@@ -24,7 +24,7 @@ public class ConfigParams implements Serializable {
     /**
      * 快速拍照需要传入的参数
      *
-     * @param mType           业务类型 1 ~ 快速拍照   2 ~ 多图选择+拍照
+     * @param mType           业务类型 1 ~ 快速拍照   2 ~ 多图选择+拍照  3 ~ 图片预览
      * @param mMaxOptionalNum 最大可选/可拍数量 默认为9张
      * @param mFolderName     存储文件的名称 该文件将在SD卡根目录下出现 存储压缩过的图片
      * @param flagText        水印文字

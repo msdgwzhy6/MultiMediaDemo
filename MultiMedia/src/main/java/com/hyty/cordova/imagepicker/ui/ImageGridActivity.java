@@ -217,6 +217,11 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
             }
 
             if (mMultiMediaConfig.getDoType() == 3 || mMultiMediaConfig.getDoType() == 1) {
+                if (mMultiMediaConfig.getDoType()==3&& !mMultiMediaConfig.isCanDelete()){
+                    setResult(resultCode);
+                    finish();
+                    return;
+                }
                 intent.putExtra(Key.RESULT_INTENT, paths);
                 setResult(resultCode, intent);
                 finish();
