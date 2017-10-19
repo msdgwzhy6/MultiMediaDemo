@@ -2,8 +2,8 @@
 MultiMedia多媒体插件集成步骤:
 -
 **********  
-
-## 1.将配置文件(点击获取)放入项目根目录
+[ ![Download](https://api.bintray.com/packages/devzwy/maven/AndroidPlugin/images/download.svg) ](https://bintray.com/devzwy/maven/AndroidPlugin/_latestVersion)
+## 1.将配置文件([点击获取](MultiMediaDemo/config.gradle))放入项目根目录(将配置文件中的MultiMediaPluginVersion改为上面icon中的数字)
 ## 2.修改项目根目录下的build.gradle文件(该文件共修改三处，修改完成后请检查)
 ```gradle
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -158,15 +158,13 @@ allprojects {
 
 
 
-**********以下文字和文档无关**********
-业务逻辑梳理：
-    插件采用MVP架构开发
-    所有业务使用同一插件，由带入json串的某一特定值来区分业务类型，业务分类:
-    1:快速拍照
-    2:多图选择+拍照
-    3:快速录像
-    4:录像选择+录像
-    5:快速录音
-    6:录音选取列表+录音
-    7:图片、视频预览列表
-    8:流媒体播放(单一页面，全屏播放)
+**********以下文字和文档无关**********                 
+业务逻辑梳理：  
+    1:快速拍照  
+    2:多图选择+拍照  
+    3:快速录像  
+    4:录像选择+录像  
+    5:快速录音  
+    6:录音选取列表+录音  
+    7:图片、视频预览列表  
+    8:流媒体播放(单一页面，全屏播放)  
